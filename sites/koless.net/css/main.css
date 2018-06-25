@@ -1,0 +1,378 @@
+* {
+  font-family: Verdana;
+  font-size: 13px;
+}
+
+html
+
+body {
+  padding:0;
+  margin: 0;
+  background-color: #FFC236;
+  font-family: Verdana;
+  font-size:11px;
+  color: #2C2829;
+}
+
+table.header {
+  margin-top:2px;
+  width: 1002px;
+  border-collapse: collapse;
+  background: url('/images/header.png');
+  height: 187px;
+  background-color: #FEB001;
+}
+
+table.header .phones {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: #000 0px 0px 2px;
+}
+
+td.line {
+  background: url('/images/line.png') repeat-x;
+  height: 20px;
+}
+
+table.second_menu {
+  width: 1002px;
+  border-collapse: collapse;
+  padding-top:5px;
+  padding-bottom:5px;
+  background-color: #000;
+  height: 35px;
+}
+
+
+table.header td.logo {
+  font-weight: bold;
+  font-size: 12px;
+  color: #2C2829;
+}
+
+table.menu {
+  border-collapse: collapse;
+  border:  0;
+  padding: 0;
+  margin:  0;
+/*  width: 50%;*/
+}
+
+table.menu td {
+  border:  0;
+  padding: 0;
+  margin:  0;
+}
+
+.header td.menu_tab, .header td.menu_tab_active {
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  width: 140px;
+  padding-left: 0px;
+  padding-right: 5px;
+}
+
+.header td.menu_tab:hover, .header td.menu_tab_active {
+  background-image: url(/images/button.png);
+}
+
+td.catalog_tab {
+  width: 180px;
+}
+
+.header td.menu_tab a,
+.header td.menu_tab_active a, 
+.second_menu td.menu_tab a,
+.second_menu td.menu_tab_active a {
+  text-align:center;
+  color: #333;
+  font-size: 15px;
+  text-align: center;
+  font-family: Arial;
+  text-decoration: none;
+  display: block;
+  float: bottom;
+  margin-bottom: 4px;
+  height:25px;
+  line-height:25px;
+  font-weight: bold;
+}
+
+table.second_menu td.menu_tab a, table.second_menu td.menu_tab_active a {
+  color: #fff !important;
+  margin-top: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  height:32px;
+  line-height:32px;
+  width: 130px;
+}
+
+table.second_menu td.menu_tab:hover, table.second_menu td.menu_tab_active {
+  background-image: url(/images/button2_bg.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+div.submenu {
+  position: absolute;
+  background-color: #EEE;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  margin-left: -1px;
+  margin-top: 6px;
+  display: none;
+}
+
+div.submenu table.submenu {
+  width: 160px;
+  border: 1px #CDCDCD solid;
+  border-collapse: collapse;
+}
+
+table.submenu a {
+  height: 20px;
+  margin-top:5px;
+  font-size: 12px;
+  text-align: left;
+  display: block;
+  margin-left: 16px;
+  color: #585E73;
+}
+
+table.submenu td {
+  border: 1px #cdcdcd solid;
+}
+
+.submenu_tab {
+  text-align: left;
+  background-color: #eee;
+  margin-left: 20px;
+  padding-left: 20px;
+  width: 190px;
+}
+
+.submenu_tab ul {
+  padding-left: 10px;
+}
+
+.submenu_tab a {
+  line-height: 20px;
+  color: #2C2829;
+}
+
+h1.title {
+  color: #000;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+div.history_path {
+  margin-bottom: 10px;
+  background-color: #C9442A;
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+div.history_path a {
+  color: #fff !important;
+}
+
+table.content_block {
+  width: 1002px;
+  border-collapse: collapse;
+  background-color: #FEB001;
+}
+
+td.content_block {
+  vertical-align: top;
+  margin:0;
+  padding:0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 30px;
+}
+
+td.content_block a {
+  color: #2C2829;
+}
+
+td.catalog_block {
+  width: 300px;
+  height: 520px;
+  text-align: center;
+  margin:0;
+  padding:0;
+  vertical-align: top;
+  padding-top: 30px;
+}
+
+td.catalog_block div.menu {
+  margin-top: 15px;
+  padding-left:30px;
+  padding-top: 3px;
+  background: url('/images/menu_top.png') 30px 0px no-repeat;
+}
+
+td.catalog_block div.menu_bottom {
+  padding-left:30px;
+  padding-top: 3px;
+  background: url('/images/menu_bottom.png') 30px 0px no-repeat;
+}
+
+td.catalog_block div.menu tr:first-child td {
+  border: none;
+}
+
+td.catalog_block div.menu td.menu_tab,
+td.catalog_block div.menu td.menu_tab:hover,
+td.catalog_block div.menu td.menu_tab_active {
+  /* background: url('/images/tick1.png') 230px center no-repeat #FFC541;*/
+  background: #FFC541;
+  width: 237px;
+  height: 25px;
+  border-top: 1px #999 solid;
+  margin:0px;
+  text-align: left;
+  padding-left:10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+td.catalog_block div.menu td.menu_tab:hover, td.catalog_block div.menu td.menu_tab_active {
+  /* background: url('/images/tick1.png') 230px center no-repeat #C9442A; */
+  background: #C9442A;
+}
+
+td.catalog_block div.menu td.menu_tab:hover a, td.catalog_block div.menu td.menu_tab_active a {
+  color: #fff !important;
+}
+
+td.catalog_block div.menu a {
+  color: #333;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+td.catalog_block div.title{
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 29px;
+  color: #fff;
+  background: url('/images/title_bg.png') top left no-repeat;
+  width: 237px;
+  height: 29px;
+  margin-left: 30px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+td.main_content {
+/*  background-color: #fff;*/
+  text-align: justify;
+  vertical-align: top;
+  padding: 10px;
+  padding-top: 0px;
+/*  border-radius: 5px;*/
+}
+
+div.banners {
+  margin-bottom: 20px;
+}
+
+td.news_block {
+  vertical-align: top;
+  width: 50%;
+  text-align: justify;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+td.news_block h3 {
+  font-weight: bold;
+  text-align: center;
+  background-color: #7C8283;
+  color: #fff;
+  display: block;
+  width: 110px;
+  font-size: 16px;
+}
+
+td.news_block a.news_title {
+  font-weight: bold;
+}
+
+a.news_title {
+  color: #2C2829;
+}
+
+td.news_block a.news_link {
+  float: right;
+  clear: bottom;
+  color: #2C2829;
+}
+
+table.footer {
+  width: 1002px;
+  background-color: #FEB001;
+  border-collapse: collapse;
+  height: 60px;
+  color: #333;
+}
+
+.contacts {
+  width: 400px;
+  text-align: left;
+  padding-left:30px;
+  font-size: 12px;
+}
+
+.contacts a {
+  margin-right: 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+td.copyright {
+  padding-right: 10px;
+  font-size: 11px;
+}
+
+.copyright a {
+  color: #666;
+  font-size: 11px;
+}
+
+#YMapsID {
+  display: none;
+}
+
+.YandexMap-user {
+  display: block !important;
+  height: 400px !important;
+}
+
+div.fast_search {
+  float:right;
+  padding-top: 10px;
+  padding-right: 10px;
+  height:30px
+}
+
+div.fast_search input {
+  font-size: 9px;
+  background-color: #fff;
+  color: #000;
+  border: 1px #ccc solid;
+}
+div.fast_search .submit {
+  background-color: #d00;
+  color: #fff;
+  font-size: 9px;
+  border: 1px #d00 solid;
+}

@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <title>[metadata_title]</title>
+    <meta name="description" content="[metadata_description]">
+    <meta name="keywords" content="[metadata_keywords]">
+    <meta http-equiv="content-type" content="text/html; charset=WINDOWS-1251" >
+    [include_css_files]
+    [include_js_files]
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">    
+    [include_headers]
+  </head>
+<body onload="getMap()">
+
+<table class="header" border="0" align="center">
+  <tr>
+    <td valign="top">
+
+      <table class="menu" border="0">
+        <tr>
+          <td class="[custom:getMenuClass:1]">
+            <a href="[menu:static_get_url:1]" style="text-transform:capitalize;">
+            [menu:public_get_name_by_id:1]
+            </a>
+          </td>
+          <td class="[custom:getMenuClass:4]">
+            <a href="[menu:static_get_url:4]">
+            [menu:public_get_name_by_id:4]
+            </a>
+          </td>
+          <td class="[custom:getMenuClass:3]">
+            <a href="[menu:static_get_url:3]">
+            [menu:public_get_name_by_id:3]
+            </a>
+          </td>
+        </tr>
+      </table>
+
+    <div style="position:absolute;top:10px;margin-left:860px;">
+      <a href="/en/"><img border="0" src="/images/english.png" title="English version" alt="English version"></a>
+      <a href="/"><img border="0" src="/images/russian.png" title="Русская версия" alt="Русская версия"></a>
+    </div>
+    <div style="position:relative;top:40px;margin-left:10px;"><img src="/images/logo.png"></div>
+    <div class="phones" style="position:relative;top:40px;margin-left:110px;">+7 383 246-24-24</div>
+
+    </td>
+  </tr>
+</table>
+
+<table class="second_menu" border="0" align="center">
+  <tr>
+    <td>
+
+      <table class="menu" border="0" align="left">
+        <tr>
+          <td class="[custom:getMenuClass:15]">
+            <a href="[menu:static_get_url:15]">
+            [menu:public_get_name_by_id:15]
+            </a>
+          </td>
+          <td class="[custom:getMenuClass:16]">
+            <a href="[menu:static_get_url:16]">
+            [menu:public_get_name_by_id:16]
+            </a>
+          </td>
+          <td class="[custom:getMenuClass:17]">
+            <a href="[menu:static_get_url:17]">
+            [menu:public_get_name_by_id:17]
+            </a>
+          </td>
+        </tr>
+      </table>
+
+      <div class="fast_search">
+        <form action="">
+          <input type="text" name="fast_search" value="поиск по сайту" onfocus="this.value='';"><input type="submit" class="submit" value="найти">
+        </form>
+      </div>
+
+    </td>
+  </tr>
+</table>
+
+<table class="content_block" border="0" align="center">
+  <tr>
+    <td class="catalog_block">
+      <div class="title">Каталог продукции</div>
+
+      <div class="menu">
+        <table cellspacing="0" cellpadding="0">
+          [menu:renderLeftMenu:4]
+        </table>
+      </div>
+      <div class="menu_bottom">&nbsp;</div>
+
+      <div class="title">Специальное предложение</div>
+    </td>
+    <td class="content_block">
+      
+      <table width="100%" height="500">
+        <tr>
+          <td class="main_content">
+
+          [page_content]
+
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+<table class="footer" border="0" align="center">
+  <tr>
+    <td colspan="2" class="line">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="left">
+      <div class="contacts">
+        <a href="[menu:static_get_url:1]" style="text-transform:capitalize;">
+        [menu:public_get_name_by_id:1]
+        </a>
+        <a href="[menu:static_get_url:3]">
+        [menu:public_get_name_by_id:3]
+        </a>
+<div itemscope itemtype="http://schema.org/PostalAddress">
+ г. <span itemprop="addressLocality">Новосибирск</span>, <span itemprop="streetAddress">ул. Станционная 38 к5/4</span>
+</div>
+<div itemscope itemtype="http://schema.org/PostalAddress">
+ г. <span itemprop="addressLocality">Екатеринбург</span>, <span itemprop="streetAddress">Сибирский тракт, дом 85</span>
+</div>
+<div itemscope itemtype="http://schema.org/PostalAddress">
+ г. <span itemprop="addressLocality">Кемерово</span>, <span itemprop="streetAddress">ул. Производственная, дом 19</span>
+</div>
+        <!-- <a href="/?cat_id=sitemap">Карта сайта</a> -->
+      </div>
+    </td>
+    <td class="copyright" align="right">
+        &copy;Copyright 2014<br>
+        <a href="http://www.inet-s.ru/design.htm">Разработка сайта</a> - Инет Сервис
+    </td>
+  </tr>
+</table>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter24882554 = new Ya.Metrika({id:24882554,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/24882554" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<!--LiveInternet counter--><script type="text/javascript"><!--
+new Image().src = "//counter.yadro.ru/hit?r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random();//--></script><!--/LiveInternet-->
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+var _tmr = _tmr || [];
+_tmr.push({id: "2513503",  type: "pageView", start: (new Date()).getTime()});
+(function (d, w) {
+   var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+   ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+   var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+   if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window);
+</script><noscript><div style="position:absolute;left:-10000px;">
+<img src="//top-fwz1.mail.ru/counter?id=2513503;js=na" style="border:0;" height="1" width="1" alt="Рейтинг@Mail.ru" />
+</div></noscript>
+<!-- //Rating@Mail.ru counter -->
+
+</body>
+</html>

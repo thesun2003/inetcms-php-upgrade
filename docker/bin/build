@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+SITE="$1"
+ENV="$2"
+
+function usage {
+    echo "Usage: ./build <SITE> <ENV>"
+    echo "<SITE> is your site"
+    echo "<ENV> is your environment [php53|php70]"
+    exit
+}
+
+if [ ! ${ENV} ] || [ ! ${SITE} ]
+    then
+        usage
+fi
+
+CURRENT_PATH="$(pwd)"
+# echo ${CURRENT_PATH}
+
+cd "$(dirname "$0")"
+cd ..
+
+CONFIG_DIR="./configs/${SITE}"
+SITE_DIR="./../sites/${SITE}"
+FULL_SITE_DIR="${CURRENT_PATH}/sites/${SITE}"
+DATABASE_DIR="./data/${SITE}"
+
+CONFIG=" -f ${CONFIG_DIR}/web-${ENV}.yml"
+PATH_FIX="-f fix-path.yml"
+
+echo ${CONFIG_DIR}
+echo ${SITE_DIR}
+echo ${CONFIG}
+
+# check our working directory is OK
+# if [ ! -d "{CONFIG_DIR}" ]; then
+#     echo "Config dir for ${SITE} is not found!"
+#     exit
+# fi
+
+# check our site directory is OK
+# if [ ! -d "${SITE_DIR}" ]; then
+#     echo "Site source dir for ${SITE} is not found!"
+#     exit
+# fi
+
+# load variables for this environment
+set -a
+SITE=${SITE}
+SITE_DIR=${SITE_DIR}
+FULL_SITE_DIR=${FULL_SITE_DIR}
+DATABASE_DIR=${DATABASE_DIR}
+set +a
+
+# run command
+COMMAND="docker-compose ${PATH_FIX} ${CONFIG} up --build"
+echo "Running ${COMMAND}"
+${COMMAND}

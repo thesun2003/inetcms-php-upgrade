@@ -1,0 +1,42 @@
+Options -Indexes
+#AddDefaultCharset windows-1251
+AddDefaultCharset Off
+DirectoryIndex index.php
+
+AddType application/zip .zip
+AddType application/msword .doc
+AddType application/pdf .pdf
+AddType application/vnd.ms-excel .xls
+
+AddType application/octet-stream .rar .doc .mov .avi .pdf .xls .mp4
+
+ErrorDocument 403 /error.php?error_code=403
+ErrorDocument 404 /error.php?error_code=404
+ErrorDocument 500 /error.php?error_code=500
+
+# rewrite
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} !^www.
+RewriteRule (.*) http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+#RewriteRule ^index\.html$ http://isuzu/ [R=301,L]
+
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+#RewriteRule ^index\.php$ http://isuzu/ [R=301,L]
+
+#≈сли url не заканчиваетс€ на "/" и это не файл или директори€
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} .+[^/]$
+#то добавить его и выполнить редирект
+RewriteRule (.*) $1/ [R=301,L]
+
+RewriteRule ^.htaccess$ - [F]
+RewriteCond %{REQUEST_FILENAME} !\.(jpg|jpeg|gif|png|css|js|pl|txt)$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+RewriteRule ^(.*)$ /index.php [QSA]

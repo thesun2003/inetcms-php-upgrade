@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <title>[metadata_title]</title>
+    <meta name="description" content="[metadata_description]">
+    <meta name="keywords" content="[metadata_keywords]">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    [include_css_files]
+    [include_js_files]
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">    
+    [include_headers]
+  </head>
+<body onload="getMap()">
+
+<table class="header" border="0" align="center">
+  <tr>
+    <td valign="top">
+
+      <table class="menu" border="0">
+        <tr>
+          <td class="[custom:getMenuClass:1]">
+            <a href="[menu:static_get_url:1]" style="text-transform:capitalize;">
+            [menu:public_get_name_by_id:1]
+            </a>
+          </td>
+          <td class="[custom:getMenuClass:4]">
+            <a href="[menu:static_get_url:4]">
+            [menu:public_get_name_by_id:4]
+            </a>
+          </td>
+          <td class="[custom:getMenuClass:3]">
+            <a href="[menu:static_get_url:3]">
+            [menu:public_get_name_by_id:3]
+            </a>
+          </td>
+        </tr>
+      </table>
+
+    <div style="position:absolute;top:10px;margin-left:860px;">
+      <a href="/en/"><img border="0" src="/images/english.png" title="English version" alt="English version"></a>
+      <a href="/"><img border="0" src="/images/russian.png" title="Русская версия" alt="Русская версия"></a>
+    </div>
+    <div style="position:relative;top:40px;margin-left:10px;"><img src="/images/logo.png"></div>
+    <div class="phones" style="position:relative;top:40px;margin-left:110px;">+7 383 246-24-24</div>
+
+    </td>
+  </tr>
+</table>
+
+<table class="second_menu" border="0" align="center">
+  <tr>
+    <td>
+
+      <table class="menu" border="0" align="left">
+        <tr>
+          <td class="[custom:getMenuClass:15]">
+            <a href="[menu:static_get_url:15]">
+            [menu:public_get_name_by_id:15]
+            </a>
+          </td>
+          <td class="[custom:getMenuClass:16]">
+            <a href="[menu:static_get_url:16]">
+            [menu:public_get_name_by_id:16]
+            </a>
+          </td>
+          <td class="[custom:getMenuClass:17]">
+            <a href="[menu:static_get_url:17]">
+            [menu:public_get_name_by_id:17]
+            </a>
+          </td>
+        </tr>
+      </table>
+
+      <div class="fast_search">
+        <form action="">
+          <input type="text" name="fast_search" value="site search" onfocus="this.value='';"><input type="submit" class="submit" value="search">
+        </form>
+      </div>
+
+    </td>
+  </tr>
+</table>
+
+<table class="content_block" border="0" align="center">
+  <tr>
+    <td class="catalog_block">
+      <div class="title">Catalog of production</div>
+
+      <div class="menu">
+        <table cellspacing="0" cellpadding="0">
+          [menu:renderLeftMenu:4]
+        </table>
+      </div>
+      <div class="menu_bottom">&nbsp;</div>
+
+      <div class="title">Special offer</div>
+    </td>
+    <td class="content_block">
+      
+      <table width="100%" height="500">
+        <tr>
+          <td class="main_content">
+
+          [page_content]
+
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+<table class="footer" border="0" align="center">
+  <tr>
+    <td colspan="2" class="line">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="left">
+      <div class="contacts">
+        <a href="[menu:static_get_url:1]" style="text-transform:capitalize;">
+        [menu:public_get_name_by_id:1]
+        </a>
+        <a href="[menu:static_get_url:3]">
+        [menu:public_get_name_by_id:3]
+        </a>
+        <!-- <a href="/?cat_id=sitemap">Карта сайта</a> -->
+      </div>
+    </td>
+    <td class="copyright" align="right">
+        &copy;Copyright 2014<br>
+        <a href="http://www.inet-s.ru/design.htm">Site development</a> - Inet Service
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

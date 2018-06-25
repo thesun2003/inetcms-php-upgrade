@@ -1,0 +1,10 @@
+User-agent: Yandex
+Allow: */?cat_id
+Disallow: /*?
+Host: www.koless.net
+
+User-agent: *
+Allow: */?cat_id
+Disallow: /*?
+
+Sitemap: http://www.koless.net/sitemap.xml

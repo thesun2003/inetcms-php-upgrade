@@ -1,0 +1,28 @@
+<table align="center" width="100%">
+  <tr>
+    <td colspan="2" style="padding-bottom:30px"><b>Изменить данные администратора</b></td>
+  </tr>
+  <tr>
+    <td>логин:</td>
+    <td>
+      <input type="text" name="login" value="[login]" style="width:200px"><br/>
+      <input type="hidden" name="action_suffix" value="admins">
+      <input type="hidden" name="action" value="change">
+      <input type="hidden" name="id" value="[id]">
+    </td>
+  </tr>
+  <tr>
+    <td>пароль:</td>
+    <td>
+      <input type="password" name="passw" value="" style="width:200px">
+    </td>
+  </tr>
+      <tr>
+        <td>привилегии:</td>
+        <td>
+          <select name="privileges">
+[privileges_list]
+          </select>
+        </td>
+      </tr>
+</table>
