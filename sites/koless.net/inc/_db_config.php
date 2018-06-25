@@ -3,9 +3,9 @@
 // DB
 
 define('DB_HOST', "localhost");
-define('DB_BASE', "aqq999_kolesa");
-define('DB_USER', 'aqq999_kolesa');
-define('DB_PASS', 'kolesa2012');
+define('DB_BASE', "aqq999");
+define('DB_USER', 'aqq999');
+define('DB_PASS', 'password');
 define('DB_PREFIX', 'kolesa');
 /*
 $dbhost = "localhost";
