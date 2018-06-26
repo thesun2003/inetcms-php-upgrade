@@ -1,0 +1,11 @@
+<form style="margin:0;padding:0" id="[self_ID]_form_x" action="[action_value]" method="post" onSubmit="ajax_modalform_submit('[self_ID]', '_form_x');return false;">
+  <b>—татус:</b><br />
+  разделов - <b>[new_count]</b> новых, <b>[changed_count]</b> измененных<br />
+  товаров - <b>[items_new_count]</b> новых, <b>[items_changed_count]</b> измененных<br />
+  <div style="float:left;margin-right:5px">
+    <input type="hidden" id="catalog_update_action" name="action" value="update_status" />
+    <input type="submit" name="update_status" value="ќбновить статус" />
+    [update_catalog]
+  </div>
+  <div id="[self_ID]_ajax_loading" style="display:none">[ajax_loading]</div>
+</form>

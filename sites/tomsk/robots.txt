@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /admin/
+Disallow: /inc/
+Disallow: /js_libs/
+Disallow: /classes/
+Disallow: *showall
+Disallow: *pn=all
+
+Host: www.tomsktorgstroy.ru
+Sitemap: http://www.tomsktorgstroy.ru/sitemap.xml

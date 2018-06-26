@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class=""> <!--<![endif]-->
+  <head>
+    <title>[metadata_title]</title>
+    <meta name="description" content="[metadata_description]">
+    <meta name="keywords" content="[metadata_keywords]">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    [include_css_files]
+    [include_js_files]
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">    
+    [include_headers]
+  </head>
+<body onload="getMap()">
+
+<div class="wrapper">
+  <div class="header">
+    <a href="/"><img id="logo" src="/img/logo.png"></a>
+    <div class="header_box">
+      <div class="address">
+        г.Томск, Усова, 9Б<br>(Вход со двора)<div style="padding-top:7px;">телефон: +7 (3822) 93-60-48</div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="menu">
+        <a href="/?project_id=0">Проекты</a>
+        <a href="#">Партнеры</a>
+        <a href="#">Вопрос-ответ</a>
+        <a href="/?cat_id=2">Контакты</a>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="content">
+    <table class="content" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="column_left">
+          <a class="catalog_menu_top" href="/catalog/">Каталог</a><br>
+[catalog:get_catalog_html:0]
+          <div class="news">
+          <a class="title" href="/?news_id=0">Новости</a><br>
+[news:get_news_list_main:0]
+          </div>
+        </td>
+        <td class="column_center">
+[page_content]
+        </td>
+        <td class="column_right">
+          <form action="" method="get" id="search">
+            <table align="center">
+              <tr>
+                <td><input type="search" class="searchfield" name="fast_search" value=""></td>
+                <td><input type="submit" class="submit" value="Поиск"></td>
+              </tr>
+            </table>
+          </form>
+
+          <div class="finished_projects">
+            <a class="title" href="/?project_id=0">Реализованные проекты</a>
+[articles:get_news_list_main:0]
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <div class="copyright">
+      &copy; ТПК-ТоргСтрой, 2013<br>
+      <a href="http://www.inet-s.ru/design.htm">Разработка сайта</a> - Инет Сервис
+    </div>
+    <div class="bottom_menu">
+      <a href="/">На главную</a>
+      <a href="/catalog/">Каталог</a>
+      <a href="/?cat_id=2">Контакты</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

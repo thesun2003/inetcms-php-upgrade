@@ -1,0 +1,3 @@
+[25-Dec-2017 06:26:35] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 9105179 bytes) in /home/aqq999/public_html/tomsktorgstroy.ru/classes/class_javascript_utils.php on line 55
+[25-Dec-2017 06:27:26] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 9105179 bytes) in /home/aqq999/public_html/tomsktorgstroy.ru/classes/class_javascript_utils.php on line 55
+[08-Jan-2018 11:09:53] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 9684797 bytes) in /home/aqq999/public_html/tomsktorgstroy.ru/classes/class_javascript_utils.php on line 55
