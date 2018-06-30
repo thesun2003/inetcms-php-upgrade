@@ -359,9 +359,9 @@ function _tp_error_handler($errno, $err_string, $err_file, $err_line) {
 set_error_handler('_tp_error_handler');
 
 // ===== catch fatal errors =====
-require_once(ROOT . '/classes/error_catch/Listener.php');
-require_once(ROOT . '/classes/error_catch/RemoveDupsWrapper.php');
-require_once(ROOT . '/classes/error_catch/MailNotifier.php');
+require_once(CLASSES . '/error_catch/Listener.php');
+require_once(CLASSES . '/error_catch/RemoveDupsWrapper.php');
+require_once(CLASSES . '/error_catch/MailNotifier.php');
 
 class RedirectToSorryPageNotifier extends Debug_ErrorHook_TextNotifier {
   protected function _notifyText($subject, $body)	{

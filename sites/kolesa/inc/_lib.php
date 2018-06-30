@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
 require_once(ROOT . '/inc/_error.php');
 require_once(ROOT . '/inc/_vars.php');
 require_once(ROOT . '/inc/locale.php');
-require_once(ROOT . '/classes/class_lib.php');
+require_once(CLASSES . '/class_lib.php');
 
 debug_start();
 
@@ -33,15 +33,15 @@ function get_sorry_page() {
 <HTML><HEAD>
 <TITLE>Sorry</TITLE>
 </HEAD><BODY>
-<H1>Извините, произошла ошибка не сайте</H1>
-Запрашиваемая вами страница {$_SERVER['REQUEST_URI']} почему-то не была обнаружена. Попробуйте с <a href="{$JS_config['main_url']}">главной страницы</a><P>
+<H1>РР·РІРёРЅРёС‚Рµ, РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РЅРµ СЃР°Р№С‚Рµ</H1>
+Р—Р°РїСЂР°С€РёРІР°РµРјР°СЏ РІР°РјРё СЃС‚СЂР°РЅРёС†Р° {$_SERVER['REQUEST_URI']} РїРѕС‡РµРјСѓ-С‚Рѕ РЅРµ Р±С‹Р»Р° РѕР±РЅР°СЂСѓР¶РµРЅР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃ <a href="{$JS_config['main_url']}">РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹</a><P>
 </BODY></HTML>
 EOT;
   exit();
 }
 
 function no_cache() {
-  // во избежание кэширования где-бы то ни было...
+  // РІРѕ РёР·Р±РµР¶Р°РЅРёРµ РєСЌС€РёСЂРѕРІР°РЅРёСЏ РіРґРµ-Р±С‹ С‚Рѕ РЅРё Р±С‹Р»Рѕ...
   header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
   header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
   header ("Cache-Control: no-cache, must-revalidate");
