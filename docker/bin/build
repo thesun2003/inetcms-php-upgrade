@@ -25,13 +25,14 @@ CONFIG_DIR="./configs/${SITE}"
 SITE_DIR="./../sites/${SITE}"
 FULL_SITE_DIR="${CURRENT_PATH}/sites/${SITE}"
 DATABASE_DIR="./data/${SITE}"
+CMS_DIR="./../inetcms"
 
 CONFIG=" -f ${CONFIG_DIR}/web-${ENV}.yml"
 PATH_FIX="-f fix-path.yml"
 
-echo ${CONFIG_DIR}
-echo ${SITE_DIR}
-echo ${CONFIG}
+#echo ${CONFIG_DIR}
+#echo ${SITE_DIR}
+#echo ${CONFIG}
 
 # check our working directory is OK
 # if [ ! -d "{CONFIG_DIR}" ]; then
@@ -49,6 +50,7 @@ echo ${CONFIG}
 set -a
 SITE=${SITE}
 SITE_DIR=${SITE_DIR}
+CMS_DIR=${CMS_DIR}
 FULL_SITE_DIR=${FULL_SITE_DIR}
 DATABASE_DIR=${DATABASE_DIR}
 set +a
