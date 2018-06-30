@@ -13,6 +13,7 @@ services:
       - SITE_DIR
     volumes:
       - ${SITE_DIR}:/var/www/html
+      - ${CMS_DIR}:/var/www/html/vendor/inetcms
     depends_on:
       - kolesa-mysql
     networks:
@@ -28,16 +29,12 @@ services:
         MYSQL_DATABASE: 'aqq999'
         MYSQL_USER: 'aqq999'
         MYSQL_PASSWORD: 'password'
-        SITE: ${SITE}
-        SITE_DIR: ${SITE_DIR}
         DATABASE_DIR: ${DATABASE_DIR}
     environment:
         - MYSQL_ALLOW_EMPTY_PASSWORD=yes
         - MYSQL_DATABASE=aqq999
         - MYSQL_USER=aqq999
         - MYSQL_PASSWORD=password
-        - SITE
-        - SITE_DIR
         - DATABASE_DIR
     container_name: ${SITE}-mysql
     networks:

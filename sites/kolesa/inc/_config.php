@@ -1,9 +1,13 @@
 <?php
+
+//phpinfo();
+//die();
+
 ini_set('display_errors', '1');
 
 // MAIN CONFIG
 
-define('SITE_NAME', '&quot;Колесоша&quot;');
+define('SITE_NAME', '&quot;РљРѕР»РµСЃРѕС€Р°&quot;');
 define('BASE_CHARSET', 'windows-1251');
 
 define('MAIN_URL', 'http://'. $_SERVER['HTTP_HOST']);
@@ -13,8 +17,9 @@ if($root[strlen($root)-1] != '/') {
   $root .= '/';
 }
 define('ROOT', $root);
+define('CMS_ROOT', ROOT . '/vendor/inetcms');
 
-define('CLASSES', ROOT . "/classes");
+define('CLASSES', CMS_ROOT . "/classes");
 define('JS_LIBS', "/js_libs");
 define('CSS_PATH', "/css");
 
