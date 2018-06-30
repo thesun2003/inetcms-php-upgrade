@@ -4,8 +4,6 @@ ARG MYSQL_ALLOW_EMPTY_PASSWORD
 ARG MYSQL_DATABASE
 ARG MYSQL_USER
 ARG MYSQL_PASSWORD
-ARG SITE
-ARG SITE_DIR
 ARG DATABASE_DIR
 
 # the regular dir is a volume so if we want to have things refresh on build we have to put the mysql data elsewhere
