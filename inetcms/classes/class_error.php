@@ -7,7 +7,8 @@ class Error extends Message {
   }
   static function show($text, $pattern = ERROR_PATTERN) {
     global $LNG;
-    self::showText($LNG[$text], $pattern);
+    $message = !empty($LNG[$text]) ? $LNG[$text] : $text;
+    self::showText($message, $pattern);
   }
 }
 

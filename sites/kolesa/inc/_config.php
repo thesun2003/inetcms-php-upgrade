@@ -1,8 +1,5 @@
 <?php
 
-//phpinfo();
-//die();
-
 ini_set('display_errors', '1');
 
 // MAIN CONFIG
@@ -17,9 +14,10 @@ if($root[strlen($root)-1] != '/') {
   $root .= '/';
 }
 define('ROOT', $root);
-define('CMS_ROOT', ROOT . '/vendor/inetcms');
+define('CMS_ROOT', ROOT . 'vendor/inetcms');
 
 define('CLASSES', CMS_ROOT . "/classes");
+define('LOCAL_CLASSES', ROOT . "classes");
 define('JS_LIBS', "/js_libs");
 define('CSS_PATH', "/css");
 
@@ -38,6 +36,8 @@ define('ADMIN_INC_FILE', '/admin/inc');
 
 define('MODULES_URL', ADMIN_URL . "/modules");
 define('MODULES', ADMIN . "/modules");
+
+define('GALLERY_LIST_IMAGE_WIDTH', 100);
 
 // secret key, please change this after install
 define('SECRET_KEY', '%@!sW92D%&s');

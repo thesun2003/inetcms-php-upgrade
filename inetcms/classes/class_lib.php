@@ -6,8 +6,15 @@ class using {
   static $css_files = array();
   
   static function add_class($name, $path=CLASSES) {
+    $file_to_include = "/class_" . $name . ".php";
+
+    if (defined('LOCAL_CLASSES') && file_exists(LOCAL_CLASSES . $file_to_include)) {
+        $path = LOCAL_CLASSES;
+    }
+
     if (!in_array($name, self::$classes)) {
-      require_once($path . "/class_" . $name . ".php");
+      # var_dump_pre($path . $file_to_include);
+      require_once($path . $file_to_include);
       self::$classes[] = $name;
     }
   }

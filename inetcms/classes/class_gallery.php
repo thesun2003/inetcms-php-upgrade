@@ -19,9 +19,12 @@ class Gallery extends Entity {
     $this->images = array();
 
     $images = new Images();
-    $search = $images->find(array('gallery_id' => $this->get('id')), 'position ASC');
+    $search = $images->find(array('gallery_id' => $this->get('id')), 'position ASC, id ASC');
     while ($images = $search->next()) {
       $this->images[$images->get('id')] = $images;
+    }
+    if (count($this->images) > 2) {
+      $this->images = array_slice($this->images, -2);
     }
   }
 
@@ -156,7 +159,7 @@ class Gallery extends Entity {
     $result = '';
     if($this->images) {
       $image = array_shift($this->images);
-      $result = $image->getImage(false, 100);
+      $result = $image->getImage(false, GALLERY_LIST_IMAGE_WIDTH);
     }
     return $result;
   }

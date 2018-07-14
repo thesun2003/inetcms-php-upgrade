@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
 require_once(ROOT . '/inc/_error.php');
 require_once(ROOT . '/inc/_vars.php');
 require_once(ROOT . '/inc/locale.php');
-require_once(ROOT . '/classes/class_lib.php');
+require_once(CLASSES . '/class_lib.php');
 
 debug_start();
 
@@ -20,7 +20,7 @@ using::add_class('admins');
 using::add_class('captcha');
 
 function translit($text) {
-  $russian = array(' ','ий', 'а','б','в','г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+  $russian = array(' ','РёР№', 'Р°','Р±','РІ','Рі', 'Рґ', 'Рµ', 'С‘', 'Р¶', 'Р·', 'Рё', 'Р№', 'Рє', 'Р»', 'Рј', 'РЅ', 'Рѕ', 'Рї', 'СЂ', 'СЃ', 'С‚', 'Сѓ', 'С„', 'С…', 'С†', 'С‡', 'С€', 'С‰', 'СЉ', 'С‹', 'СЊ', 'СЌ', 'СЋ', 'СЏ');
   $latin   = array('_','iy', 'a', 'b', 'v', 'g', 'd', 'e', 'e', 'zh', 'z', 'i', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'ts', 'ch', 'sh', 'shh', '', 'y', '', 'e', 'u', 'ya');
   $text    = str_replace($russian, $latin, mb_strtolower($text));
   $text    = preg_replace("/[^a-z0-9_]/", '', $text);
@@ -42,15 +42,15 @@ function get_sorry_page() {
 <HTML><HEAD>
 <TITLE>Sorry</TITLE>
 </HEAD><BODY>
-<H1>Извините, произошла ошибка не сайте</H1>
-Запрашиваемая вами страница {$_SERVER['REQUEST_URI']} почему-то не была обнаружена. Попробуйте с <a href="{$JS_config['main_url']}">главной страницы</a><P>
+<H1>РР·РІРёРЅРёС‚Рµ, РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РЅРµ СЃР°Р№С‚Рµ</H1>
+Р—Р°РїСЂР°С€РёРІР°РµРјР°СЏ РІР°РјРё СЃС‚СЂР°РЅРёС†Р° {$_SERVER['REQUEST_URI']} РїРѕС‡РµРјСѓ-С‚Рѕ РЅРµ Р±С‹Р»Р° РѕР±РЅР°СЂСѓР¶РµРЅР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃ <a href="{$JS_config['main_url']}">РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹</a><P>
 </BODY></HTML>
 EOT;
   exit();
 }
 
 function no_cache() {
-  // во избежание кэширования где-бы то ни было...
+  // РІРѕ РёР·Р±РµР¶Р°РЅРёРµ РєСЌС€РёСЂРѕРІР°РЅРёСЏ РіРґРµ-Р±С‹ С‚Рѕ РЅРё Р±С‹Р»Рѕ...
   header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
   header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
   header ("Cache-Control: no-cache, must-revalidate");

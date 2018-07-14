@@ -56,7 +56,7 @@ class MenuTree {
     }
 
     $actions_block .= admin_button::get('seo', '/admin/admin.php?type=seo_editpage&id=' . $menu->get('id'), ' для страницы &quot;' . $menu->get('name') . '&quot;');
-    //$actions_block .= admin_button::get('edit', '/admin/admin.php?type=editpage&id=' . $menu->get('id'), 'содержимое страницы &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('edit', '/admin/admin.php?type=editpage&id=' . $menu->get('id'), 'содержимое страницы &quot;' . $menu->get('name') . '&quot;');
     $actions_block .= admin_button::get('edit_new', '/admin/admin.php?type=editpage_new&id=' . $menu->get('id'), 'содержимое страницы &quot;' . $menu->get('name') . '&quot;');
     $actions_block .= admin_button::get('del', "javascript:ondel('" . ADMIN_INC_FILE . "/save_menu.php?action=delete&id=" . $menu->get('id') . "');", '');
 
@@ -112,7 +112,7 @@ class MenuTree {
     $actions_block .= admin_button::get('new_menu', ModalForm::getLinkX('menu', 'add', $menu->get('id')), ' новый раздел');
     $actions_block .= admin_button::get('new_page', ModalForm::getLinkX('page', 'add', $menu->get('id')), ' новую страницу');
 
-    //$actions_block .= admin_button::get('edit', '/admin/admin.php?type=editpage&id=' . $menu->get('id'), 'содержимое страницы &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('edit', '/admin/admin.php?type=editpage&id=' . $menu->get('id'), 'содержимое страницы &quot;' . $menu->get('name') . '&quot;');
     $actions_block .= admin_button::get('edit_new', '/admin/admin.php?type=editpage_new&id=' . $menu->get('id'), 'содержимое страницы &quot;' . $menu->get('name') . '&quot;');
 
     $actions_block .= admin_button::get('del', "javascript:ondel('" . ADMIN_INC_FILE . "/save_menu.php?action=delete&id=" . $menu->get('id') . "');", '');

@@ -3,7 +3,7 @@ ini_set('display_errors', '0');
 
 // MAIN CONFIG
 
-define('SITE_NAME', '&quot;ÒîðãÑòðîé&quot;');
+define('SITE_NAME', '&quot;Ð¢Ð¾Ñ€Ð³Ð¡Ñ‚Ñ€Ð¾Ð¹&quot;');
 define('BASE_CHARSET', 'windows-1251');
 
 define('MAIN_URL', 'http://'. $_SERVER['HTTP_HOST']);
@@ -13,8 +13,10 @@ if($root[strlen($root)-1] != '/') {
   $root .= '/';
 }
 define('ROOT', $root);
+define('CMS_ROOT', ROOT . 'vendor/inetcms');
 
-define('CLASSES', ROOT . "/classes");
+define('CLASSES', CMS_ROOT . "/classes");
+define('LOCAL_CLASSES', ROOT . "classes");
 define('JS_LIBS', "/js_libs");
 define('CSS_PATH', "/css");
 
@@ -35,6 +37,7 @@ define('MODULES_URL', ADMIN_URL . "/modules");
 define('MODULES', ADMIN . "/modules");
 
 define('CATALOG_USE_XURL', true);
+define('GALLERY_LIST_IMAGE_WIDTH', 150);
 
 //define('ADMIN_LOGIN', 'admin');
 //define('ADMIN_PASSW', 'riokom962407');
@@ -73,7 +76,7 @@ define('MYSQL_DATE', '%Y-%m-%d');
 define('MYSQL_TIME', '%Y-%m-%d %H:%M:%S');
 
 // METADATA
-$default_metadata = array('title' => 'Êîìïàíèÿ ÒîðãÑòðîé',
+$default_metadata = array('title' => 'ÐšÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ Ð¢Ð¾Ñ€Ð³Ð¡Ñ‚Ñ€Ð¾Ð¹',
                           'keywords' => '',
                           'description' => '');
 

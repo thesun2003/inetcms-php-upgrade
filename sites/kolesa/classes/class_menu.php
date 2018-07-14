@@ -3,12 +3,14 @@
 using::add_class('module');
 using::add_class('menutree');
 using::add_class('simplepage');
+using::add_class('custom');
 
 class Menu extends Module {
   function Menu($info=false){
     $this->Entity(getTablePrefix() . 'menu');
     $this->form->addField('id');
     $this->form->setRequired('name');
+    $this->form->addField('name_eng');
     $this->form->set('type', 'menu');
     $this->form->set('visible', 0);
 
@@ -82,6 +84,31 @@ class Menu extends Module {
     return str_replace(array('%id%', '%submenu%'), array($parent_id, implode($cat)), $submenu);
   }
 
+  static function getCatalogMenu() {
+    $content = SimplePage::process_template_file(
+      MODULES . '/core',
+      'main/catalog_menu',
+      array()
+    );
+    return $content;
+  }
+
+  static function getCatalogSubMenu($object, $level) {
+    global $_lang;
+    if(is_object($object)) {
+      $content = SimplePage::process_template_file(
+        MODULES . '/core',
+        'main/catalog_submenu',
+        array(
+          'name' => ($level > 1 ? '&bull;&nbsp;' : '') . ($_lang =='eng' ? $object->get('name_eng') : $object->get('name')),
+          'link' => $object->get_url(),
+          'class' => Custom::getMenuClass($object->get('id')),
+        )
+      );
+      return $content;
+    }
+  }
+
   function isContentExist() {
     $page = new Page();
     $search = $page->find(array('menu_id' => $this->get('id')));
@@ -112,13 +139,22 @@ class Menu extends Module {
     }
   }
 
-  static function getNameById($id) {
+  static function public_get_name_by_id($id) {
+    global $_lang;
+    return self::getNameById($id, ($_lang == 'eng'));
+  }
+
+  static function getNameById($id, $is_eng = false) {
     global $DB;
     $menu = new Menu();
     $search = $menu->find(array('id' => $id));
     if ($search->hasNext()) {
       $menu = $search->next();
-      return $menu->get('name');
+      if ($is_eng) {
+        return $menu->get('name_eng');
+      } else {
+        return $menu->get('name');
+      }
     } else {
       return false;
     }
@@ -176,12 +212,22 @@ class Menu extends Module {
   }
   
   function get_url() {
-    return '/?cat_id=' . $this->get('id');
+    //return '/?1cat_id=' . $this->get('id');
+    return self::static_get_url($this->get('id'));
+  }
+
+  public static function static_get_url($id) {
+    global $_lang;
+    if ($id == 1) {
+      return '/'. ($_lang == 'eng' ? 'en/' : '');
+    }
+    return '/'. ($_lang == 'eng' ? 'en/' : '') .'?cat_id=' . $id;
   }
 
   static function getPageTitle($menu, $title = '') {
+    global $_lang;
     if($menu) {
-      $title .= $menu->get('name');
+      $title .= $_lang == 'eng' ? $menu->get('name_eng') : $menu->get('name');
     }
     return '<h1 class="title">' . $title . '</h1>';
   }
@@ -210,10 +256,80 @@ class Menu extends Module {
           'modalformx/menu_change',
           array(
             'id' => $id,
-            'name' => self::getNameById($id)
+            'name' => self::getNameById($id),
+            'name_eng' => self::getNameById($id, true)
           )
         );
       break;
+    }
+    return $result;
+  }
+
+  function get_history($pre_history = array()) {
+    return '<div class="history_path">' . parent::get_history() . '</div>';
+  }
+
+  public static function renderLeftMenu($parent_id = 0) {
+    $result = '';
+    $parent_item = new Menu();
+    $min_level = 0;
+    if($parent_id) {
+      $parent_item = $parent_item->find(array('id' => $parent_id))->next();
+      $min_level = $parent_item->get_item_level('parent_id');
+    }
+
+    $current_id = 1;
+    if(!empty($_GET['cat_id'])) {
+      $current_id = (int)$_GET['cat_id'];
+    }
+
+    $current_item = new Menu();
+    $current_item = $current_item->find(array('id' => $current_id))->next();
+    /*
+    if(!$current_item || !in_array(4, $current_item->get_history_path())) {
+      return $result;
+    }
+
+    if(!in_array($parent_id, $current_item->get_history_path())) {
+      return $result;
+    }
+    $current_level = count($current_item->get_history_path())-4;
+    */
+
+    $parent_list = $parent_item->get_children('parent_id', false);
+
+    $num_div_open = 0;
+    foreach($parent_list as $k => $item) {
+      $object = $item['object'];
+      $type = 'module_item';
+      if($object->get('type')) {
+        $type = $object->get('type');
+      }
+      $level = $item['level'];
+      $next_level = -1;
+      if ($k < count($parent_list)-1) {
+        $next_level = $parent_list[$k+1]['level'];
+      }
+
+      if($num_div_open > $level) {
+        while($num_div_open != $level) {
+          //$result .= '</ul>';
+          $num_div_open--;
+        }
+      }
+
+      //$result .= $level .') ';
+      if ($type == 'menu' || $type == 'page') {
+        if($level < 2) {
+          if($level ==0 || ($level == 1 && in_array($object->get('parent_id'), $current_item->get_history_path()))) {
+            $result .= self::getCatalogSubMenu($object, $level + $min_level);
+          }
+        }
+        if($next_level > $level) {
+          //$result .= '<ul>';
+          $num_div_open++;
+        }
+      }
     }
     return $result;
   }

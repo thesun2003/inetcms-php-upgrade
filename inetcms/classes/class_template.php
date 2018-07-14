@@ -324,7 +324,6 @@ class Template{
 
     function mkdate($dayAdd = 0, $monthAdd = 0, $yearAdd = 0) {
         global $DB;
-
         return $DB->mkdate($dayAdd, $monthAdd, $yearAdd);
     }
 

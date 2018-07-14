@@ -3,11 +3,11 @@ using::add_class('menu');
 using::add_class('page');
 
 class MenuPage {
-  var $menu, $page, $content;
+  var $menu, $page, $content, $content_eng;
   function MenuPage($info=false){
     $this->menu = new Menu();
     $this->page = new Page();
-    $this->content = "";
+    $this->content = $this->content_eng = '';
 
     if (!empty($info)) {
       if (!empty($info['id']) && is_numeric($info['id'])) {
@@ -18,10 +18,16 @@ class MenuPage {
       }
       $this->menu->setInfo($info);
     }
-    
-    if (!empty($info['content'])) {
+
+/*    
+    if (isset($info['content'])) {
       $this->content = $info['content'];
     }
+
+    if (isset($info['content_eng'])) {
+      $this->content_eng = $info['content_eng'];
+    }
+*/
 
     if ($this->menu->get('id')) {
       $search = $this->page->find(array('menu_id' => $this->menu->get('id')));
@@ -32,9 +38,17 @@ class MenuPage {
       $this->menu->set('type', 'page');
     }
 
+    $page_info = $info;
+    unset($page_info['id']);
+    $this->page->setInfo($page_info);
+
+/*
     if (!empty($this->content)) {
       $this->page->set('content', $this->content);
+    }    if (!empty($this->content_eng)) {
+      $this->page->set('content_eng', $this->content_eng);
     }
+*/
 
   }
 
@@ -83,7 +97,8 @@ class MenuPage {
           'modalformx/page_change',
           array(
             'id' => $id,
-            'name' => Menu::getNameById($id)
+            'name' => Menu::getNameById($id),
+            'name_eng' => Menu::getNameById($id, true)
           )
         );
       break;

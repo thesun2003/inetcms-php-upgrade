@@ -10,9 +10,10 @@ define('CONTENT_ADMIN', 3);
 class Admins extends Module {
   var $module_id_field = 'admin_id';
   var $module_name = 'admins';
-  static $name = 'Администраторы';
+  static $name = 'РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂС‹';
 
   function Admins($info=false){
+    parent::__construct($info);
     $this->Entity(getTablePrefix() . 'admins');
     $this->form->addField('id');
     $this->form->setRequired('login');
@@ -119,7 +120,7 @@ class Admins extends Module {
     $values['toggle_menu_block'] = $toggle_menu_block;
     $values['menu_link'] = '<span id="values_editmenu_' . $menu->get('id') . '_name" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</span>';
 
-    $values['actions_block'] = admin_button::get('new_admin', ModalForm::getLinkX('admins', 'add', $menu->get('id')), ' нового администратора');
+    $values['actions_block'] = admin_button::get('new_admin', ModalForm::getLinkX('admins', 'add', $menu->get('id')), ' РЅРѕРІРѕРіРѕ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°');
 
     $content = SimplePage::process_template_file(
       MODULES . '/core',
@@ -187,10 +188,10 @@ class Admins extends Module {
 
   public static function getPrivilegesList() {
     return array(
-      NO_ADMIN      => 'Без привилегий',
-      SUPER_ADMIN   => 'Суперадминистратор',
-      CATALOG_ADMIN => 'Менеджер каталога товаров',
-      CONTENT_ADMIN => 'Менеджер информационных страниц',
+      NO_ADMIN      => 'Р‘РµР· РїСЂРёРІРёР»РµРіРёР№',
+      SUPER_ADMIN   => 'РЎСѓРїРµСЂР°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ',
+      CATALOG_ADMIN => 'РњРµРЅРµРґР¶РµСЂ РєР°С‚Р°Р»РѕРіР° С‚РѕРІР°СЂРѕРІ',
+      CONTENT_ADMIN => 'РњРµРЅРµРґР¶РµСЂ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹С… СЃС‚СЂР°РЅРёС†',
     );
   }
 
@@ -219,7 +220,7 @@ class Admins extends Module {
     switch($action) {
       case 'add':
         $result['action_value'] = ADMIN_URL . '/admins/index.php';
-        $result['submit_value'] = 'Добавить';
+        $result['submit_value'] = 'Р”РѕР±Р°РІРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/core',
           'modalformx/admins_add',
@@ -228,7 +229,7 @@ class Admins extends Module {
       break;
       case 'change':
         $result['action_value'] = ADMIN_URL . '/admins/index.php';
-        $result['submit_value'] = 'Изменить';
+        $result['submit_value'] = 'РР·РјРµРЅРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/core',
           'modalformx/admins_change',

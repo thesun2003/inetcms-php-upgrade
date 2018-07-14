@@ -4,7 +4,7 @@ ini_set('display_errors', '1');
 
 // MAIN CONFIG
 
-define('SITE_NAME', '&quot;»“-—Â‚ËÒ&quot;');
+define('SITE_NAME', '&quot;–ò–¢-–°–µ—Ä–≤–∏—Å&quot;');
 define('BASE_CHARSET', 'windows-1251');
 
 define('MAIN_URL', 'http://' . $_SERVER['HTTP_HOST']);
@@ -14,8 +14,10 @@ if($root[strlen($root)-1] != '/') {
   $root .= '/';
 }
 define('ROOT', $root);
+define('CMS_ROOT', ROOT . 'vendor/inetcms');
 
-define('CLASSES', ROOT . "/classes");
+define('CLASSES', CMS_ROOT . "/classes");
+define('LOCAL_CLASSES', ROOT . "classes");
 define('JS_LIBS', "/js_libs");
 define('CSS_PATH', "/css");
 
@@ -30,6 +32,8 @@ define('ADMIN_INC_FILE', '/admin/inc');
 
 define('MODULES_URL', ADMIN_URL . "/modules");
 define('MODULES', ADMIN . "/modules");
+
+define('GALLERY_LIST_IMAGE_WIDTH', 100);
 
 // secret key, please change this after install
 define('SECRET_KEY', '%@!sW92D%&s');
@@ -65,8 +69,8 @@ define('MYSQL_TIME', '%Y-%m-%d %H:%M:%S');
 
 // METADATA
 
-$default_metadata = array('title' => '»“ —Â‚ËÒ',
-                          'keywords' => 'ÒËÒÚÂÏÌ˚È ‡‰ÏËÌËÒÚ‡ÚÓ, ÒËÒ‡‰ÏËÌ',
-                          'description' => 'ÔËıÓ‰ˇ˘ËÈ ÒËÒÚÂÏÌ˚È ‡‰ÏËÌËÒÚ‡ÚÓ');
+$default_metadata = array('title' => '–ò–¢ –°–µ—Ä–≤–∏—Å',
+                          'keywords' => '—Å–∏—Å—Ç–µ–º–Ω—ã–π –∞–¥–º–∏–Ω–∏—Å—Ç—Ä–∞—Ç–æ—Ä, —Å–∏—Å–∞–¥–º–∏–Ω',
+                          'description' => '–ø—Ä–∏—Ö–æ–¥—è—â–∏–π —Å–∏—Å—Ç–µ–º–Ω—ã–π –∞–¥–º–∏–Ω–∏—Å—Ç—Ä–∞—Ç–æ—Ä');
 
 $GLOBALS['DEBUG_LOG_TRACE'] = 999;

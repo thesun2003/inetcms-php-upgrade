@@ -75,8 +75,7 @@ class Module extends Entity {
     return array_reverse($history);
   }
   
-  function get_history($pre_history = array()) {
-    global $_lang;
+  function get_history($pre_history = array(), $css_class = '', $delim = '/') {
     $history = array();
     if(!$this->get('id')) {
       $this->set('id', 0);
@@ -84,10 +83,10 @@ class Module extends Entity {
     $class_name = get_class($this);
     $item = new $class_name;
     $item = $item->find(array('id' => $this->get('id')))->next();
-  
+ 
     if($item) {
       while ($item->get('id')) {
-        $history[] = '<a href="' . $item->get_url() . '">' . ($_lang == 'eng' ? $item->get('name_eng') : $item->get('name')) . '</a>';
+        $history[] = '<a '.($css_class ? 'class="'.$css_class.'"' : '').' href="' . $item->get_url() . '">' . $item->get('name') . '</a>';
         $parent_id = $item->get('parent_id');
         $item = $item->find(array('id' => $parent_id))->next();
         if (!$item) {
@@ -95,7 +94,7 @@ class Module extends Entity {
         }
       }
     }
-    return implode(' / ', array_merge($pre_history, array_reverse($history)));
+    return implode(' ' . $delim . ' ', array_merge($pre_history, array_reverse($history)));
   }
 
   static public function process_user_page() {
@@ -107,6 +106,10 @@ class Module extends Entity {
   }
   
   public function get_page_title($title = '') {
+    return self::_get_page_title($title);
+  }
+
+  static public function _get_page_title($title = '') {
     return '<h1 class="title">' . $title . '</h1>';
   }
   

@@ -7,6 +7,7 @@ class Page extends Entity {
     $this->Entity(getTablePrefix() . 'page');
     $this->form->addField('id');
     $this->form->addField('content');
+    $this->form->addField('content_eng');
     $this->form->set('menu_id', 0);
 
     if (!empty($info)) {
@@ -31,7 +32,8 @@ class Page extends Entity {
   }
 
   function getHTML() {
-    return self::clearHTML($this->form->get('content', false));
+    global $_lang;
+    return self::clearHTML($this->form->get(($_lang == 'eng' ? 'content_eng' : 'content'), false));
   }
 
 }

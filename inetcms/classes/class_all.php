@@ -14,10 +14,18 @@ class All{
     }
   }
 
-  public static function urlReplace($change, $delete = false, $return_only_get = false) {
+  public static function urlReplace($change, $delete = false, $return_only_get = false, $custom_url = false) {
       $params_arr = array();
-      $url = ($return_only_get) ? '' : $_SERVER['PHP_SELF'];
-      foreach(array_merge($_GET, $change) as $param => $value) {
+      $url = '';
+      if ($custom_url) {
+        $url_params = parse_url($custom_url);
+        parse_str($url_params['query'], $query_array);
+        $url = $url_params['path'];
+      } else {
+        $query_array = $_GET;
+        $url = ($return_only_get) ? '' : $_SERVER['PHP_SELF'];
+      }
+      foreach(array_merge($query_array, $change) as $param => $value) {
           if(is_array($delete) && in_array($param, $delete)) {
               continue;
           }            
@@ -64,14 +72,14 @@ class All{
     return $limit;
   }
   
-  public static function get_pages($current_page, $on_page, $total, $show_all = true) {
+  public static function get_pages($current_page, $on_page, $total, $show_all = true, $url = false) {
     $result = '';
     $pages_count = ceil($total / $on_page);
     for ($i = 1; $i <= $pages_count; $i++) {
-      $result .= '<a class="' . ($i == $current_page ? 'current_' : '') . 'num_pages" href="'.All::urlReplace(array('pn' => $i), false, true).'">&nbsp;' . $i . '&nbsp;</a>   ';
+      $result .= '<a class="' . ($i == $current_page ? 'current_' : '') . 'num_pages" href="'.All::urlReplace(array('pn' => $i), false, true, $url).'">&nbsp;' . $i . '&nbsp;</a>   ';
     }
     if($show_all) {
-      $result .= '<a class="' . ($current_page == 'all' ? 'current_' : '') . 'num_pages" href="'.All::urlReplace(array('pn' => 'all'), false, true).'">&nbsp;Все&nbsp;</a>';
+      $result .= '<a class="' . ($current_page == 'all' ? 'current_' : '') . 'num_pages" href="'.All::urlReplace(array('pn' => 'all'), false, true, $url).'">&nbsp;Все&nbsp;</a>';
     }
     return $result;
   }

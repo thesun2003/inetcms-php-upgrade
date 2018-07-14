@@ -43,10 +43,10 @@ class SimplePage {
       $this->_template_values
     );    
     $this->_template_values['page_content'] = $this->getContent();
-    if($this->_metadata['title'] == '') $this->_template_values['metadata_title'] = 'Колесоша';
-    else $this->_template_values['metadata_title'] = $this->_metadata['title'];
+    $this->_template_values['metadata_title'] = $this->_metadata['title'];
     $this->_template_values['metadata_keywords'] = $this->_metadata['keywords'];
     $this->_template_values['metadata_description'] = $this->_metadata['description'];
+
     $this->_page_html = $this->process_template_file(
       MODULES . '/core',
       $template_file,
