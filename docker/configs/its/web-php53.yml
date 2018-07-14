@@ -13,6 +13,7 @@ services:
       - SITE_DIR
     volumes:
       - ${SITE_DIR}:/var/www/html
+      - ${CMS_DIR}:/var/www/html/vendor/inetcms
     depends_on:
       - its-mysql
     networks:
