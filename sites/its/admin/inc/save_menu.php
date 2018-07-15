@@ -77,4 +77,4 @@ if (!empty($_GET['action']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
   }
 }
 
-reload(MAIN_URL . "/admin/admin.php");
+reload(ADMIN_URL . "/admin.php");

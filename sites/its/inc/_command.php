@@ -1,6 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_lib.php');
-//no_cache();
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+require_once(INC . '/_lib.php');
 
 using::add_class('rewrite_301');
 Rewrite_301::process_rewrites();
@@ -13,22 +14,11 @@ using::add_class('modules');
 using::add_class('search');
 using::add_class('custom');
 
-// begin of temp working
-/*
-var_dump_pre($_SERVER['REDIRECT_URL']);
-var_dump_pre($_SERVER['REDIRECT_QUERY_STRING']);
-var_dump_pre($_SERVER['REQUEST_URI']);
-var_dump_pre($_SERVER['QUERY_STRING']);
-*/
-
-/*
-$template_string = '/?cat_id=19&item_id=8';
-if(Rewrite_301::diff_url_params($_SERVER['REQUEST_URI'], $template_string)) {
-  Rewrite_301::static_run('/?catalog_id=2&item_id=1');
+function isMainPage() {
+    $url = get_url();
+    $query = str_replace('use_1024=1', '', $url['query']);
+    return (empty($url['path']) && empty($query));
 }
-*/
-
-// end of temp working
 
 function find_page() {
   global $default_metadata;
@@ -38,7 +28,7 @@ function find_page() {
   $content = $metadata = '';
   if(isMainPage()) {
     $menu = new Menu();
-    $main_id = $menu->getIdByName('главная');
+    $main_id = 1; // $menu->getIdByName('РіР»Р°РІРЅР°СЏ');
     $menu = $menu->find(array('id' => $main_id))->next();
   
     $replaces = array();
@@ -50,7 +40,7 @@ function find_page() {
     );
   
     if($menu) {
-      $content .= module::_get_page_title('О компании');
+      $content .= module::_get_page_title('Рћ РєРѕРјРїР°РЅРёРё');
       $content .= $menu->getContent();
       $metadata = $menu->getMetadata();
     }
@@ -69,7 +59,7 @@ function find_page() {
     }
 
     if (!empty($_GET['sitemap'])) {
-      $content .= '<h2>Карта сайта</h2>';
+      $content .= '<h2>РљР°СЂС‚Р° СЃР°Р№С‚Р°</h2>';
       $content .= Custom::get_site_map();
       $metadata = $default_metadata;
       $page['content'] = $content;

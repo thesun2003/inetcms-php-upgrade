@@ -13,4 +13,3 @@ if ($page->isValid()) {
 Notification::setNotice('PageUpdated', 'ok');
 
 reload("/admin/admin.php");
-?>

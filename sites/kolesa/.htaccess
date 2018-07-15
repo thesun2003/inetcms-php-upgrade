@@ -18,6 +18,8 @@ ErrorDocument 500 /error.php?error_code=500
 RewriteEngine On
 RewriteBase /
 
+RewriteRule ^admin/(.*)$ /vendor/inetcms/admin/$1 [QSA,L]
+
 #RewriteCond %{HTTP_HOST} !^www.
 #RewriteRule (.*) http://www.%{HTTP_HOST}/$1 [R=301,L]
 

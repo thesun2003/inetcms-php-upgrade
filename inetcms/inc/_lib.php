@@ -2,10 +2,10 @@
 setlocale(LC_ALL, 'ru_RU.utf8', 'rus_RUS.1251', 'rus', 'russian');
 ini_set('track_errors', 1);
 session_start();
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
-require_once(ROOT . '/inc/_error.php');
-require_once(ROOT . '/inc/_vars.php');
-require_once(ROOT . '/inc/locale.php');
+
+require_once(INC . '/_error.php');
+require_once(INC . '/_vars.php');
+require_once(INC . '/locale.php');
 require_once(CLASSES . '/class_lib.php');
 
 debug_start();
@@ -217,12 +217,6 @@ function get_module_by_url() {
     $get_keys = array_keys($_GET);
     return array_shift($get_keys);
   }
-}
-
-function isMainPage() {
-  $url = get_url();
-  $query = str_replace('use_1024=1', '', $url['query']);
-  return (empty($url['path']) && empty($query));
 }
 
 function _browser() {

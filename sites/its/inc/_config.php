@@ -17,11 +17,15 @@ define('ROOT', $root);
 define('CMS_ROOT', ROOT . 'vendor/inetcms');
 
 define('CLASSES', CMS_ROOT . "/classes");
+define('INC', CMS_ROOT . "/inc");
+
 define('LOCAL_CLASSES', ROOT . "classes");
+define('LOCAL_INC', ROOT . "/inc");
+
 define('JS_LIBS', "/js_libs");
 define('CSS_PATH', "/css");
 
-require_once(ROOT . '/inc/_db_config.php');
+require_once(LOCAL_INC . '/_db_config.php');
 
 // ADMIN
 
@@ -39,11 +43,12 @@ define('GALLERY_LIST_IMAGE_WIDTH', 100);
 define('SECRET_KEY', '%@!sW92D%&s');
 
 $GLOBALS['site_admin_email'] = 'thesun2003@gmail.com';
-$GLOBALS['send_email_on_error'] = true; //set to TRUE on production server
-$GLOBALS['use_detailed_log_on_error'] = true; //set to TRUE on production server
+$GLOBALS['send_email_on_error'] = false; //set to TRUE on production server
+$GLOBALS['use_detailed_log_on_error'] = false; //set to TRUE on production server
 $GLOBALS['show_sorry_page_on_error'] = true; //set to TRUE on production server?
 
 // JS_CONFIG
+
 $JS_config = array(
 'main_url' => MAIN_URL,
 'core_path' => MODULES_URL . '/core/',

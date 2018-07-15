@@ -1,5 +1,5 @@
-<?
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_lib.php');
+<?php
+
 using::add_class('search');
 
 if (!empty($_GET['action'])) {

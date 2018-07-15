@@ -20,7 +20,7 @@ function wopen(url,name,w,h,r,s,st) {
 }
 
 function ondel(url) {
- if (confirm('Вы точно хотите удалить?')) location.href=url;
+ if (confirm('Р’С‹ С‚РѕС‡РЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ?')) location.href=url;
 }
 
 function openerHref(url) {
@@ -200,7 +200,7 @@ function get_path(suffix) {
 }
 
 function pleaseWait(id) {
-  $(id).set('html', '<img src="'+core_path+'images/ajax-loader.gif" title="Загружается..." alt="Загружается..." />')
+  $(id).set('html', '<img src="'+core_path+'images/ajax-loader.gif" title="Р—Р°РіСЂСѓР¶Р°РµС‚СЃСЏ..." alt="Р—Р°РіСЂСѓР¶Р°РµС‚СЃСЏ..." />')
 }
 
 function pleaseWaitImage(id) {
@@ -257,7 +257,7 @@ function ajax_form_submit(form_id) {
     form.set('send',
       {
         onSuccess: function(response) {
-          showMessage('Данные успешно изменены', 'ok');
+          showMessage('Р”Р°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅС‹', 'ok');
         }}
       );
     form.send();
@@ -272,7 +272,7 @@ function ajax_catalog_item_submit(form_id) {
         onSuccess: function(html_response) {
           var response = JSON.decode(html_response);
           if(response.status == 'ok') {
-            showMessage('Данные успешно изменены', 'ok');
+            showMessage('Р”Р°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅС‹', 'ok');
           } else {
             showMessage(response.error, 'error');
           }
@@ -325,7 +325,7 @@ $$('.catalog_items_draggables').addEvent('mousedown', function(event){
 
         if (cart != null) {
           var item_id = shirt.get('item_id');
-          if(confirm('Вы точно хотите переместить товар?'+ $('catalog_item_'+item_id+'_name').get('text'))) {
+          if(confirm('Р’С‹ С‚РѕС‡РЅРѕ С…РѕС‚РёС‚Рµ РїРµСЂРµРјРµСЃС‚РёС‚СЊ С‚РѕРІР°СЂ?'+ $('catalog_item_'+item_id+'_name').get('text'))) {
             var catalog_id = cart.get('catalog_id');
             catalog_items_move(item_id, catalog_id);
             shirt.destroy();
@@ -359,7 +359,7 @@ function send_message_form_submit(form_id) {
       {
         onSuccess: function(response) {
           var success_text = new Element('div', {
-            'html': '<br />Спасибо за ваше сообщение!'
+            'html': '<br />РЎРїР°СЃРёР±Рѕ Р·Р° РІР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ!'
           });
           success_text.inject($(form_id));
         }}

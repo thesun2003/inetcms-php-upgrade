@@ -1,5 +1,10 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_lib.php');
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+require_once(INC . '/_lib.php');
+
+$_url = get_url();
+$_lang = $_url['path'][0] == 'en' ? 'eng' : 'rus';
 
 using::add_class('rewrite_301');
 Rewrite_301::process_rewrites();
@@ -12,6 +17,11 @@ using::add_class('modules');
 using::add_class('search');
 using::add_class('custom');
 
+function isMainPage() {
+    $query = str_replace('', '', $_SERVER['QUERY_STRING']);
+    return empty($query) && in_array($_SERVER['REQUEST_URI'], array('/', '/en/'));
+}
+
 function find_page() {
   global $default_metadata;
   $page = array();
@@ -20,7 +30,7 @@ function find_page() {
   $content = $metadata = '';
   if(isMainPage()) {
     $menu = new Menu();
-    $main_id = $menu->getIdByName('ãëàâíàÿ');
+    $main_id = 1; // $menu->getIdByName('Ð³Ð»Ð°Ð²Ð½Ð°Ñ');
     $menu = $menu->find(array('id' => $main_id))->next();
   
     if($menu) {

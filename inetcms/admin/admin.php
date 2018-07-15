@@ -38,8 +38,6 @@ if (!empty($_GET['type']) && in_array($_GET['type'], array('editpage', 'editpage
     <?=using::add_js_file('mootools-1.2.5.1-more.js')?>
     <?=using::add_js_file('ajax.js')?>
     <?=using::add_js_file('common.js')?>
-    <?=using::add_js_file('showflash.js')?>
-    <?=using::add_js_file('dilermap.js', Module::getModuleURL('dilermap') . '/js_libs')?>
 </head>
 <body>
 <?

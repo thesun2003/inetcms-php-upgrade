@@ -10,7 +10,7 @@ using::add_class('captcha');
 class GuestBook extends Module {
   var $module_id_field = 'guestbook_id';
   var $module_name = 'guestbook';
-  static $name = 'Вопрос-Ответ';
+  static $name = 'Р’РѕРїСЂРѕСЃ-РћС‚РІРµС‚';
 
   function __construct($info=false){
     parent::__construct($info);
@@ -113,7 +113,7 @@ class GuestBook extends Module {
 /*
       case 'add':
         $result['action_value'] = MODULES_URL . '/articles/';
-        $result['submit_value'] = 'Добавить';
+        $result['submit_value'] = 'Р”РѕР±Р°РІРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/articles',
           'modalformx/news_add',
@@ -126,7 +126,7 @@ class GuestBook extends Module {
         $newsmap = new self();
         $newsmap = $newsmap->find(array('id' => $id))->next();
         $result['action_value'] = MODULES_URL . '/guestbook/';
-        $result['submit_value'] = 'Изменить';
+        $result['submit_value'] = 'РР·РјРµРЅРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/guestbook',
           'modalformx/news_change',
@@ -299,7 +299,7 @@ class GuestBook extends Module {
 
   static public function process_user_page() {
     $content = '';
-    $metadata = array('title' => 'Вопрос-Ответ');
+    $metadata = array('title' => 'Р’РѕРїСЂРѕСЃ-РћС‚РІРµС‚');
     $newsmap = new self();
     $error_message = '';
 
@@ -310,7 +310,7 @@ class GuestBook extends Module {
         $newsmap->setInfo($_POST);
         $newsmap->save();
         $content .= $newsmap->get_page_title();
-        $content .= 'Ваш вопрос отправлен!';
+        $content .= 'Р’Р°С€ РІРѕРїСЂРѕСЃ РѕС‚РїСЂР°РІР»РµРЅ!';
         return array('content' => $content, 'metadata' => $metadata);
       } else {
         setNotice('ErrCaptcha');
@@ -335,15 +335,15 @@ function checkForm(f) {
     var ser="";
     if (f.name.value.length < 1) {
         err = 1;
-        ser += "Вы не ввели Имя\n";
+        ser += "Р’С‹ РЅРµ РІРІРµР»Рё РРјСЏ\n";
     }
     if (f.content.value.length < 1) {
         err = 1;
-        ser += "Вы не ввели Свой вопрос!\n";
+        ser += "Р’С‹ РЅРµ РІРІРµР»Рё РЎРІРѕР№ РІРѕРїСЂРѕСЃ!\n";
     }
     if (f.captcha_word.value.length < 1) {
         err = 1;
-        ser += "Вы не ввели Проверочный код!\n";
+        ser += "Р’С‹ РЅРµ РІРІРµР»Рё РџСЂРѕРІРµСЂРѕС‡РЅС‹Р№ РєРѕРґ!\n";
     }
     if (err == 1) {
         alert(ser);
@@ -359,7 +359,7 @@ function checkForm(f) {
 <form method="post" action="" onSubmit="if (checkForm(this)) return true; else return false;">
   <table width="80%" cellspacing="3" cellpadding="2" border="0" align="center" class="text">
     	<tbody><tr>
-        <td width="100"><b>Имя<span style="color:red">*</span>:</b></td>
+        <td width="100"><b>РРјСЏ<span style="color:red">*</span>:</b></td>
         <td><input type="text" name="name" style="width: 100%;" value="'.$newsmap->get('name').'"></td>
       </tr>
     	<tr>
@@ -367,11 +367,11 @@ function checkForm(f) {
         <td><input type="text" name="email" style="width: 100%;" value="'.$newsmap->get('email').'"></td>
       </tr>
   	   <tr>
-        <td><b>Город:</b></td>
+        <td><b>Р“РѕСЂРѕРґ:</b></td>
         <td><input type="text" name="city" style="width: 100%;" value="'.$newsmap->get('city').'"></td>
       </tr>
 	    <tr>
-        <td valign="top"><b>Вопрос<span style="color:red">*</span>:</b></td>
+        <td valign="top"><b>Р’РѕРїСЂРѕСЃ<span style="color:red">*</span>:</b></td>
         <td valign="top"><textarea name="content" rows="8" style="width: 100%;">'.$newsmap->get('content').'</textarea></td>
       </tr>
       <tr>
@@ -379,7 +379,7 @@ function checkForm(f) {
        <td><input type="text" name="captcha_word" value="" style="width: 100%;"></td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><br><input type="submit" value="Отправить"></td></tr>
+        <td colspan="2" align="center"><br><input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ"></td></tr>
 </tbody></table></form>';
 
     }
@@ -391,19 +391,19 @@ function checkForm(f) {
     $form .= "<h1 style=\"font-size:20px\" align='left'>" . $this->get('name') .', '. $this->get('email') .', '. $this->get('city') . "</h1>";
     $form .= '<form id="news_form" action="'.MODULES_URL.'/guestbook/" method="post">';
 
-    $date_added = new TextField('Дата', 'date_added', $this->get('date_added'));
+    $date_added = new TextField('Р”Р°С‚Р°', 'date_added', $this->get('date_added'));
     $textEdit = new TextEdit2('answer', $this->get('answer'));
 
     $form .= $date_added->getAdminForm();
-    $form .= 'Вопрос:<br>';
+    $form .= 'Р’РѕРїСЂРѕСЃ:<br>';
     $form .= '<div style="border: 1px #000 solid;padding:5px;">'.$this->get('content', false).'</div>';
-    $form .= 'Ответ:<br>';
+    $form .= 'РћС‚РІРµС‚:<br>';
     $form .= $textEdit->getAdminForm();
 
     $form .= '<input type="hidden" name="id" value="'.$this->get('id').'" />';
     $form .= '<input type="hidden" name="action" value="change" />';
     $form .= '<input type="hidden" name="action_suffix" value="guestbook" />';
-    $form .= '<input type="button" name="update_form" value="Изменить" onclick="textedit2_ajax_save(\'answer\');ajax_catalog_item_submit(\'news_form\');textedit2_ajax_after_save(\'answer\')" />';
+    $form .= '<input type="button" name="update_form" value="РР·РјРµРЅРёС‚СЊ" onclick="textedit2_ajax_save(\'answer\');ajax_catalog_item_submit(\'news_form\');textedit2_ajax_after_save(\'answer\')" />';
 
     return $form;
   }
@@ -413,7 +413,7 @@ function checkForm(f) {
     $result = array();
 
     $admins = new self();
-    $search = $admins->find(array(), 'date_added DESC');
+    $search = $admins->find(array(), 'date_added DESC', '10');
 
     while($admins = $search->next()) {
       $result[$admins->get('id')] = $admins;
@@ -436,7 +436,7 @@ function checkForm(f) {
       'toggle_menu_block' => '<img src="img/normalnode.gif" width="16" height="22" align="middle" alt="" border="0">',
     );
  
-    $values['actions_block'] = admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=guestbook&id=' . $menu->get('id'), ' вопрос &quot;' . $menu->get('name') . '&quot;');
+    $values['actions_block'] = admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=guestbook&id=' . $menu->get('id'), ' РІРѕРїСЂРѕСЃ &quot;' . $menu->get('name') . '&quot;');
     $values['actions_block'] .= admin_button::get('del', "javascript:ondel('".Module::getModuleURL('guestbook')."/index.php?action=delete&id=" . $menu->get('id') . "');", '');
     
     $values['menu_link'] = '<a id="guestbook_' . $menu->get('id') . '_name" onmouseover="openActions(\'guestbook\', \'' . $menu->get('id') . '\')" onmouseout="closeActions(\'guestbook\', \'' . $menu->get('id') .'\')"><span class="news_date">['.self::get_date($menu->get('date_added')).']</span>&nbsp;' . $menu->get('name') . '</a>';
