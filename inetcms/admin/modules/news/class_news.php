@@ -228,19 +228,11 @@ class News extends Module {
     return $content;
   }
 
-  public static function get_news_list_main($items_count) {
-    $newsmap = new self();
-    return $newsmap->get_news_list($items_count);
-  }
-
-  function get_news_list($show_last_x = false) {
+  function get_news_list() {
     $list_content = '';
     $content = '';
     $pn = 1;
     $items_on_page = 5;
-    if($show_last_x && is_numeric($show_last_x)) {
-      $items_on_page = (int)$show_last_x;
-    } 
     $limit = All::get_limit($items_on_page, $pn, false);
     $news = new self();
     $search = $news->find(array(), 'date_added DESC', $limit);
@@ -256,32 +248,52 @@ class News extends Module {
         )
       );
     }
+    $list_content = SimplePage::process_template_file(
+      MODULES . '/news',
+      'list_template',
+      array(
+        'pages' => All::get_pages($pn, $items_on_page, self::get_count(), empty($_GET['showall'])),
+        'items_list' => $content
+      )
+    );
+    
+    return $list_content;
+  }
 
-    if(!$show_last_x) {
-      $list_content = SimplePage::process_template_file(
+  public static function get_news_list_main() {
+    $list_content = '';
+    $content = '';
+    $pn = 1;
+    $items_on_page = 5;
+    $limit = All::get_limit($items_on_page, $pn, false);
+    $news = new self();
+    $search = $news->find(array(), 'date_added DESC', $limit);
+    while($item = $search->next()) {
+      $content .= SimplePage::process_template_file(
         MODULES . '/news',
-        'list_template',
+        'news_list',
         array(
-          'pages' => All::get_pages($pn, $items_on_page, self::get_count(), empty($_GET['showall'])),
-          'items_list' => $content
-        )
-      );
-    } else {
-      $list_content = SimplePage::process_template_file(
-        MODULES . '/news',
-        'list_template_main',
-        array(
-          'items_list' => $content
+          'item_url' => $item->get_url(),
+          'item_name' => $item->get('name'),
+          'item_date' => self::get_date($item->get('date_added')),
+          'item_description' => ''
         )
       );
     }
+    $list_content = SimplePage::process_template_file(
+      MODULES . '/news',
+      'list_template_main',
+      array(
+        'items_list' => $content
+      )
+    );
     
     return $list_content;
   }
 
   static public function process_user_page() {
-    $content = '';
-    $newsmap = new self();
+    $content = $metadata = '';
+    $newsmap = new self();    
     if(!empty($_GET[$newsmap->module_id_field]) && is_numeric($_GET[$newsmap->module_id_field])) {
       $newsmap = $newsmap->find(array('id' => $_GET[$newsmap->module_id_field]))->next();
     }
@@ -289,11 +301,12 @@ class News extends Module {
       $content .= $newsmap->get_page_title();
       if($newsmap->get('id')) {
         $content .= $newsmap->get_news_content();
+        $metadata = $newsmap->getMetadata();
       } else {
         $content .= $newsmap->get_news_list();
       }
     }
-    return $content;
+    return array('content' => $content, 'metadata' => $metadata);
   }
 
   function editForm() {
@@ -331,7 +344,7 @@ class News extends Module {
   }
 
   static function get_date($date) {
-    return strftime('%d-%m-%Y', strtotime($date));
+    return strftime('%d.%m.%Y', strtotime($date));
   }
 
   // Admins render

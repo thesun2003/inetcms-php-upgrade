@@ -38,7 +38,7 @@ class SimplePage {
     $this->_template_values['include_css_files'] = $this->_include_css_files;
     $this->_template_values['include_js_files'] = $this->_include_js_files;
     $this->_template_values['include_headers'] = $this->process_template_file(
-      MODULES . '/core',
+      ROOT,
       'main/head',
       $this->_template_values
     );    
@@ -48,7 +48,7 @@ class SimplePage {
     $this->_template_values['metadata_description'] = $this->_metadata['description'];
 
     $this->_page_html = $this->process_template_file(
-      MODULES . '/core',
+      ROOT,
       $template_file,
       $this->_template_values
     );

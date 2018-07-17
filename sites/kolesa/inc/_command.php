@@ -39,7 +39,7 @@ function find_page() {
     }
 
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      ROOT,
       'main/main_content',
       array(
         'page_content' => $main_content

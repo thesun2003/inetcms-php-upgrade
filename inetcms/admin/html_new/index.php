@@ -1,34 +1,28 @@
 <?php
 $page = new MenuPage($_GET);
-/*
-$html = stripslashes($page->page->get('content', false));
-$html_eng = stripslashes($page->page->get('content_eng', false));
-*/
-
-$content = $page->page->get('content');
-$content_eng = $page->page->get('content_eng');
-
 ?>
-<script type="text/javascript" src="<?=ADMIN_URL?>/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript" src="<?=ADMIN_URL?>/tinymce/jscripts/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php"></script>
+<script type="text/javascript" src="<?=ADMIN_URL .'/tinymce/jscripts/tiny_mce/tiny_mce.js'?>"></script>
+<script type="text/javascript" src="<?=ADMIN_URL .'/tinymce/jscripts/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php'?>"></script>
 
 <form action="<? echo ADMIN_URL ?>/html_new/save.php" method="post">
 <table width="100%">
- <tr>
-  <td width="100%" valign="top">
-   <textarea id="editor_area" name="content" rows="15" cols="80" style="width:100%;height:500px;"><?=$content?></textarea>
-  </td>
- </tr>
- <tr>
-  <td width="100%" valign="top">
-   <textarea id="editor_area_eng" name="content_eng" rows="15" cols="80" style="width:100%;height:500px;"><?=$content_eng?></textarea>
-  </td>
- </tr>
+<?php
+    foreach ($page->page->getContentFields() as $contentField) {
+?>
+    <tr>
+        <td width="100%" valign="top">
+            <textarea id="editor_area<?= $contentField ?>" name="<?= $contentField ?>" rows="15" cols="80"
+                      style="width:100%;height:500px;"><?= $page->page->get($contentField) ?></textarea>
+        </td>
+    </tr>
+<?php
+    }
+?>
  <tr>
   <td align="center" valign="top">
    <input type="hidden" name="id" value="<?=$_GET['id'];?>">
-   <input type="button" value="Îòìåíèòü" onclick="javascript:reload('/admin/admin.php');">
-   <input type="submit" value="Èçìåíèòü">
+   <input type="button" value="ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ" onclick="javascript:reload('/admin/admin.php');">
+   <input type="submit" value="Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ">
   </td>
  </tr>
 </table>

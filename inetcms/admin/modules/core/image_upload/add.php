@@ -1,5 +1,7 @@
 <?
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_lib.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+require_once(INC . '/_lib.php');
+
 using::add_class('gallery');
 
 if (!empty($_GET['gallery_id']) && is_numeric($_GET['gallery_id'])) {

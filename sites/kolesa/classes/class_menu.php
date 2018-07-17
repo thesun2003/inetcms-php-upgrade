@@ -86,7 +86,7 @@ class Menu extends Module {
 
   static function getCatalogMenu() {
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      ROOT,
       'main/catalog_menu',
       array()
     );
@@ -97,7 +97,7 @@ class Menu extends Module {
     global $_lang;
     if(is_object($object)) {
       $content = SimplePage::process_template_file(
-        MODULES . '/core',
+        ROOT,
         'main/catalog_submenu',
         array(
           'name' => ($level > 1 ? '&bull;&nbsp;' : '') . ($_lang =='eng' ? $object->get('name_eng') : $object->get('name')),
@@ -241,7 +241,7 @@ class Menu extends Module {
     switch($action) {
       case 'add':
         $result['action_value'] = ADMIN_INC_FILE . '/save_menu.php';
-        $result['submit_value'] = 'Добавить';
+        $result['submit_value'] = 'Р”РѕР±Р°РІРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/core',
           'modalformx/menu_add',
@@ -250,7 +250,7 @@ class Menu extends Module {
       break;
       case 'change':
         $result['action_value'] = ADMIN_INC_FILE . '/save_menu.php';
-        $result['submit_value'] = 'Изменить';
+        $result['submit_value'] = 'РР·РјРµРЅРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/core',
           'modalformx/menu_change',

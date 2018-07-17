@@ -1,5 +1,6 @@
 <?
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_lib.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+require_once(INC . '/_lib.php');
 
 if (isset($_GET['field'], $_GET['value'], $_GET['action'])) {
   $field = $_GET['field'];

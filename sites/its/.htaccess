@@ -3,8 +3,6 @@ Options -Indexes
 AddDefaultCharset Off
 DirectoryIndex index.php
 
-#php_value date.timezone "Asia/Novosibirsk"
-
 AddType application/zip .zip
 AddType application/msword .doc
 AddType application/pdf .pdf
@@ -22,21 +20,21 @@ RewriteBase /
 
 RewriteRule ^admin/(.*)$ /vendor/inetcms/admin/$1 [QSA,L]
 
-#RewriteCond %{HTTP_HOST} ^fortuna-nsk\.ru [NC]
-#RewriteRule ^(.*) http://www.fortuna-nsk.ru/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} !^www.
+#RewriteRule (.*) http://www.%{HTTP_HOST}/$1 [R=301,L]
 
 #RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
-#RewriteRule ^index\.html$ http://new.fortuna-nsk.ru/ [R=301,L]
+#RewriteRule ^index\.html$ http://isuzu/ [R=301,L]
 
 #RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
-#RewriteRule ^index\.php$ http://new.fortuna-nsk.ru/ [R=301,L]
+#RewriteRule ^index\.php$ http://isuzu/ [R=301,L]
 
 #Если url не заканчивается на "/" и это не файл или директория
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_URI} .+[^/]$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} .+[^/]$
 #то добавить его и выполнить редирект
-# RewriteRule (.*) $1/ [R=301,L]
+RewriteRule (.*) $1/ [R=301,L]
 
 RewriteRule ^.htaccess$ - [F]
 RewriteCond %{REQUEST_FILENAME} !\.(jpg|jpeg|gif|png|css|js|pl|txt)$

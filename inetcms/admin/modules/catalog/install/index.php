@@ -6,7 +6,7 @@ using::add_class('module');
 using::add_class('modules');
 
 // Module name
-$module_name = 'News';
+$module_name = 'Catalog';
 
 Module::addClass($module_name);
 $module = new $module_name();

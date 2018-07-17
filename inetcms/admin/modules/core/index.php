@@ -9,7 +9,11 @@ using::add_class('menupage');
 using::add_class('menutree');
 using::add_class('search');
 using::add_class('admins');
-Module::addClass('news');
+
+// TODO: move to a module level
+if (Modules::isModuleInstalled('catalog')) {
+  using::add_class('catalog_item', Module::getModulePath('catalog'));
+}
 
 // all ajax actions go here
 if(!empty($_GET['mode']) && $_GET['mode'] == 'JSON' && !empty($_GET['context'])) {
@@ -43,13 +47,40 @@ if(!empty($_GET['mode']) && $_GET['mode'] == 'JSON' && !empty($_GET['context']))
         $response['content'] = Admins::show_admin_items();
         break;
       }
-      if($_GET['id'] == 'dilermap') {
-        $response['content'] = Dilermap::show_admin_items();
-        break;
+      if (Modules::isModuleInstalled('clients')) {
+        Module::addClass('clients');
+        if ($_GET['id'] == 'clients') {
+          $response['content'] = Clients::show_admin_items();
+          break;
+        }
       }
-      if($_GET['id'] == 'news') {
-        $response['content'] = News::show_admin_items();
-        break;
+      if (Modules::isModuleInstalled('dilermap')) {
+        Module::addClass('dilermap');
+        if ($_GET['id'] == 'dilermap') {
+          $response['content'] = Dilermap::show_admin_items();
+          break;
+        }
+      }
+      if (Modules::isModuleInstalled('news')) {
+        Module::addClass('news');
+        if ($_GET['id'] == 'news') {
+          $response['content'] = News::show_admin_items();
+          break;
+        }
+      }
+      if (Modules::isModuleInstalled('articles')) {
+        Module::addClass('articles');
+        if ($_GET['id'] == 'articles') {
+          $response['content'] = Articles::show_admin_items();
+          break;
+        }
+      }
+      if (Modules::isModuleInstalled('guestbook')) {
+        Module::addClass('guestbook');
+        if ($_GET['id'] == 'guestbook') {
+          $response['content'] = GuestBook::show_admin_items();
+          break;
+        }
       }
       $menutree = new MenuTree();
       $response['content'] = $menutree->new_render($_GET['id']);

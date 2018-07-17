@@ -1,7 +1,8 @@
 <?
 session_start(); 
 error_reporting(7);
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_lib.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+require_once(INC . '/_lib.php');
 using::add_class('menupage');
 
 $page = new MenuPage($_POST);

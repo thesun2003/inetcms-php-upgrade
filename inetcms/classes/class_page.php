@@ -14,6 +14,10 @@ class Page extends Entity {
     }
   }
 
+  public function getContentFields() {
+      return array('content');
+  }
+
   function save() {
     parent::save();
   }

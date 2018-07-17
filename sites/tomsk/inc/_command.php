@@ -34,7 +34,7 @@ function find_page() {
     $replaces = array();
   
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      ROOT,
       'main/main_content',
       $replaces
     );

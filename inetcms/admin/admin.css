@@ -94,3 +94,35 @@ span.news_date {
   color: #d00;
   font-size: 10px;
 }
+
+.message_item {
+  border: 1px #ddd solid;
+  padding: 5px;
+  margin: 5px 0px 5px 0px;
+}
+
+.ask {
+  background-color: #fff;
+}
+
+.answer {
+  background-color: #eef;
+}
+
+.message_item .date {
+  background-color: #ccc;
+  display: block;
+  padding: 5px;
+}
+
+a.num_pages {
+  color: #000;
+  font-size: 12px;
+}
+
+a.current_num_pages {
+  color: #fff;
+  font-size: 12px;
+  background-color: #888;
+  text-decoration: none;
+}

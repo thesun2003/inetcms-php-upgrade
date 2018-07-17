@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
 require_once(INC . '/_lib.php');
 
 using::add_class('modules');
-Module::addClass('news');
+Module::addClass('articles');
 
 // all ajax actions go here
 if(!empty($_GET['mode']) && $_GET['mode'] == 'JSON' && !empty($_GET['context'])) {
@@ -11,11 +11,11 @@ if(!empty($_GET['mode']) && $_GET['mode'] == 'JSON' && !empty($_GET['context']))
 
   switch($_GET['context']) {
     case 'modalformx':
-      $values = News::getModalFormValues($_GET['action'], $_GET['id']);
+      $values = Articles::getModalFormValues($_GET['action'], $_GET['id']);
       $template = new SimpleTemplate(ModalForm::get_template());
       $response['content'] = $template->process_template($values);
       break;
-    case 'news':
+    case 'articles':
       $_SESSION['div_catalog'][$_GET['id']] = 1;
       $response['content'] = Catalog::admin_render($_GET['id']);
       break;
@@ -29,7 +29,7 @@ if (!empty($_POST['action'])) {
   All::iconv_array($_POST);
   $response = array();
   if ($_POST['action'] == 'add') {
-    $new_item = new News();
+    $new_item = new Articles();
     $new_item->setInfo($_POST);
     if ($new_item->isValid()) {
       $new_item->save();
@@ -41,7 +41,7 @@ if (!empty($_POST['action'])) {
     }
   }
   if ($_POST['action'] == 'change') {
-    $new_item = new News();
+    $new_item = new Articles();
     $new_item = $new_item->find(array('id' => $_POST['id']))->next();
     $new_item->setInfo($_POST);
     if ($new_item->isValid()) {
@@ -60,7 +60,7 @@ if (!empty($_POST['action'])) {
 }
 
 if (!empty($_GET['action']) && $_GET['action'] == 'delete') {
-  $new_item = new News();
+  $new_item = new Articles();
   $new_item = $new_item->find(array('id' => $_GET['id']))->next();
   if ($new_item) {
     $new_item->del();

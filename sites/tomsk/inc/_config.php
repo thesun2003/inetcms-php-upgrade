@@ -29,10 +29,10 @@ require_once(LOCAL_INC . '/_db_config.php');
 
 // ADMIN
 
-define('ADMIN_URL', MAIN_URL . '/admin');
-define('ADMIN', ROOT . '/admin');
+define('ADMIN_URL', MAIN_URL . '/admin/');
+define('ADMIN', CMS_ROOT . '/admin');
 define('ADMIN_INC', ADMIN . '/inc');
-define('ADMIN_INC_FILE', '/admin/inc');
+define('ADMIN_INC_FILE', ADMIN_INC);
 
 define('MODULES_URL', ADMIN_URL . "/modules");
 define('MODULES', ADMIN . "/modules");
