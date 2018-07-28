@@ -1,6 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_lib.php');
-//no_cache();
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+require_once(INC . '/_lib.php');
 
 using::add_class('menu');
 using::add_class('page');
@@ -9,7 +10,7 @@ using::add_class('simplepage');
 using::add_class('modules');
 using::add_class('search');
 
-$metadata = array('title' => 'Ñòğàíèöà íå íàéäåíà',
+$metadata = array('title' => 'Ğ¡Ñ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ğ° Ğ½Ğµ Ğ½Ğ°Ğ¹Ğ´ĞµĞ½Ğ°',
                   'keywords' => '',
                   'description' => '');
 $content = '';

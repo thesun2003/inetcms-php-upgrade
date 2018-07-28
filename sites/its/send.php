@@ -1,5 +1,8 @@
-<?
-require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_lib.php');
+<?php
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+require_once(INC . '/_lib.php');
+
 using::add_class('captcha');
 using::add_class('mail');
 
@@ -8,14 +11,14 @@ if(!Captcha::check_captcha()) {
 }
 
 $fields = array(
-  "name" => 'Ф.И.О.',
-  "company" => 'Компания',
-  "status" => 'Должность',
-  "city" => 'Город',
-  "phone" => 'Телефон',
-  "fax" => 'Факс',
+  "name" => 'Р¤.Р.Рћ.',
+  "company" => 'РљРѕРјРїР°РЅРёСЏ',
+  "status" => 'Р”РѕР»Р¶РЅРѕСЃС‚СЊ',
+  "city" => 'Р“РѕСЂРѕРґ',
+  "phone" => 'РўРµР»РµС„РѕРЅ',
+  "fax" => 'Р¤Р°РєСЃ',
   "email" => 'E-mail',
-  "message" => 'Текст сообщения'
+  "message" => 'РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ'
 );
 
 $mess_body = array();
@@ -27,9 +30,9 @@ foreach($fields as $key => $value) {
 
 $to = 'ssa555@mail.ru';
 //$to = 'asterix@softservice.org';
-$subject = 'Вопрос с сайта компании "ИТ-Сервис"';
+$subject = 'Р’РѕРїСЂРѕСЃ СЃ СЃР°Р№С‚Р° РєРѕРјРїР°РЅРёРё "РРў-РЎРµСЂРІРёСЃ"';
 $mess_body = implode("\n<br />", $mess_body);
-$fromName ='сайт ИТ-Сервис';
+$fromName ='СЃР°Р№С‚ РРў-РЎРµСЂРІРёСЃ';
 $fromMail = 'no-reply@its-nsk.ru';
 
 $mail = new TMail($to, $subject, $mess_body, $fromName, $fromMail);
