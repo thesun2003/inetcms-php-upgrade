@@ -62,7 +62,7 @@ if (!empty($_POST['action']) && (!empty($_POST['action_suffix']))) {
       }
     break;
   }
-  header("Content-Type: text/html; charset=windows-1251");  
+  header("Content-Type: text/html; charset=UTF-8");
   echo JavascriptUtils::json_encode($response);
   exit();
 }

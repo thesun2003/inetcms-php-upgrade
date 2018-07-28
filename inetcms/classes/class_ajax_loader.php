@@ -9,6 +9,6 @@ class Ajax_Loader {
     if ($path) {
       $image = $path;
     }
-    return '<img src="' . $image . '" title="Çàãğóæàåòñÿ..." alt="Çàãğóæàåòñÿ..." />';
+    return '<img src="' . $image . '" title="Ğ—Ğ°Ğ³Ñ€ÑƒĞ¶Ğ°ĞµÑ‚ÑÑ..." alt="Ğ—Ğ°Ğ³Ñ€ÑƒĞ¶Ğ°ĞµÑ‚ÑÑ..." />';
   }
 }

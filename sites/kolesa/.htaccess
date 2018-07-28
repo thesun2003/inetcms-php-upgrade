@@ -1,5 +1,4 @@
 Options -Indexes
-#AddDefaultCharset windows-1251
 AddDefaultCharset Off
 DirectoryIndex index.php
 

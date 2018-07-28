@@ -7,7 +7,7 @@ using::add_class('clientmessage', Module::getModulePath('clients'));
 class Clients extends Admins {
   var $module_id_field = 'client_id';
   var $module_name = 'clients';
-  static $name = 'Клиенты';
+  static $name = 'РљР»РёРµРЅС‚С‹';
 
   function Clients($info=false){
     parent::__construct($info);
@@ -82,9 +82,9 @@ class Clients extends Admins {
     }
     </script>';
 
-    $title = $is_admin ? '&quot;'.$this->get('title').'&quot; ('.$this->get('login').')' : '&quot;ИТ Сервис&quot;';
+    $title = $is_admin ? '&quot;'.$this->get('title').'&quot; ('.$this->get('login').')' : '&quot;РРў РЎРµСЂРІРёСЃ&quot;';
 
-    $form .= "<h1 style=\"font-size:20px\" align='left'>Переписка с " . $title . "</h1>";
+    $form .= "<h1 style=\"font-size:20px\" align='left'>РџРµСЂРµРїРёСЃРєР° СЃ " . $title . "</h1>";
     $form .= '<form id="message_form" action="'.MODULES_URL.'/clients/" method="post">';
 
     $textEdit = new TextEdit2('message', $this->get('message'));
@@ -96,9 +96,9 @@ class Clients extends Admins {
 
     $form .= '<input type="hidden" name="action" value="add" />';
     $form .= '<input type="hidden" name="action_suffix" value="message" />';
-    $form .= '<input type="button" name="update_form" value="Написать" onclick="textedit2_ajax_save(\'message\');ajax_catalog_item_submit(\'message_form\', \''.$LNG['ClientMessageAdded'].'\');textedit2_ajax_after_save(\'message\', true);update_message_list();" />';
+    $form .= '<input type="button" name="update_form" value="РќР°РїРёСЃР°С‚СЊ" onclick="textedit2_ajax_save(\'message\');ajax_catalog_item_submit(\'message_form\', \''.$LNG['ClientMessageAdded'].'\');textedit2_ajax_after_save(\'message\', true);update_message_list();" />';
     if ($is_admin) {
-      $form .= '<input type="button" name="close_form" value="Закрыть" onclick="reload(\''.ADMIN_URL.'\')" />';
+      $form .= '<input type="button" name="close_form" value="Р—Р°РєСЂС‹С‚СЊ" onclick="reload(\''.ADMIN_URL.'\')" />';
     }
 
     return $form;
@@ -292,7 +292,7 @@ class Clients extends Admins {
       $client->save();
       setNotice('ClientAdded');
     } else {
-      setNotice('Исправьте ошибки выше');
+      setNotice('РСЃРїСЂР°РІСЊС‚Рµ РѕС€РёР±РєРё РІС‹С€Рµ');
     }
     return $client;
   }

@@ -79,7 +79,7 @@ class All{
       $result .= '<a class="' . ($i == $current_page ? 'current_' : '') . 'num_pages" href="'.All::urlReplace(array('pn' => $i), false, true, $url).'">&nbsp;' . $i . '&nbsp;</a>   ';
     }
     if($show_all) {
-      $result .= '<a class="' . ($current_page == 'all' ? 'current_' : '') . 'num_pages" href="'.All::urlReplace(array('pn' => 'all'), false, true, $url).'">&nbsp;Все&nbsp;</a>';
+      $result .= '<a class="' . ($current_page == 'all' ? 'current_' : '') . 'num_pages" href="'.All::urlReplace(array('pn' => 'all'), false, true, $url).'">&nbsp;Р’СЃРµ&nbsp;</a>';
     }
     return $result;
   }

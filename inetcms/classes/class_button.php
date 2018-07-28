@@ -20,18 +20,18 @@ class button {
 
 class admin_button extends button {
   static $buttons_config = array(
-    'new_menu' => array('/admin/img/fldr.gif', 'Äîáàâèòü '),
-    'new_page' => array('/admin/img/new.gif', 'Äîáàâèòü '),
-    'new_action' => array('/admin/img/fldr_green.gif', 'Äîáàâèòü '),
-    'edit' => array('/admin/img/edit.gif', 'Èçìåíèòü '),
-    'edit_new' => array("/admin/img/edit_new.gif","(òåñòèðîâàíèå) Èçìåíèòü "),
-    'del' => array("/admin/img/b_drop.png","Óäàëèòü "), 
-    'seo' => array("/admin/img/icon_seo.png","ÑÅÎ íàñòðîéêè "),
-    'hide' => array("/admin/img/hide.jpg","Ñêðûòü "),
-    'show' => array("/admin/img/show.jpg","Ïîêàçàòü "),
-    'arrow_up' => array('/admin/img/sort_asc.gif', "Ââåðõ"),
-    'arrow_down' => array('/admin/img/sort_desc.gif', "Âíèç"),
-    'new_admin' => array('/admin/img/users_icon.png', "Äîáàâèòü "),
+    'new_menu' => array('/admin/img/fldr.gif', 'Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ '),
+    'new_page' => array('/admin/img/new.gif', 'Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ '),
+    'new_action' => array('/admin/img/fldr_green.gif', 'Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ '),
+    'edit' => array('/admin/img/edit.gif', 'Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ '),
+    'edit_new' => array("/admin/img/edit_new.gif","(Ñ‚ÐµÑÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ) Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ "),
+    'del' => array("/admin/img/b_drop.png","Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ "), 
+    'seo' => array("/admin/img/icon_seo.png","Ð¡Ð•Ðž Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ "),
+    'hide' => array("/admin/img/hide.jpg","Ð¡ÐºÑ€Ñ‹Ñ‚ÑŒ "),
+    'show' => array("/admin/img/show.jpg","ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ "),
+    'arrow_up' => array('/admin/img/sort_asc.gif', "Ð’Ð²ÐµÑ€Ñ…"),
+    'arrow_down' => array('/admin/img/sort_desc.gif', "Ð’Ð½Ð¸Ð·"),
+    'new_admin' => array('/admin/img/users_icon.png', "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ "),
   );
   function __construct() {
     #nothing to do

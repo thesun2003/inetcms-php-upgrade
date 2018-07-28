@@ -118,10 +118,10 @@ class CatalogItem extends Entity {
       'menu_href' => ModalForm::getLinkX('catalog_item', 'change', $menu->get('id')),
     );
 
-    $values['menu_link'] = '<a id="catalog_item_' . $menu->get('id') . '_name" href="' . ModalForm::getLinkX('catalog_item', 'change', $menu->get('id')) . '"  title="Изменить имя раздела &quot;' . $menu->get('name') . '&quot;" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a>';
+    $values['menu_link'] = '<a id="catalog_item_' . $menu->get('id') . '_name" href="' . ModalForm::getLinkX('catalog_item', 'change', $menu->get('id')) . '"  title="РР·РјРµРЅРёС‚СЊ РёРјСЏ СЂР°Р·РґРµР»Р° &quot;' . $menu->get('name') . '&quot;" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a>';
    
     $actions_block = '';
-    $actions_block .= admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=catalog&id=' . $menu->get('id'), ' для товара &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=catalog&id=' . $menu->get('id'), ' РґР»СЏ С‚РѕРІР°СЂР° &quot;' . $menu->get('name') . '&quot;');
     $actions_block .= admin_button::get('del', "javascript:ondel('" . MODULES_URL . "/catalog/?action_suffix=catalog_item&action=delete&id=" . $menu->get('id') . "');", '');
     
     $arrows = $menu->getUpDown();
@@ -241,13 +241,13 @@ class CatalogItem extends Entity {
     $gallery1 = $search->next();
 
     $textEdit = new TextEdit2('content', $this->get('content'));
-    $description = new TextField('Краткое описание', 'description', $this->get('description'));
-    $date_added = new TextField('Цена', 'cost', $this->get('cost'));
-    $articul = new TextField('Артикул (уникальный номер)', 'articul', $this->get('articul'));
-    $xurl = new TextField('Адрес страницы', 'xurl', $this->get('xurl'));
-    $title = new TextField('Заголовок страницы', 'title', $this->get('title'));
-    $descr = new TextField('Описание страницы', 'descr', $this->get('descr'));
-    $keyw = new TextField('Ключевые слова страницы', 'keyw', $this->get('keyw'));
+    $description = new TextField('РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ', 'description', $this->get('description'));
+    $date_added = new TextField('Р¦РµРЅР°', 'cost', $this->get('cost'));
+    $articul = new TextField('РђСЂС‚РёРєСѓР» (СѓРЅРёРєР°Р»СЊРЅС‹Р№ РЅРѕРјРµСЂ)', 'articul', $this->get('articul'));
+    $xurl = new TextField('РђРґСЂРµСЃ СЃС‚СЂР°РЅРёС†С‹', 'xurl', $this->get('xurl'));
+    $title = new TextField('Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹', 'title', $this->get('title'));
+    $descr = new TextField('РћРїРёСЃР°РЅРёРµ СЃС‚СЂР°РЅРёС†С‹', 'descr', $this->get('descr'));
+    $keyw = new TextField('РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° СЃС‚СЂР°РЅРёС†С‹', 'keyw', $this->get('keyw'));
 
     $form .= $articul->getAdminForm();
     $form .= $gallery1->getAdminForm();
@@ -255,7 +255,7 @@ class CatalogItem extends Entity {
     $form .= $description->getAdminForm();
     $form .= $textEdit->getAdminForm();
 
-    $form .= '<h2>Настройки страницы</h2><div id="page_settings">';
+    $form .= '<h2>РќР°СЃС‚СЂРѕР№РєРё СЃС‚СЂР°РЅРёС†С‹</h2><div id="page_settings">';
     $form .= $xurl->getAdminForm();
     $form .= $title->getAdminForm();
     $form .= $descr->getAdminForm();
@@ -265,7 +265,7 @@ class CatalogItem extends Entity {
     $form .= '<input type="hidden" name="id" value="'.$this->get('id').'" />';
     $form .= '<input type="hidden" name="action" value="edit" />';
     $form .= '<input type="hidden" name="action_suffix" value="catalog_item" />';
-    $form .= '<input type="button" name="update_form" value="Изменить" onclick="textedit2_ajax_save(\'content\');ajax_catalog_item_submit(\'catalog_item_form\');textedit2_ajax_after_save(\'content\')" />';
+    $form .= '<input type="button" name="update_form" value="РР·РјРµРЅРёС‚СЊ" onclick="textedit2_ajax_save(\'content\');ajax_catalog_item_submit(\'catalog_item_form\');textedit2_ajax_after_save(\'content\')" />';
 
     return $form;
   }
@@ -289,7 +289,7 @@ class CatalogItem extends Entity {
     switch($action) {
       case 'add':
         $result['action_value'] = MODULES_URL . '/catalog/';
-        $result['submit_value'] = 'Добавить';
+        $result['submit_value'] = 'Р”РѕР±Р°РІРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/catalog',
           'modalformx/catalog_item_add',
@@ -301,7 +301,7 @@ class CatalogItem extends Entity {
         $item = $item->find(array('id' => $id))->next();
 
         $result['action_value'] = MODULES_URL . '/catalog/';
-        $result['submit_value'] = 'Изменить';
+        $result['submit_value'] = 'РР·РјРµРЅРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/catalog',
           'modalformx/catalog_item_change',

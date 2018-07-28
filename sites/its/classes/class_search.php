@@ -6,7 +6,7 @@ class Search extends Module {
   const page_count = 20;
   var $module_id_field = 'search_id';
   var $module_name = 'search';
-  static $name = 'История запросов поиска';
+  static $name = 'РСЃС‚РѕСЂРёСЏ Р·Р°РїСЂРѕСЃРѕРІ РїРѕРёСЃРєР°';
   static $is_google_search = false;
 
   function Search($info=false){
@@ -45,12 +45,12 @@ class Search extends Module {
   }
 
   static function get_rus_months() {
-    return array('Январь','Февраль',
-                 'Март','Апрель',
-                 'Май', 'Июнь',
-                 'Июль','Август',
-                 'Сентябрь','Октябрь',
-                 'Ноябрь','Декабрь');
+    return array('РЇРЅРІР°СЂСЊ','Р¤РµРІСЂР°Р»СЊ',
+                 'РњР°СЂС‚','РђРїСЂРµР»СЊ',
+                 'РњР°Р№', 'РСЋРЅСЊ',
+                 'РСЋР»СЊ','РђРІРіСѓСЃС‚',
+                 'РЎРµРЅС‚СЏР±СЂСЊ','РћРєС‚СЏР±СЂСЊ',
+                 'РќРѕСЏР±СЂСЊ','Р”РµРєР°Р±СЂСЊ');
   }
 
   static function get_eng_months() {
@@ -107,7 +107,7 @@ class Search extends Module {
   }
 
   static function get_google_results() {
-    $content = self::_get_page_title('Результаты поиска');
+    $content = self::_get_page_title('Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°');
     $search_query = isset($_GET['fast_search']) ? $_GET['fast_search'] : '';
     if($search_query) {
       $search = new Search();
@@ -127,7 +127,7 @@ class Search extends Module {
   static function getResult() {
     global $DB;
     $content = '';
-    $content .= self::_get_page_title('Результаты поиска');
+    $content .= self::_get_page_title('Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°');
 
     $find_words = !empty($_GET['fast_search']) ? $_GET['fast_search'] : '';
     if (!empty($find_words) && strlen($find_words) > 2) {
@@ -141,7 +141,7 @@ class Search extends Module {
       $search = new Search();
       $search->updateInfo($find_words);
 
-      $content .= '<b>Вы искали:</b> <i>' . $find_words . '</i><br><br>';
+      $content .= '<b>Р’С‹ РёСЃРєР°Р»Рё:</b> <i>' . $find_words . '</i><br><br>';
       $find = $DB->getAll('SELECT SQL_CALC_FOUND_ROWS m.*, p.content 
                            FROM '.getTablePrefix().'menu m
                            LEFT JOIN '.getTablePrefix().'page p ON p.menu_id = m.id
@@ -151,7 +151,7 @@ class Search extends Module {
       $rowsCount = $DB->getOne('SELECT FOUND_ROWS() as num');
 
       if (!empty($find)) {
-        $content .= "Найдены следующие страницы (" . $rowsCount . "):<br><br>"; 
+        $content .= "РќР°Р№РґРµРЅС‹ СЃР»РµРґСѓСЋС‰РёРµ СЃС‚СЂР°РЅРёС†С‹ (" . $rowsCount . "):<br><br>"; 
         foreach ($find as $item) {
           $resultText = self::getSelectedText(self::prepareText(stripslashes($item['name'])), $find_words);
           if (!$resultText) {
@@ -165,15 +165,15 @@ class Search extends Module {
         }
         //$content .= All::get_pages($str, self::page_count, $rowsCount);
       } else {
-        $content .= 'Ничего не найдено!';
+        $content .= 'РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ!';
       }
     } else {
       if (empty($find_words)) {
-        $content .= 'Пустой запрос!';
+        $content .= 'РџСѓСЃС‚РѕР№ Р·Р°РїСЂРѕСЃ!';
       } else {
-        $content .= 'Слишком короткий запрос! (меньше 3 букв)';
+        $content .= 'РЎР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёР№ Р·Р°РїСЂРѕСЃ! (РјРµРЅСЊС€Рµ 3 Р±СѓРєРІ)';
       }
-      $content .= ' Повторите ввод!';
+      $content .= ' РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ!';
     }
     return $content;
   }

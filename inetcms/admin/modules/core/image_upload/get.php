@@ -22,6 +22,6 @@ if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
   }
 }
 
-header("Content-Type: text/html; charset=windows-1251");  
+header("Content-Type: text/html; charset=UTF-8");
 echo JavascriptUtils::json_encode($_RESULT);
 exit();

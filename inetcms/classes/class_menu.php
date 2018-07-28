@@ -195,7 +195,7 @@ class Menu extends Module {
     switch($action) {
       case 'add':
         $result['action_value'] = ADMIN_INC_FILE . '/save_menu.php';
-        $result['submit_value'] = 'Добавить';
+        $result['submit_value'] = 'Р”РѕР±Р°РІРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/core',
           'modalformx/menu_add',
@@ -204,7 +204,7 @@ class Menu extends Module {
       break;
       case 'change':
         $result['action_value'] = ADMIN_INC_FILE . '/save_menu.php';
-        $result['submit_value'] = 'Изменить';
+        $result['submit_value'] = 'РР·РјРµРЅРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/core',
           'modalformx/menu_change',

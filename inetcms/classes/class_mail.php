@@ -8,9 +8,9 @@ class Tmail {
         $this->fmail = $fromMail;
 
         $this->headers = 'MIME-Version: 1.0'."\r\n".
-           'Content-type: text/html; charset=windows-1251'."\r\n".
+           'Content-type: text/html; charset=UTF-8'."\r\n".
            'From: "' . $this->from . '" <' . $this->fmail . ">\r\n" .
-           'BCC: asterix@softservice.org'."\r\n".
+           # 'BCC: asterix@softservice.org'."\r\n".
            'X-Mailer: PHP/' . phpversion();
     }
 

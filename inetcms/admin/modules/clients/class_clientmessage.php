@@ -28,9 +28,9 @@ class ClientMessage extends Entity {
     $client = new Clients();
     $client = $client->find(array('id' => $this->get('client_id')))->next();
     if($is_admin) {
-      $name = $this->get('type') == 'ask' ? $client->get('title') : '¬˚';
+      $name = $this->get('type') == 'ask' ? $client->get('title') : '–í—ã';
     } else {
-      $name = $this->get('type') == 'ask' ? '¬˚' : '»“ —Â‚ËÒ';
+      $name = $this->get('type') == 'ask' ? '–í—ã' : '–ò–¢ –°–µ—Ä–≤–∏—Å';
     }
 
     $content = SimplePage::process_template_file(

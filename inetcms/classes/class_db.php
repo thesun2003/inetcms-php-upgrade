@@ -153,7 +153,7 @@ class DB {
         if($this->_debugMode) {
             $startTime = getmicrotime();
         }
-        @mysql_query("SET names cp1251");
+        @mysql_query("SET names UTF8");
         $result = mysql_query($query, $this->_link);
         if($this->_debugMode && session_id()) {
             $endTime = round((getmicrotime() - $startTime) * 1000, 2);

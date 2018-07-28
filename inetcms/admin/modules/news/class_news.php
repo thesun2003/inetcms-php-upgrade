@@ -10,7 +10,7 @@ using::add_class('news_button', Module::getModulePath('news'));
 class News extends Module {
   var $module_id_field = 'news_id';
   var $module_name = 'news';
-  static $name = 'Новости';
+  static $name = 'РќРѕРІРѕСЃС‚Рё';
 
   function __construct($info=false){
     parent::__construct($info);
@@ -112,7 +112,7 @@ class News extends Module {
     switch($action) {
       case 'add':
         $result['action_value'] = MODULES_URL . '/news/';
-        $result['submit_value'] = 'Добавить';
+        $result['submit_value'] = 'Р”РѕР±Р°РІРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/news',
           'modalformx/news_add',
@@ -124,7 +124,7 @@ class News extends Module {
         $newsmap = new self();
         $newsmap = $newsmap->find(array('id' => $id))->next();
         $result['action_value'] = MODULES_URL . '/news/';
-        $result['submit_value'] = 'Изменить';
+        $result['submit_value'] = 'РР·РјРµРЅРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/news',
           'modalformx/news_change',
@@ -178,7 +178,7 @@ class News extends Module {
     $values['toggle_menu_block'] = $toggle_menu_block;
     $values['menu_link'] = '<span id="values_editmenu_' . $menu->get('id') . '_name" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</span>';
 
-    $values['actions_block'] = news_button::get('new_news', ModalForm::getLinkX('news', 'add', $menu->get('id')), ' новость');
+    $values['actions_block'] = news_button::get('new_news', ModalForm::getLinkX('news', 'add', $menu->get('id')), ' РЅРѕРІРѕСЃС‚СЊ');
 
     $content = SimplePage::process_template_file(
       MODULES . '/core',
@@ -314,8 +314,8 @@ class News extends Module {
     $form .= "<h1 style=\"font-size:20px\" align='left'>" . $this->get('name') . "</h1>";
     $form .= '<form id="news_form" action="'.MODULES_URL.'/news/" method="post">';
 
-    $description = new TextField('Краткое описание', 'description', $this->get('description'));
-    $date_added = new TextField('Дата', 'date_added', $this->get('date_added'));
+    $description = new TextField('РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ', 'description', $this->get('description'));
+    $date_added = new TextField('Р”Р°С‚Р°', 'date_added', $this->get('date_added'));
     $textEdit = new TextEdit2('content', $this->get('content'));
 
     $form .= $date_added->getAdminForm();
@@ -325,7 +325,7 @@ class News extends Module {
     $form .= '<input type="hidden" name="id" value="'.$this->get('id').'" />';
     $form .= '<input type="hidden" name="action" value="change" />';
     $form .= '<input type="hidden" name="action_suffix" value="news" />';
-    $form .= '<input type="button" name="update_form" value="Изменить" onclick="textedit2_ajax_save(\'content\');ajax_catalog_item_submit(\'news_form\');textedit2_ajax_after_save(\'content\')" />';
+    $form .= '<input type="button" name="update_form" value="РР·РјРµРЅРёС‚СЊ" onclick="textedit2_ajax_save(\'content\');ajax_catalog_item_submit(\'news_form\');textedit2_ajax_after_save(\'content\')" />';
 
     return $form;
   }
@@ -358,7 +358,7 @@ class News extends Module {
       'toggle_menu_block' => '<img src="img/normalnode.gif" width="16" height="22" align="middle" alt="" border="0">',
     );
  
-    $values['actions_block'] = admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=news&id=' . $menu->get('id'), ' новости &quot;' . $menu->get('name') . '&quot;');
+    $values['actions_block'] = admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=news&id=' . $menu->get('id'), ' РЅРѕРІРѕСЃС‚Рё &quot;' . $menu->get('name') . '&quot;');
     $values['actions_block'] .= admin_button::get('del', "javascript:ondel('".Module::getModuleURL('news')."/index.php?action=delete&id=" . $menu->get('id') . "');", '');
     
     $values['menu_link'] = '<a id="news_' . $menu->get('id') . '_name" href="'.ModalForm::getLinkX('news', 'change', $menu->get('id')).'"  onmouseover="openActions(\'news\', \'' . $menu->get('id') . '\')" onmouseout="closeActions(\'news\', \'' . $menu->get('id') .'\')"><span class="news_date">['.self::get_date($menu->get('date_added')).']</span>&nbsp;' . $menu->get('name') . '</a>';

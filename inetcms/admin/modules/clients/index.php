@@ -8,7 +8,7 @@ Module::addClass('clients');
 // all ajax actions go here
 if(!empty($_GET['mode']) && $_GET['mode'] == 'HTML' && !empty($_GET['id'])) {
   $response = Clients::sent_messages($_GET['id'], (bool)$_GET['is_admin']);
-  header("Content-Type: text/html; charset=windows-1251");  
+  header("Content-Type: text/html; charset=UTF-8");
 //  echo JavascriptUtils::json_encode($response);
   echo $response;
   exit();
@@ -28,7 +28,7 @@ if (!empty($_POST['action'])) {
       $response['error'] = $GLOBALS['LNG']['err_field_empty'];        
     }
   }
-  header("Content-Type: text/html; charset=windows-1251");  
+  header("Content-Type: text/html; charset=UTF-8");
   echo JavascriptUtils::json_encode($response);
   exit();
 }

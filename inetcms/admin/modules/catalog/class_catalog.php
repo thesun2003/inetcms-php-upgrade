@@ -7,7 +7,7 @@ using::add_class('catalog_item', Module::getModulePath('catalog'));
 class Catalog extends Module {
   var $module_id_field = 'catalog_id';
   var $module_name = 'catalog';
-  static $name = 'Каталог товаров';
+  static $name = 'РљР°С‚Р°Р»РѕРі С‚РѕРІР°СЂРѕРІ';
 
   function __construct($info=false){
     parent::__construct();
@@ -337,19 +337,19 @@ class Catalog extends Module {
       } else {
         //$actions_block .= admin_button::get('hide', ADMIN_INC_FILE . "/show_hide.php?id=" . $menu->get('id'), '');
       }
-      //$actions_block .= admin_button::get('seo', '/admin/admin.php?type=seo_editpage&id=' . $menu->get('id'), ' для страницы &quot;' . $menu->get('name') . '&quot;');
+      //$actions_block .= admin_button::get('seo', '/admin/admin.php?type=seo_editpage&id=' . $menu->get('id'), ' РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ &quot;' . $menu->get('name') . '&quot;');
     }
 
     if($is_root_item || !$menu->has_items()) {
-      $actions_block .= admin_button::get('new_menu', ModalForm::getLinkX('catalog', 'add', $menu->get('id')), ' новую подкатегорию');
+      $actions_block .= admin_button::get('new_menu', ModalForm::getLinkX('catalog', 'add', $menu->get('id')), ' РЅРѕРІСѓСЋ РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ');
     }
 
     if(!$is_root_item) {
       if(!$menu->has_children()) {
-        $actions_block .= admin_button::get('new_page', ModalForm::getLinkX('catalog_item', 'add', $menu->get('id')), ' новый товар');
+        $actions_block .= admin_button::get('new_page', ModalForm::getLinkX('catalog_item', 'add', $menu->get('id')), ' РЅРѕРІС‹Р№ С‚РѕРІР°СЂ');
         $values['catalog_items_droppables'] = 'catalog_items_droppables';
       }
-      $actions_block .= admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=catalog&context=catalog&id=' . $menu->get('id'), ' категорию &quot;' . $menu->get('name') . '&quot;');
+      $actions_block .= admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=catalog&context=catalog&id=' . $menu->get('id'), ' РєР°С‚РµРіРѕСЂРёСЋ &quot;' . $menu->get('name') . '&quot;');
       $actions_block .= admin_button::get('del', "javascript:ondel('" . MODULES_URL . "/catalog/?action_suffix=catalog&action=delete&id=" . $menu->get('id') . "');", '');
       $arrows = $menu->getUpDown();
 
@@ -454,7 +454,7 @@ class Catalog extends Module {
 
     if(empty($_GET['showall']) && $this->has_children()) {
       if($this->form->get('id')) {
-        $content .= '<br style="clear:both"/><br /><a class="catalog_list" href="'.All::urlReplace(array('showall' => '1'), false, true).'">Показать все товары текущего раздела</a>';
+        $content .= '<br style="clear:both"/><br /><a class="catalog_list" href="'.All::urlReplace(array('showall' => '1'), false, true).'">РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ С‚РѕРІР°СЂС‹ С‚РµРєСѓС‰РµРіРѕ СЂР°Р·РґРµР»Р°</a>';
       }
     } else {
       if(!$this->has_children()) {
@@ -576,17 +576,17 @@ class Catalog extends Module {
     $search = $gallery1->find(array('id' => $this->get('gallery1_id')));
     $gallery1 = $search->next();
 
-    $description = new TextField('Краткое описание', 'description', $this->get('description'));
+    $description = new TextField('РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ', 'description', $this->get('description'));
 
-    $xurl = new TextField('Адрес страницы', 'xurl', $this->get('xurl'));
-    $title = new TextField('Заголовок страницы', 'title', $this->get('title'));
-    $descr = new TextField('Описание страницы', 'descr', $this->get('descr'));
-    $keyw = new TextField('Ключевые слова страницы', 'keyw', $this->get('keyw'));
+    $xurl = new TextField('РђРґСЂРµСЃ СЃС‚СЂР°РЅРёС†С‹', 'xurl', $this->get('xurl'));
+    $title = new TextField('Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹', 'title', $this->get('title'));
+    $descr = new TextField('РћРїРёСЃР°РЅРёРµ СЃС‚СЂР°РЅРёС†С‹', 'descr', $this->get('descr'));
+    $keyw = new TextField('РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° СЃС‚СЂР°РЅРёС†С‹', 'keyw', $this->get('keyw'));
 
     $form .= $gallery1->getAdminForm();
     $form .= $description->getAdminForm();
 
-    $form .= '<h2>Настройки страницы</h2><div id="page_settings">';
+    $form .= '<h2>РќР°СЃС‚СЂРѕР№РєРё СЃС‚СЂР°РЅРёС†С‹</h2><div id="page_settings">';
     $form .= $xurl->getAdminForm();
     $form .= $title->getAdminForm();
     $form .= $descr->getAdminForm();
@@ -596,7 +596,7 @@ class Catalog extends Module {
     $form .= '<input type="hidden" name="id" value="'.$this->get('id').'" />';
     $form .= '<input type="hidden" name="action" value="edit" />';
     $form .= '<input type="hidden" name="action_suffix" value="catalog" />';
-    $form .= '<input type="button" name="update_form" value="Изменить" onclick="ajax_catalog_item_submit(\'catalog_form\')" />';
+    $form .= '<input type="button" name="update_form" value="РР·РјРµРЅРёС‚СЊ" onclick="ajax_catalog_item_submit(\'catalog_form\')" />';
 
     return $form;
   }
@@ -610,7 +610,7 @@ class Catalog extends Module {
     switch($action) {
       case 'add':
         $result['action_value'] = MODULES_URL . '/catalog/';
-        $result['submit_value'] = 'Добавить';
+        $result['submit_value'] = 'Р”РѕР±Р°РІРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/catalog',
           'modalformx/catalog_add',
@@ -619,7 +619,7 @@ class Catalog extends Module {
       break;
       case 'change':
         $result['action_value'] = MODULES_URL . '/catalog/';
-        $result['submit_value'] = 'Изменить';
+        $result['submit_value'] = 'РР·РјРµРЅРёС‚СЊ';
         $result['content'] = SimplePage::process_template_file(
           MODULES . '/catalog',
           'modalformx/catalog_change',

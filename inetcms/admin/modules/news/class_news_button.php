@@ -2,7 +2,7 @@
 
 class news_button extends admin_button {
   static $buttons_config = array(
-    'new_news' => array('/admin/modules/news/images/add_news.png', "Äîáàâèòü "),
+    'new_news' => array('/admin/modules/news/images/add_news.png', "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ "),
   );
 
   public static function get($button_name = 'none', $url = '', $title = '') {
