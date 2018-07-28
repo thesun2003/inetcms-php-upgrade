@@ -1,5 +1,8 @@
 <?php
 
+using::add_class('module');
+using::add_class('modules');
+
 class SimpleTemplate {
   private $_template = '';
   private $template = '';
@@ -15,39 +18,30 @@ class SimpleTemplate {
     return str_replace(array_map('SimpleTemplate::str_to_key' , array_keys($values)), array_values($values), $this->template);
   }
 
+  private static function method_not_found($parameters = array()) {
+      return implode('::', $parameters);
+  }
+
   private function get_dynamic_vars($vars) {
     $result = array();
     foreach($vars as $var) {
       $var_name = substr($var, 1, strlen($var)-2);
       $variable = explode(':', strtolower($var_name));
-      switch($variable[0]) {
-        case 'menu':
-          if(count($variable) == 3) {
-            $func_name = 'Menu::' . $variable[1];
-            $result[$var_name] = call_user_func($func_name, $variable[2]);
+
+      try {
+          if (Modules::isModuleInstalled($variable[0])) {
+              Module::addClass($variable[0]);
+          } else {
+              using::add_class($variable[0]);
           }
-        break;
-        case 'news':
-          Module::addClass('news');
-          if(count($variable) == 3) {
-            $func_name = 'news' . '::' . $variable[1];
-            $result[$var_name] = call_user_func($func_name, $variable[2]);
+          $func_name = $variable[0] . '::' . $variable[1];
+          if (!method_exists($variable[0], $variable[1])) {
+              throw new Exception('Cannot find a method');
           }
-        break;
-        case 'catalog':
-          Module::addClass('catalog');
-          if(count($variable) == 3) {
-            $func_name = 'catalog' . '::' . $variable[1];
-            $result[$var_name] = call_user_func($func_name, $variable[2]);
-          }
-        break;
-        case 'custom':
-          Module::addClass('custom');
-          if(count($variable) == 3) {
-            $func_name = 'custom' . '::' . $variable[1];
-            $result[$var_name] = call_user_func($func_name, $variable[2]);
-          }
-        break;
+          $result[$var_name] = call_user_func($func_name, $variable[2]);
+      } catch (Exception $e) {
+          $func_name = 'SimpleTemplate::method_not_found';
+          $result[$var_name] = call_user_func($func_name, $variable);
       }
     }
     return $result;

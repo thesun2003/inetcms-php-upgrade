@@ -13,9 +13,14 @@ class using {
     }
 
     if (!in_array($name, self::$classes)) {
-      # var_dump_pre($path . $file_to_include);
-      require_once($path . $file_to_include);
-      self::$classes[] = $name;
+        # var_dump_pre($path . $file_to_include);
+
+        if (file_exists($path . $file_to_include)) {
+            require_once($path . $file_to_include);
+            self::$classes[] = $name;
+        } else {
+            throw new Exception('Cannot find a file to include');
+        }
     }
   }
   
