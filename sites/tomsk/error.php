@@ -13,7 +13,7 @@ using::add_class('search');
 $metadata = array('title' => 'Страница не найдена',
                   'keywords' => '',
                   'description' => '');
-$content = '';
+$content = '<h3>Ошибка: страница, к которой Вы обратились, не существует. Возможно неправильно набран адрес?</h3>';
 
 $js_headers = array();
 $js_headers[] = using::add_js_file('js_config.php');
@@ -32,5 +32,5 @@ $current_page->setCSSHeaders(implode($css_headers));
 $current_page->setContent($content);
 $current_page->setMetadata($metadata);
 
-$current_page->processPageHTML('main/error');
+$current_page->processPageHTML();
 $current_page->display();
