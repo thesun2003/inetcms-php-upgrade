@@ -5,8 +5,6 @@ ini_set('display_errors', '1');
 // MAIN CONFIG
 
 define('SITE_NAME', '&quot;ИТ-Сервис&quot;');
-define('BASE_CHARSET', 'windows-1251');
-
 define('MAIN_URL', 'http://' . $_SERVER['HTTP_HOST']);
 
 $root = $_SERVER['DOCUMENT_ROOT'];

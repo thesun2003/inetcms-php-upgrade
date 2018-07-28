@@ -23,8 +23,8 @@ $oFCKeditor->Create() ;
  <tr>
   <td align="center" valign="top">
    <input type="hidden" name="id" value="<?=$_GET['id'];?>">
-   <input type="button" value="Îòìåíèòü" onclick="javascript:reload('/admin/admin.php');">
-   <input type="submit" value="Èçìåíèòü">
+   <input type="button" value="ĞÑ‚Ğ¼ĞµĞ½Ğ¸Ñ‚ÑŒ" onclick="javascript:reload('/admin/admin.php');">
+   <input type="submit" value="Ğ˜Ğ·Ğ¼ĞµĞ½Ğ¸Ñ‚ÑŒ">
   </td>
  </tr>
 </table>

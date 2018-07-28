@@ -23,7 +23,7 @@ if (isAdminLogined()) {
 <title>Администраторский интерфейс</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <?//=using::add_css_file('main.css');?>
     <?=using::add_css_file('system.css');?>
     <?=using::add_css_file('admin.css', '/admin');?>

@@ -6,13 +6,13 @@ function select_form(form_name) {
   if (form_name == 'login') {
     $('register_form').setStyle('display', 'none');
     $('action').set('value', 'login');
-    $('submit_button').set('value', 'Войти');
+    $('submit_button').set('value', 'Р’РѕР№С‚Рё');
     $('login_link').setStyle('display', 'none');
     $('register_link').setStyle('display', 'inline');
   } else {
     $('register_form').setStyle('display', 'block');
     $('action').set('value', 'register');
-    $('submit_button').set('value', 'Зарегистрироваться');
+    $('submit_button').set('value', 'Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ');
     $('login_link').setStyle('display', 'inline');
     $('register_link').setStyle('display', 'none');
   }
@@ -24,7 +24,7 @@ function select_form(form_name) {
 <div id="register_form" style="display:none">
 <table class="login_form" align="center" valign="middle" style="width:500px">
   <tr>
-    <td style="width:250px">Название организации / ФИО:</td>
+    <td style="width:250px">РќР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё / Р¤РРћ:</td>
     <td>
       <input type="text" name="title" value='[title]'>
       [error_title]
@@ -42,7 +42,7 @@ function select_form(form_name) {
     </td>
   </tr>
   <tr>
-    <td>Пароль:</td>
+    <td>РџР°СЂРѕР»СЊ:</td>
     <td>
       <input type="password" name="passw" value=''>
       [error_passw]
@@ -58,15 +58,15 @@ function select_form(form_name) {
   <tr>
     <td colspan="2" align="center">
       <input type="hidden" id="action" name="action" value='login'>
-      <input type="submit" id="submit_button" value='Войти'>
+      <input type="submit" id="submit_button" value='Р’РѕР№С‚Рё'>
     </td>
   </tr>
 </table>
 </div>
 
 <center>
-<a id="register_link" href="#register_form" onclick="select_form('register')">Зарегистрироваться</a>
-<a id="login_link" style="display:none" href="#login_form" onclick="select_form('login')">Войти</a>
+<a id="register_link" href="#register_form" onclick="select_form('register')">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a>
+<a id="login_link" style="display:none" href="#login_form" onclick="select_form('login')">Р’РѕР№С‚Рё</a>
 </center>
 
 </form>
