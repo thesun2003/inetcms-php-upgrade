@@ -1,5 +1,4 @@
 <?
-using::add_class('modules');
 
 class Custom {
   public static function getMenuClass($cat_id) {
@@ -46,18 +45,21 @@ class Custom {
     }
   }
 
+  static public function get_history($cat_id = 0) {
+      $menu = new Menu();
+      $menu = $menu->find(array('id' => $cat_id))->next();
+
+      return $menu->get_history(array(), 'history', ' / ');
+  }
+
   static public function get_catalog_menu($cat_id = 0) {
-    $result = '<div class="catalog_block">';
-    $result .= '<div class="title">';
+    $result = '';
     $menu = new Menu();
     $menu = $menu->find(array('id' => $cat_id))->next();
-    $result .= $menu->get_history(array(), 'history', ' / ');
-    $result .= '</div>';
     $search = $menu->find(array('parent_id' => $cat_id), 'parent_id, position');
     while($menu = $search->next()) {
-      $result .= '<a class="catalog_link" href="'.get_link($menu).'">' . $menu->get('name') . '</a>';
+      $result .= '<a class="catalog_menu" href="'.get_link($menu).'">' . $menu->get('name') . '</a>';
     }
-    $result .= '</div>';
     return $result;
   }
 

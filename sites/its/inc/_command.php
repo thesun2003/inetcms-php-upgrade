@@ -90,8 +90,14 @@ function find_page() {
         $menu = $menu->find(array('id' => $menu_id))->next();
         if ($menu && in_array($menu->get('type'), array('menu', 'page'))) {
           $path = $menu->get_history_path();
-          if(in_array(current($path), array(2, 3))) {
-            $content .= Custom::get_catalog_menu($menu->get('id'));
+          if (in_array(current($path), array(2, 3))) {
+
+            $content .= SimplePage::process_template_file(
+                ROOT,
+                'main/page_subheader',
+                array('menu_id' => $menu->get('id'))
+            );
+
           } else {
             $content .= menu::getPageTitle($menu);
           }

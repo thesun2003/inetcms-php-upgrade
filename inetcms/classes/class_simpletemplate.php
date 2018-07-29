@@ -57,9 +57,16 @@ class SimpleTemplate {
   }
 
   public function process_template($values = array()) {
+    // process static vars
+    $this->template = $this->process_vars($values);
+
+    // process dynamic vars
     $add_values = $this->process_dynamic_vars();
     $values = array_merge($values, $add_values);
+
+    // process static vars created during dynamic vars processing
     $this->template = $this->process_vars($values);
+
     return $this->template;
   }
   
