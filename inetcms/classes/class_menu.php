@@ -197,7 +197,7 @@ class Menu extends Module {
         $result['action_value'] = ADMIN_INC_FILE . '/save_menu.php';
         $result['submit_value'] = 'Добавить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/core',
+          Module::getModulePath('core'),
           'modalformx/menu_add',
           array('parent_id' => $id)
         );
@@ -206,7 +206,7 @@ class Menu extends Module {
         $result['action_value'] = ADMIN_INC_FILE . '/save_menu.php';
         $result['submit_value'] = 'Изменить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/core',
+          Module::getModulePath('core'),
           'modalformx/menu_change',
           array(
             'id' => $id,

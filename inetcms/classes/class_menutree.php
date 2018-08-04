@@ -46,7 +46,7 @@ class MenuTree {
       'level' => $level,
     );
     $values['toggle_menu_block'] = '<img src="img/normalnode.gif" width="16" height="22" align="middle" alt="" border="0">';
-    $values['menu_link'] = '<a id="values_editmenu_' . $menu->get('id') . '_name" href="' . ModalForm::getLinkX('page', 'change', $menu->get('id')) . '"  title="Èçìåíèòü èìÿ ñòðàíèöû &quot;' . $menu->get('name') . '&quot;" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a>';
+    $values['menu_link'] = '<a id="values_editmenu_' . $menu->get('id') . '_name" href="' . ModalForm::getLinkX('page', 'change', $menu->get('id')) . '"  title="Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ð¼Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ &quot;' . $menu->get('name') . '&quot;" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a>';
 
     $actions_block = '';
     if ($menu->get('visible') == '0') {
@@ -55,9 +55,9 @@ class MenuTree {
       $actions_block .= admin_button::get('hide', ADMIN_INC_FILE . "/show_hide.php?id=" . $menu->get('id'), '');
     }
 
-    $actions_block .= admin_button::get('seo', '/admin/admin.php?type=seo_editpage&id=' . $menu->get('id'), ' äëÿ ñòðàíèöû &quot;' . $menu->get('name') . '&quot;');
-    $actions_block .= admin_button::get('edit', '/admin/admin.php?type=editpage&id=' . $menu->get('id'), 'ñîäåðæèìîå ñòðàíèöû &quot;' . $menu->get('name') . '&quot;');
-    $actions_block .= admin_button::get('edit_new', '/admin/admin.php?type=editpage_new&id=' . $menu->get('id'), 'ñîäåðæèìîå ñòðàíèöû &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('seo', '/admin/admin.php?type=seo_editpage&id=' . $menu->get('id'), ' Ð´Ð»Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('edit', '/admin/admin.php?type=editpage&id=' . $menu->get('id'), 'ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('edit_new', '/admin/admin.php?type=editpage_new&id=' . $menu->get('id'), 'ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ &quot;' . $menu->get('name') . '&quot;');
     $actions_block .= admin_button::get('del', "javascript:ondel('" . ADMIN_INC_FILE . "/save_menu.php?action=delete&id=" . $menu->get('id') . "');", '');
 
     $arrows = $menu->getUpDown();
@@ -70,7 +70,7 @@ class MenuTree {
 
     $values['actions_block'] = $actions_block;
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'menu/page_item',
       $values
     );
@@ -97,7 +97,7 @@ class MenuTree {
       $toggle_menu_block = '<img src="img/normalnode.gif" width="16" height="22" align="middle" alt="" border="0">';
     }
     $values['toggle_menu_block'] = $toggle_menu_block;
-    $values['menu_link'] = '<a id="values_editmenu_' . $menu->get('id') . '_name" href="' . ModalForm::getLinkX('menu', 'change', $menu->get('id')) . '"  title="Èçìåíèòü èìÿ ðàçäåëà &quot;' . $menu->get('name') . '&quot;" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a>';
+    $values['menu_link'] = '<a id="values_editmenu_' . $menu->get('id') . '_name" href="' . ModalForm::getLinkX('menu', 'change', $menu->get('id')) . '"  title="Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ð¼Ñ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° &quot;' . $menu->get('name') . '&quot;" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a>';
 
     $actions_block = '';
 
@@ -107,13 +107,13 @@ class MenuTree {
       $actions_block .= admin_button::get('hide', ADMIN_INC_FILE . "/show_hide.php?id=" . $menu->get('id'), '');
     }
 
-    $actions_block .= admin_button::get('seo', '/admin/admin.php?type=seo_editpage&id=' . $menu->get('id'), ' äëÿ ñòðàíèöû &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('seo', '/admin/admin.php?type=seo_editpage&id=' . $menu->get('id'), ' Ð´Ð»Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ &quot;' . $menu->get('name') . '&quot;');
 
-    $actions_block .= admin_button::get('new_menu', ModalForm::getLinkX('menu', 'add', $menu->get('id')), ' íîâûé ðàçäåë');
-    $actions_block .= admin_button::get('new_page', ModalForm::getLinkX('page', 'add', $menu->get('id')), ' íîâóþ ñòðàíèöó');
+    $actions_block .= admin_button::get('new_menu', ModalForm::getLinkX('menu', 'add', $menu->get('id')), ' Ð½Ð¾Ð²Ñ‹Ð¹ Ñ€Ð°Ð·Ð´ÐµÐ»');
+    $actions_block .= admin_button::get('new_page', ModalForm::getLinkX('page', 'add', $menu->get('id')), ' Ð½Ð¾Ð²ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ');
 
-    $actions_block .= admin_button::get('edit', '/admin/admin.php?type=editpage&id=' . $menu->get('id'), 'ñîäåðæèìîå ñòðàíèöû &quot;' . $menu->get('name') . '&quot;');
-    $actions_block .= admin_button::get('edit_new', '/admin/admin.php?type=editpage_new&id=' . $menu->get('id'), 'ñîäåðæèìîå ñòðàíèöû &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('edit', '/admin/admin.php?type=editpage&id=' . $menu->get('id'), 'ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ &quot;' . $menu->get('name') . '&quot;');
+    $actions_block .= admin_button::get('edit_new', '/admin/admin.php?type=editpage_new&id=' . $menu->get('id'), 'ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ &quot;' . $menu->get('name') . '&quot;');
 
     $actions_block .= admin_button::get('del', "javascript:ondel('" . ADMIN_INC_FILE . "/save_menu.php?action=delete&id=" . $menu->get('id') . "');", '');
     $arrows = $menu->getUpDown();
@@ -126,7 +126,7 @@ class MenuTree {
     }
     $values['actions_block'] = $actions_block;
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'menu/menu_item',
       $values
     );

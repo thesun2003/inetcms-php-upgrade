@@ -33,7 +33,7 @@ class News extends Module {
 
   public function init() {
     global $JS_config_array;
-    $JS_config_array['news_path'] = MODULES_URL . '/news/';
+    $JS_config_array['news_path'] = Module::getModulePath('news') . '/';
   }
 
   function hasChildren() {
@@ -111,10 +111,10 @@ class News extends Module {
     );
     switch($action) {
       case 'add':
-        $result['action_value'] = MODULES_URL . '/news/';
+        $result['action_value'] = Module::getModuleURL('news') . '/';
         $result['submit_value'] = 'Добавить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/news',
+          Module::getModulePath('news'),
           'modalformx/news_add',
           array(
           )
@@ -123,10 +123,10 @@ class News extends Module {
       case 'change':
         $newsmap = new self();
         $newsmap = $newsmap->find(array('id' => $id))->next();
-        $result['action_value'] = MODULES_URL . '/news/';
+        $result['action_value'] = Module::getModuleURL('news') . '/';
         $result['submit_value'] = 'Изменить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/news',
+          Module::getModulePath('news'),
           'modalformx/news_change',
           array(
             'id' => $id,
@@ -181,7 +181,7 @@ class News extends Module {
     $values['actions_block'] = news_button::get('new_news', ModalForm::getLinkX('news', 'add', $menu->get('id')), ' новость');
 
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'menu/menu_item',
       $values
     );
@@ -218,7 +218,7 @@ class News extends Module {
 
   function get_news_content() {
     $content = SimplePage::process_template_file(
-      MODULES . '/news',
+      Module::getModulePath('news'),
       'news_template',
       array(
         'item_date' => self::get_date($this->get('date_added')),
@@ -238,7 +238,7 @@ class News extends Module {
     $search = $news->find(array(), 'date_added DESC', $limit);
     while($item = $search->next()) {
       $content .= SimplePage::process_template_file(
-        MODULES . '/news',
+        Module::getModulePath('news'),
         'news_list',
         array(
           'item_url' => $item->get_url(),
@@ -249,7 +249,7 @@ class News extends Module {
       );
     }
     $list_content = SimplePage::process_template_file(
-      MODULES . '/news',
+      Module::getModulePath('news'),
       'list_template',
       array(
         'pages' => All::get_pages($pn, $items_on_page, self::get_count(), empty($_GET['showall'])),
@@ -270,7 +270,7 @@ class News extends Module {
     $search = $news->find(array(), 'date_added DESC', $limit);
     while($item = $search->next()) {
       $content .= SimplePage::process_template_file(
-        MODULES . '/news',
+        Module::getModulePath('news'),
         'news_list',
         array(
           'item_url' => $item->get_url(),
@@ -281,7 +281,7 @@ class News extends Module {
       );
     }
     $list_content = SimplePage::process_template_file(
-      MODULES . '/news',
+      Module::getModulePath('news'),
       'list_template_main',
       array(
         'items_list' => $content
@@ -312,7 +312,7 @@ class News extends Module {
   function editForm() {
     $form = "";
     $form .= "<h1 style=\"font-size:20px\" align='left'>" . $this->get('name') . "</h1>";
-    $form .= '<form id="news_form" action="'.MODULES_URL.'/news/" method="post">';
+    $form .= '<form id="news_form" action="'.Module::getModuleURL('news').'/" method="post">';
 
     $description = new TextField('Краткое описание', 'description', $this->get('description'));
     $date_added = new TextField('Дата', 'date_added', $this->get('date_added'));
@@ -364,7 +364,7 @@ class News extends Module {
     $values['menu_link'] = '<a id="news_' . $menu->get('id') . '_name" href="'.ModalForm::getLinkX('news', 'change', $menu->get('id')).'"  onmouseover="openActions(\'news\', \'' . $menu->get('id') . '\')" onmouseout="closeActions(\'news\', \'' . $menu->get('id') .'\')"><span class="news_date">['.self::get_date($menu->get('date_added')).']</span>&nbsp;' . $menu->get('name') . '</a>';
 
     $content = SimplePage::process_template_file(
-      MODULES . '/news',
+      Module::getModulePath('news'),
       'menu/news_item',
       $values
     );

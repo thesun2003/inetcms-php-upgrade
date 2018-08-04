@@ -45,7 +45,7 @@ class Gallery extends Entity {
     $form = array();
     $form[] = '<form action="" method="post" enctype="multipart/form-data">';
     $form[] = '<input type="file" name="image" value="">';
-    $form[] = '<input type="submit" value="Добавить" onclick="showUpload(' . $gallery_id . ')">';
+    $form[] = '<input type="submit" value="Р”РѕР±Р°РІРёС‚СЊ" onclick="showUpload(' . $gallery_id . ')">';
     $form[] = '</form>';
     $form[] = '<script type="text/javascript">';
     $form[] = 'reloadGallery(' . $gallery_id . ');';
@@ -72,7 +72,7 @@ class Gallery extends Entity {
       $form[] = '</tr>';
     }
     $form[] = '<td align="center">';
-    $form[] = '<div id="gallery_upload_' . $this->get('id') . '" style="display:none"><img src="/admin/img/upload.gif" alt="Картинка загружается. Подождите пожалуйста" title="Картинка загружается. Подождите пожалуйста"></div>';
+    $form[] = '<div id="gallery_upload_' . $this->get('id') . '" style="display:none"><img src="/admin/img/upload.gif" alt="РљР°СЂС‚РёРЅРєР° Р·Р°РіСЂСѓР¶Р°РµС‚СЃСЏ. РџРѕРґРѕР¶РґРёС‚Рµ РїРѕР¶Р°Р»СѓР№СЃС‚Р°" title="РљР°СЂС‚РёРЅРєР° Р·Р°РіСЂСѓР¶Р°РµС‚СЃСЏ. РџРѕРґРѕР¶РґРёС‚Рµ РїРѕР¶Р°Р»СѓР№СЃС‚Р°"></div>';
     $form[] = '</td>';
     if ($num % $this->get('col_num') == $this->get('col_num')-1) {
       $form[] = '<tr>';
@@ -85,11 +85,11 @@ class Gallery extends Entity {
 
   function getAdminForm($url = '') {
     $form  = '';
-    $url = MODULES_URL . '/core/image_upload/';
+    $url = Module::getModuleURL('core') . '/image_upload/';
     if(!empty($url)) {
       $form .= '<div class="gallery_edit_block">';
       $form .= '<div id="gallery_' . $this->get('id') . '"><!-- Gallery #' . $this->get('id') . ' -->' . Ajax_Loader::run() . '</div><br />';
-      $form .= '<div id="upload_form_' . $this->get('id') . '"><iframe src="' . $url . 'add.php?gallery_id=' . $this->get('id') . '" width="400" height="55" frameborder="0" scrolling="no">Ваш браузер не поддерживает плавающие фреймы!</iframe></div></div>';
+      $form .= '<div id="upload_form_' . $this->get('id') . '"><iframe src="' . $url . 'add.php?gallery_id=' . $this->get('id') . '" width="400" height="55" frameborder="0" scrolling="no">Р’Р°С€ Р±СЂР°СѓР·РµСЂ РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ РїР»Р°РІР°СЋС‰РёРµ С„СЂРµР№РјС‹!</iframe></div></div>';
     }
     return $form;
   }
@@ -121,7 +121,7 @@ class Gallery extends Entity {
       $form[] = '</tr>';
     }
     $form[] = '<td align="center">';
-    $form[] = '<div id="gallery_upload_' . $this->get('id') . '" style="display:none"><img src="/admin/img/upload.gif" alt="Картинка загружается. Подождите пожалуйста" title="Картинка загружается. Подождите пожалуйста"></div>';
+    $form[] = '<div id="gallery_upload_' . $this->get('id') . '" style="display:none"><img src="/admin/img/upload.gif" alt="РљР°СЂС‚РёРЅРєР° Р·Р°РіСЂСѓР¶Р°РµС‚СЃСЏ. РџРѕРґРѕР¶РґРёС‚Рµ РїРѕР¶Р°Р»СѓР№СЃС‚Р°" title="РљР°СЂС‚РёРЅРєР° Р·Р°РіСЂСѓР¶Р°РµС‚СЃСЏ. РџРѕРґРѕР¶РґРёС‚Рµ РїРѕР¶Р°Р»СѓР№СЃС‚Р°"></div>';
     $form[] = '</td>';
     if ($num % $this->get('col_num') == $this->get('col_num')-1) {
       $form[] = '<tr>';

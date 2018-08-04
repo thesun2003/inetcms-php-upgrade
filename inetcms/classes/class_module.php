@@ -2,12 +2,14 @@
 using::add_class('entity');
 using::add_class('simpletemplate');
 
-class Module extends Entity {
+class Module extends Entity
+{
   var $module_id_field = 'module_id';
   var $module_name = 'default_module';
-  function __construct($info=false){
-    $this->path = MODULES . '/' . strtolower(get_class($this));
-    $this->url = MODULES_URL . '/' . strtolower(get_class($this));
+
+  function __construct($info=false) {
+    $this->path = self::getModulePath(strtolower(get_class($this)));
+    $this->url = self::getModuleUrl(strtolower(get_class($this)));
     parent::__construct($info);
   }
 
@@ -18,13 +20,23 @@ class Module extends Entity {
   }
 
   static function getModulePath($class_name = 'Menu') {
-    $path = MODULES . '/' . $class_name;
-    return $path;
+      if (Modules::isModuleInstalled($class_name)) {
+          $path = LOCAL_MODULES . '/' . $class_name;
+      } else {
+          $path = MODULES . '/' . $class_name;
+      }
+
+      return $path;
   }
 
   static function getModuleURL($class_name = 'Menu') {
-    $path = MODULES_URL . '/' . $class_name;
-    return $path;
+      if (Modules::isModuleInstalled($class_name)) {
+          $url = LOCAL_MODULES_URL . '/' . $class_name;
+      } else {
+          $url = MODULES_URL . '/' . $class_name;
+      }
+
+      return $url;
   }
 
   static function addClass($class_name) {

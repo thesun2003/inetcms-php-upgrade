@@ -46,7 +46,7 @@ class GuestBook extends Module {
 
   public function init() {
     global $JS_config_array;
-    $JS_config_array['guestbook_path'] = MODULES_URL . '/guestbook/';
+    $JS_config_array['guestbook_path'] = $this->url;
   }
 
   static function getContentById($id) {
@@ -60,6 +60,7 @@ class GuestBook extends Module {
   }
 
   static function getIdByName($name) {
+      global $DB;
     $news = new self();
     $news = $news->find(array(), false, false, "LOWER(name) = " . $DB->quote(strtolower($name)))->next();
     if($news) {
@@ -110,25 +111,13 @@ class GuestBook extends Module {
       'content' => ''
     );
     switch($action) {
-/*
-      case 'add':
-        $result['action_value'] = MODULES_URL . '/articles/';
-        $result['submit_value'] = 'Добавить';
-        $result['content'] = SimplePage::process_template_file(
-          MODULES . '/articles',
-          'modalformx/news_add',
-          array(
-          )
-        );
-      break;
-*/
       case 'change':
         $newsmap = new self();
         $newsmap = $newsmap->find(array('id' => $id))->next();
-        $result['action_value'] = MODULES_URL . '/guestbook/';
+        $result['action_value'] = Module::getModuleURL('guestbook') . '/';
         $result['submit_value'] = 'Изменить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/guestbook',
+          Module::getModulePath('guestbook'),
           'modalformx/news_change',
           array(
             'id' => $id,
@@ -184,7 +173,7 @@ class GuestBook extends Module {
     $values['actions_block'] = '';
 
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'menu/menu_item',
       $values
     );
@@ -221,7 +210,7 @@ class GuestBook extends Module {
 
   function get_news_content() {
     $content = SimplePage::process_template_file(
-      MODULES . '/guestbook',
+      Module::getModulePath('guestbook'),
       'news_template',
       array(
         'item_name' => $this->get('name', false),
@@ -242,7 +231,7 @@ class GuestBook extends Module {
     $search = $news->find(array(), 'date_added DESC', $limit, 'answer != ""');
     while($item = $search->next()) {
       $content .= SimplePage::process_template_file(
-        MODULES . '/guestbook',
+          Module::getModulePath('guestbook'),
         'news_list',
         array(
           'item_name' => $item->get('name'),
@@ -255,7 +244,7 @@ class GuestBook extends Module {
       );
     }
     $list_content = SimplePage::process_template_file(
-      MODULES . '/guestbook',
+        Module::getModulePath('guestbook'),
       'list_template',
       array(
         'pages' => All::get_pages($pn, $items_on_page, self::get_count(true), empty($_GET['showall'])),
@@ -277,17 +266,17 @@ class GuestBook extends Module {
     $search = $news->find(array(), 'RAND()', $limit);
     while($item = $search->next()) {
       $content .= SimplePage::process_template_file(
-        MODULES . '/guestbook',
+          Module::getModulePath('guestbook'),
         'news_list_main',
         array(
           'item_url' => $item->get_url(),
           'item_name' => $item->get('name'),
-          'item_image' => $image_url,
+          # 'item_image' => $image_url,
         )
       );
     }
     $list_content = SimplePage::process_template_file(
-      MODULES . '/guestbook',
+        Module::getModulePath('guestbook'),
       'list_template_main',
       array(
         'items_list' => $content
@@ -389,7 +378,7 @@ function checkForm(f) {
   function editForm() {
     $form = "";
     $form .= "<h1 style=\"font-size:20px\" align='left'>" . $this->get('name') .', '. $this->get('email') .', '. $this->get('city') . "</h1>";
-    $form .= '<form id="news_form" action="'.MODULES_URL.'/guestbook/" method="post">';
+    $form .= '<form id="news_form" action="' . Module::getModuleURL('guestbook') . '/" method="post">';
 
     $date_added = new TextField('Дата', 'date_added', $this->get('date_added'));
     $textEdit = new TextEdit2('answer', $this->get('answer'));
@@ -442,7 +431,7 @@ function checkForm(f) {
     $values['menu_link'] = '<a id="guestbook_' . $menu->get('id') . '_name" onmouseover="openActions(\'guestbook\', \'' . $menu->get('id') . '\')" onmouseout="closeActions(\'guestbook\', \'' . $menu->get('id') .'\')"><span class="news_date">['.self::get_date($menu->get('date_added')).']</span>&nbsp;' . $menu->get('name') . '</a>';
 
     $content = SimplePage::process_template_file(
-      MODULES . '/guestbook',
+        Module::getModulePath('guestbook'),
       'menu/news_item',
       $values
     );

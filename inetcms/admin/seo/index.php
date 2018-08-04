@@ -17,7 +17,7 @@ $form .= $description->getAdminForm();
   <tr>
     <td>
       <h1><?=$menu->get('name')?></h1>
-      <form id="seo_form" action="<?=MODULES_URL . '/core/?mode=JSON&context=seo&type=menu&id=' . $menu->get('id');?>" method="post"  onSubmit="ajax_form_submit('seo_form');return false;">
+      <form id="seo_form" action="<?=Module::getModuleURL('core'). '/?mode=JSON&context=seo&type=menu&id=' . $menu->get('id');?>" method="post"  onSubmit="ajax_form_submit('seo_form');return false;">
       <?=$form?>
       <input type='submit' name="update_form" value="Изменить" />
       </form>

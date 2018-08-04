@@ -76,7 +76,7 @@ class Clients extends Admins {
     <script type="text/javascript">
     function update_message_list() {
       new Request.HTML({
-        url: \''.MODULES_URL.'/clients/?mode=HTML&is_admin='.(int)$is_admin.'&id='.$this->get('id').'\',
+        url: \''.Module::getModuleURL('clients').'/?mode=HTML&is_admin='.(int)$is_admin.'&id='.$this->get('id').'\',
         update: \'last_messages\'
       }).send();
     }
@@ -85,7 +85,7 @@ class Clients extends Admins {
     $title = $is_admin ? '&quot;'.$this->get('title').'&quot; ('.$this->get('login').')' : '&quot;ИТ Сервис&quot;';
 
     $form .= "<h1 style=\"font-size:20px\" align='left'>Переписка с " . $title . "</h1>";
-    $form .= '<form id="message_form" action="'.MODULES_URL.'/clients/" method="post">';
+    $form .= '<form id="message_form" action="'.Module::getModuleURL('clients').'/" method="post">';
 
     $textEdit = new TextEdit2('message', $this->get('message'));
 
@@ -198,7 +198,7 @@ class Clients extends Admins {
     $values['menu_link'] = '<span id="values_editmenu_' . $menu->get('id') . '_name" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</span>';
 
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+        Module::getModulePath('core'),
       'menu/menu_item',
       $values
     );
@@ -238,7 +238,7 @@ class Clients extends Admins {
       }
     }
     $content = SimplePage::process_template_file(
-      MODULES . '/clients',
+        Module::getModulePath('clients'),
       'login_register_page',
       $replace
     );
@@ -261,7 +261,7 @@ class Clients extends Admins {
     );
 
     $content = SimplePage::process_template_file(
-      MODULES . '/clients',
+      Module::getModulePath('clients'),
       'user_page',
       $replace
     );
@@ -354,12 +354,12 @@ class Clients extends Admins {
       'left_padding' => $level*16,
       'level' => $level,
       'toggle_menu_block' => '<img src="img/normalnode.gif" width="16" height="22" align="middle" alt="" border="0">',
-      'actions_block' => admin_button::get('del', "javascript:ondel('".MODULES_URL."/clients/?action=delete&id=" . $menu->get('id') . "');", '')
+      'actions_block' => admin_button::get('del', "javascript:ondel('".Module::getModuleURL('clients')."/?action=delete&id=" . $menu->get('id') . "');", '')
     );
     $values['menu_link'] = '<a id="clients_' . $menu->get('id') . '_name" href="/admin/admin.php?type=module_edit&module_name=clients&id=' . $menu->get('id') . '"  onmouseover="openActions(\'clients\', \'' . $menu->get('id') . '\')" onmouseout="closeActions(\'clients\', \'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a> '. '('.ClientMessage::get_count($menu->get('id')).')';
 
     $content = SimplePage::process_template_file(
-      MODULES . '/clients',
+        Module::getModulePath('clients'),
       'menu/clients_item',
       $values
     );

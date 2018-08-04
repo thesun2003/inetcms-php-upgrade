@@ -48,7 +48,7 @@ class Articles extends Module {
     }
     public function init() {
         global $JS_config_array;
-        $JS_config_array['articles_path'] = MODULES_URL . '/articles/';
+        $JS_config_array['articles_path'] = Module::getModuleURL('articles') . '/';
     }
     static function getContentById($id) {
         $content = '';
@@ -60,6 +60,7 @@ class Articles extends Module {
         return $content;
     }
     static function getIdByName($name) {
+        global $DB;
         $news = new self();
         $news = $news->find(array(), false, false, "LOWER(name) = " . $DB->quote(strtolower($name)))->next();
         if($news) {
@@ -107,10 +108,10 @@ class Articles extends Module {
         );
         switch($action) {
             case 'add':
-                $result['action_value'] = MODULES_URL . '/articles/';
+                $result['action_value'] = Module::getModuleURL('articles') . '/';
                 $result['submit_value'] = 'Добавить';
                 $result['content'] = SimplePage::process_template_file(
-                    MODULES . '/articles',
+                    Module::getModulePath('articles'),
                     'modalformx/news_add',
                     array(
                     )
@@ -119,10 +120,10 @@ class Articles extends Module {
             case 'change':
                 $newsmap = new self();
                 $newsmap = $newsmap->find(array('id' => $id))->next();
-                $result['action_value'] = MODULES_URL . '/articles/';
+                $result['action_value'] = Module::getModuleURL('articles') . '/';
                 $result['submit_value'] = 'Изменить';
                 $result['content'] = SimplePage::process_template_file(
-                    MODULES . '/articles',
+                    Module::getModulePath('articles'),
                     'modalformx/news_change',
                     array(
                         'id' => $id,
@@ -170,7 +171,7 @@ class Articles extends Module {
         $values['menu_link'] = '<span id="values_editmenu_' . $menu->get('id') . '_name" onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</span>';
         $values['actions_block'] = news_button::get('new_news', ModalForm::getLinkX('articles', 'add', $menu->get('id')), ' статью');
         $content = SimplePage::process_template_file(
-            MODULES . '/core',
+            Module::getModulePath('core'),
             'menu/menu_item',
             $values
         );
@@ -203,7 +204,7 @@ class Articles extends Module {
     }
     function get_news_content() {
         $content = SimplePage::process_template_file(
-            MODULES . '/articles',
+            Module::getModulePath('articles'),
             'news_template',
             array(
                 'item_name' => $this->get('name', false),
@@ -231,7 +232,7 @@ class Articles extends Module {
                 $image_url = $image->IMAGES_URL . $image->get('filename');
             }
             $content .= SimplePage::process_template_file(
-                MODULES . '/articles',
+                Module::getModulePath('articles'),
                 'news_list',
                 array(
                     'item_url' => $item->get_url(),
@@ -243,7 +244,7 @@ class Articles extends Module {
             );
         }
         $list_content = SimplePage::process_template_file(
-            MODULES . '/articles',
+            Module::getModulePath('articles'),
             'list_template',
             array(
                 'pages' => All::get_pages($pn, $items_on_page, self::get_count(), empty($_GET['showall'])),
@@ -271,7 +272,7 @@ class Articles extends Module {
                 $image_url = $image->IMAGES_URL . $image->get('filename');
             }
             $content .= SimplePage::process_template_file(
-                MODULES . '/articles',
+                Module::getModulePath('articles'),
                 'news_list_main',
                 array(
                     'item_url' => $item->get_url(),
@@ -281,7 +282,7 @@ class Articles extends Module {
             );
         }
         $list_content = SimplePage::process_template_file(
-            MODULES . '/articles',
+            Module::getModulePath('articles'),
             'list_template_main',
             array(
                 'items_list' => $content
@@ -310,7 +311,7 @@ class Articles extends Module {
     function editForm() {
         $form = "";
         $form .= "<h1 style=\"font-size:20px\" align='left'>" . $this->get('name') . "</h1>";
-        $form .= '<form id="news_form" action="'.MODULES_URL.'/articles/" method="post">';
+        $form .= '<form id="news_form" action="'.Module::getModuleURL('articles').'/" method="post">';
         $gallery = new Gallery();
         $search = $gallery->find(array('id' => $this->get('gallery_id')));
         $gallery = $search->next();
@@ -354,7 +355,7 @@ class Articles extends Module {
 
         $values['menu_link'] = '<a id="articles_' . $menu->get('id') . '_name" href="'.ModalForm::getLinkX('articles', 'change', $menu->get('id')).'"  onmouseover="openActions(\'articles\', \'' . $menu->get('id') . '\')" onmouseout="closeActions(\'articles\', \'' . $menu->get('id') .'\')"><span class="news_date">['.self::get_date($menu->get('date_added')).']</span>&nbsp;' . $menu->get('name') . '</a>';
         $content = SimplePage::process_template_file(
-            MODULES . '/articles',
+            Module::getModulePath('articles'),
             'menu/news_item',
             $values
         );

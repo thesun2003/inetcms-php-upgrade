@@ -122,19 +122,19 @@ class CatalogItem extends Entity {
    
     $actions_block = '';
     $actions_block .= admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=catalog&id=' . $menu->get('id'), ' для товара &quot;' . $menu->get('name') . '&quot;');
-    $actions_block .= admin_button::get('del', "javascript:ondel('" . MODULES_URL . "/catalog/?action_suffix=catalog_item&action=delete&id=" . $menu->get('id') . "');", '');
+    $actions_block .= admin_button::get('del', "javascript:ondel('" . Module::getModuleURL('catalog') . "/?action_suffix=catalog_item&action=delete&id=" . $menu->get('id') . "');", '');
     
     $arrows = $menu->getUpDown();
     if (!empty($arrows['down'])) {
-      $actions_block .= admin_button::get('arrow_down', MODULES_URL . "/catalog/?action_suffix=catalog_item&action=changepos&fid=" . $menu->get('id') . "&tid=" . $arrows['down'], '');
+      $actions_block .= admin_button::get('arrow_down', Module::getModuleURL('catalog') . "/?action_suffix=catalog_item&action=changepos&fid=" . $menu->get('id') . "&tid=" . $arrows['down'], '');
     }
     if (!empty($arrows['up'])) {
-      $actions_block .= admin_button::get('arrow_up', MODULES_URL . "/catalog/?action_suffix=catalog_item&action=changepos&fid=" . $menu->get('id') . "&tid=" . $arrows['up'], '');
+      $actions_block .= admin_button::get('arrow_up', Module::getModuleURL('catalog') . "/?action_suffix=catalog_item&action=changepos&fid=" . $menu->get('id') . "&tid=" . $arrows['up'], '');
     }
 
     $values['actions_block'] = $actions_block;
     $content = SimplePage::process_template_file(
-      MODULES . '/catalog',
+      Module::getModulePath('catalog'),
       'menu/catalog_item',
       $values
     );
@@ -234,7 +234,7 @@ class CatalogItem extends Entity {
   function editForm() {
     $form = "";
     $form .= "<h1 style=\"font-size:20px\" align='center'>" . $this->get('name') . "</h1>";
-    $form .= '<form id="catalog_item_form" action="'.MODULES_URL.'/catalog/" method="post">';
+    $form .= '<form id="catalog_item_form" action="'.Module::getModuleURL('catalog').'/" method="post">';
 
     $gallery1 = new Gallery();
     $search = $gallery1->find(array('id' => $this->get('gallery1_id')));
@@ -288,10 +288,10 @@ class CatalogItem extends Entity {
     );
     switch($action) {
       case 'add':
-        $result['action_value'] = MODULES_URL . '/catalog/';
+        $result['action_value'] = Module::getModulePath('catalog') . '/';
         $result['submit_value'] = 'Добавить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/catalog',
+          Module::getModulePath('catalog'),
           'modalformx/catalog_item_add',
           array('parent_id' => $id)
         );
@@ -300,10 +300,10 @@ class CatalogItem extends Entity {
         $item = new self();
         $item = $item->find(array('id' => $id))->next();
 
-        $result['action_value'] = MODULES_URL . '/catalog/';
+        $result['action_value'] = Module::getModuleURL('catalog') . '/';
         $result['submit_value'] = 'Изменить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/catalog',
+          Module::getModulePath('catalog'),
           'modalformx/catalog_item_change',
           array(
             'id' => $id,

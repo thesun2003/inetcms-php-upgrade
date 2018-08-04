@@ -81,8 +81,8 @@ class Catalog extends Module {
 
   public function init() {
     global $JS_config_array;
-    $JS_config_array['catalog_path'] = MODULES_URL . '/catalog/';
-    $JS_config_array['catalog_item_path'] = MODULES_URL . '/catalog/';
+    $JS_config_array['catalog_path'] = Module::getModuleUrl('catalog') . '/';
+    $JS_config_array['catalog_item_path'] = Module::getModuleUrl('catalog') . '/';
     
     if (!isset($_SESSION['div_catalog'])) {
       $_SESSION['div_catalog'] = array();
@@ -350,20 +350,20 @@ class Catalog extends Module {
         $values['catalog_items_droppables'] = 'catalog_items_droppables';
       }
       $actions_block .= admin_button::get('edit', '/admin/admin.php?type=module_edit&module_name=catalog&context=catalog&id=' . $menu->get('id'), ' категорию &quot;' . $menu->get('name') . '&quot;');
-      $actions_block .= admin_button::get('del', "javascript:ondel('" . MODULES_URL . "/catalog/?action_suffix=catalog&action=delete&id=" . $menu->get('id') . "');", '');
+      $actions_block .= admin_button::get('del', "javascript:ondel('" . Module::getModuleURL('catalog') . "/?action_suffix=catalog&action=delete&id=" . $menu->get('id') . "');", '');
       $arrows = $menu->getUpDown();
 
       if (!empty($arrows['down'])) {
-        $actions_block .= admin_button::get('arrow_down', MODULES_URL . "/catalog/?action_suffix=catalog&action=changepos&fid=" . $menu->get('id') . "&tid=" . $arrows['down'], '');
+        $actions_block .= admin_button::get('arrow_down', Module::getModuleURL('catalog') . "/?action_suffix=catalog&action=changepos&fid=" . $menu->get('id') . "&tid=" . $arrows['down'], '');
       }
       if (!empty($arrows['up'])) {
-        $actions_block .= admin_button::get('arrow_up', MODULES_URL . "/catalog/?action_suffix=catalog&action=changepos&fid=" . $menu->get('id') . "&tid=" . $arrows['up'], '');
+        $actions_block .= admin_button::get('arrow_up', Module::getModuleURL('catalog') . "/?action_suffix=catalog&action=changepos&fid=" . $menu->get('id') . "&tid=" . $arrows['up'], '');
       }
     }
     
     $values['actions_block'] = $actions_block;
     $content = SimplePage::process_template_file(
-      MODULES . '/catalog',
+      Module::getModulePath('catalog'),
       'menu/catalog',
       $values
     );
@@ -440,7 +440,7 @@ class Catalog extends Module {
         'parity_clear' => $parity ? '<br style="clear:both">' : ''
       );
       $content .= SimplePage::process_template_file(
-        MODULES . '/catalog',
+        Module::getModulePath('catalog'),
         'catalog_list',
         $values
       );
@@ -570,7 +570,7 @@ class Catalog extends Module {
   function editForm() {
     $form = "";
     $form .= "<h1 style=\"font-size:20px\" align='center'>" . $this->get('name') . "</h1>";
-    $form .= '<form id="catalog_form" action="'.MODULES_URL.'/catalog/" method="post">';
+    $form .= '<form id="catalog_form" action="'.Module::getModuleURL('catalog').'/" method="post">';
 
     $gallery1 = new Gallery();
     $search = $gallery1->find(array('id' => $this->get('gallery1_id')));
@@ -609,19 +609,19 @@ class Catalog extends Module {
     );
     switch($action) {
       case 'add':
-        $result['action_value'] = MODULES_URL . '/catalog/';
+        $result['action_value'] = Module::getModuleURL('catalog') . '/';
         $result['submit_value'] = 'Добавить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/catalog',
+          Module::getModulePath('catalog'),
           'modalformx/catalog_add',
           array('parent_id' => $id)
         );
       break;
       case 'change':
-        $result['action_value'] = MODULES_URL . '/catalog/';
+        $result['action_value'] = Module::getModuleURL('catalog') . '/';
         $result['submit_value'] = 'Изменить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/catalog',
+          Module::getModulePath('catalog'),
           'modalformx/catalog_change',
           array(
             'id' => $id,

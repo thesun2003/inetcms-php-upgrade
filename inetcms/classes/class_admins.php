@@ -123,7 +123,7 @@ class Admins extends Module {
     $values['actions_block'] = admin_button::get('new_admin', ModalForm::getLinkX('admins', 'add', $menu->get('id')), ' нового администратора');
 
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'menu/menu_item',
       $values
     );
@@ -150,7 +150,7 @@ class Admins extends Module {
     $values['menu_link'] = '<a id="admins_' . $menu->get('id') . '_name" href="'.ModalForm::getLinkX('admins', 'change', $menu->get('id')).'"  onmouseover="openActions(\'admins\', \'' . $menu->get('id') . '\')" onmouseout="closeActions(\'admins\', \'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a>';
 
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'menu/admins_item',
       $values
     );
@@ -222,7 +222,7 @@ class Admins extends Module {
         $result['action_value'] = ADMIN_URL . '/admins/index.php';
         $result['submit_value'] = 'Добавить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/core',
+          Module::getModulePath('core'),
           'modalformx/admins_add',
           array('parent_id' => $id)
         );
@@ -231,7 +231,7 @@ class Admins extends Module {
         $result['action_value'] = ADMIN_URL . '/admins/index.php';
         $result['submit_value'] = 'Изменить';
         $result['content'] = SimplePage::process_template_file(
-          MODULES . '/core',
+          Module::getModulePath('core'),
           'modalformx/admins_change',
           array(
             'id' => $id,

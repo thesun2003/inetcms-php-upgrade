@@ -34,7 +34,7 @@ class ClientMessage extends Entity {
     }
 
     $content = SimplePage::process_template_file(
-      MODULES . '/clients',
+        Module::getModulePath('clients'),
       'list_template',
       array(
         'name' => $name,

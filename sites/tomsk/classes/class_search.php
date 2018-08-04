@@ -80,7 +80,7 @@ class Search extends Module {
     $search = $search_result->find(array(), 'date_added DESC', false, 'DATE_FORMAT( date_added, "%m_%Y" ) = "'.$list_id.'"');
     while ($item = $search->next()) {
       $result[] = SimplePage::process_template_file(
-        MODULES . '/core',
+        Module::getModulePath('core'),
         'search/list_template',
         array(
           'query' => $item->get('query_data'),
@@ -92,7 +92,7 @@ class Search extends Module {
     $months = self::get_rus_months();
 
     return SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'search/template',
       array(
         'list' => implode($result),
@@ -114,7 +114,7 @@ class Search extends Module {
       $search->updateInfo($search_query);
     }
     $content .= SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'search/google_search',
       array(
         'search_query' => $search_query
@@ -242,7 +242,7 @@ class Search extends Module {
     $values['menu_link'] = $menu->get('name');
 
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'menu/menu_item',
       $values
     );
@@ -269,7 +269,7 @@ class Search extends Module {
     $values['menu_link'] = '<a id="values_editmenu_' . $menu->get('id') . '_name" href="/admin/admin.php?type=search_results&list_id='.$menu->get('id').'"  onmouseover="openMenuActions(\'' . $menu->get('id') . '\')" onmouseout="closeMenuActions(\'' . $menu->get('id') .'\')">' . $menu->get('name') . '</a>';
 
     $content = SimplePage::process_template_file(
-      MODULES . '/core',
+      Module::getModulePath('core'),
       'menu/search_item',
       $values
     );

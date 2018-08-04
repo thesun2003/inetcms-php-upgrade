@@ -76,8 +76,4 @@ class SimplePage {
     return SimpleTemplate::process_file($filename, $values);
   }
 
-  public static function get_template($path, $template_name = 'template') {
-    $filename = $path . '/templates/' . $template_name . '.html';
-    return SimpleTemplate::get_file($filename);
-  }
 }

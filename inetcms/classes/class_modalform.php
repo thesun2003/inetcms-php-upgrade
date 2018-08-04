@@ -12,8 +12,8 @@ class ModalForm {
         <td colspan="2" id="' . self::ID . '_content" height="100%"><!-- Modal Form Dialog --></td>
       </tr>
       <tr>
-        <td align="center"><input type="button" value="Îòìåíèòü" onclick="javascript:hideModalForm()"></td>
-        <td align="center"><input id="' . self::ID . '_submit" type="submit" value="Äîáàâèòü"></td>
+        <td align="center"><input type="button" value="ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ" onclick="javascript:hideModalForm()"></td>
+        <td align="center"><input id="' . self::ID . '_submit" type="submit" value="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ"></td>
       </tr>
     </table>
   </form>
@@ -48,7 +48,7 @@ class ModalForm {
     }
     public static function get_template() {
       return SimplePage::process_template_file(
-        MODULES . '/core',
+        Module::getModulePath('core'),
         '/modalformx/modalform',
         array(
           'self_ID' => self::ID,
