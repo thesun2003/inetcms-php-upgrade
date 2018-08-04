@@ -34,12 +34,8 @@ define('ADMIN_INC_FILE', ADMIN_INC);
 
 define('MODULES_URL', ADMIN_URL . "/modules");
 define('MODULES', ADMIN . "/modules");
-
-define('LOCAL_MODULES_URL', ADMIN_URL . "/modules");
-define('LOCAL_MODULES', ADMIN . "/modules");
-
-# define('LOCAL_MODULES_URL', ROOT . "/modules");
-# define('LOCAL_MODULES', ROOT . "/modules");
+define('LOCAL_MODULES_URL', MAIN_URL . "/modules");
+define('LOCAL_MODULES', ROOT . "/modules");
 
 define('CATALOG_USE_XURL', true);
 define('GALLERY_LIST_IMAGE_WIDTH', 150);
