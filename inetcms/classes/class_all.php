@@ -44,10 +44,11 @@ class All{
       return $url;
   }
 
+  // TODO: remove it after
   public static function iconv_array(&$array, $from_charset = 'UTF-8', $to_charset = 'windows-1251') {
-    foreach($array as &$value) {
-      $value = iconv($from_charset, $to_charset, $value); 
-    }
+//    foreach($array as &$value) {
+//      $value = iconv($from_charset, $to_charset, $value);
+//    }
     return $array;
   }
   

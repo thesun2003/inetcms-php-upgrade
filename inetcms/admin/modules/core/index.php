@@ -54,13 +54,6 @@ if(!empty($_GET['mode']) && $_GET['mode'] == 'JSON' && !empty($_GET['context']))
           break;
         }
       }
-      if (Modules::isModuleInstalled('dilermap')) {
-        Module::addClass('dilermap');
-        if ($_GET['id'] == 'dilermap') {
-          $response['content'] = Dilermap::show_admin_items();
-          break;
-        }
-      }
       if (Modules::isModuleInstalled('news')) {
         Module::addClass('news');
         if ($_GET['id'] == 'news') {

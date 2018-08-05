@@ -55,7 +55,6 @@ $JS_config = array(
 'main_url' => MAIN_URL,
 'core_path' => MODULES_URL . '/core/',
 'image_upload_path' => MODULES_URL . '/core/image_upload/',
-'catalog_path' => MODULES_URL . '/catalog/',
 'admin_inc' => '/admin/inc/',
 'news_path' => '/admin/news/',
 );
