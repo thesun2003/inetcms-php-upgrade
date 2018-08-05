@@ -17,7 +17,7 @@ if (!isAdminLogined()) {
   reload(ADMIN_URL);
 }
 
-if (!empty($_GET['type']) && in_array($_GET['type'], array('editpage', 'editpage_new'))) {
+if (!empty($_GET['type']) && in_array($_GET['type'], array('editpage_new'))) {
   if (!is_numeric($_GET['id'])) {
     reload(ADMIN_URL);
   }
@@ -66,9 +66,6 @@ echo Modules::getAdminModules();
 if (!empty($_GET['type'])) {
   $internal_module_path = '';
   switch($_GET['type']) {
-    case 'editpage':
-      $internal_module_path = ADMIN . '/html/index.php';
-    break;
     case 'editpage_new':
       $internal_module_path = ADMIN . '/html_new/index.php';
     break;

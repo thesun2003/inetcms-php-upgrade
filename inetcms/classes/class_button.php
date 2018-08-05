@@ -24,7 +24,7 @@ class admin_button extends button {
     'new_page' => array('/admin/img/new.gif', 'Добавить '),
     'new_action' => array('/admin/img/fldr_green.gif', 'Добавить '),
     'edit' => array('/admin/img/edit.gif', 'Изменить '),
-    'edit_new' => array("/admin/img/edit_new.gif","(тестирование) Изменить "),
+    'edit_new' => array("/admin/img/edit_new.gif","Изменить "),
     'del' => array("/admin/img/b_drop.png","Удалить "), 
     'seo' => array("/admin/img/icon_seo.png","СЕО настройки "),
     'hide' => array("/admin/img/hide.jpg","Скрыть "),
