@@ -7,7 +7,7 @@ $page = new MenuPage($_GET);
 <form action="<? echo ADMIN_URL ?>/html_new/save.php" method="post">
 <table width="100%">
 <?php
-    foreach ($page->page->getContentFields() as $contentField) {
+    foreach ($page->page->form->getAdminEditableFields() as $contentField) {
 ?>
     <tr>
         <td width="100%" valign="top">

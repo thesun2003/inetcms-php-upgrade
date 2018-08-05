@@ -6,8 +6,11 @@ define("GLOBAL_ERROR", "_global");
 define('EMPTY_FIELD_PREFIX', 'empty_');
 class FieldManager{
     var $_fields;
+    var $_admin_editable_fields;
+
     function FieldManager(){
         $this->_fields  = array();
+        $this->_admin_editable_fields = array();
     }
 
     function addError($fieldName, $error){
@@ -41,9 +44,12 @@ class FieldManager{
   		return $errors;
   	}
 
-    function addField($fieldName){
+    function addField($fieldName, $adminEditable = false){
         if (!$this->isExists($fieldName)) {
             $this->_fields[$fieldName]  = new Field();
+            if ($adminEditable) {
+                $this->_admin_editable_fields[] = $fieldName;
+            }
         }
     }
 
@@ -62,6 +68,10 @@ class FieldManager{
             }
         }
         return false;
+    }
+
+    function getAdminEditableFields() {
+        return $this->_admin_editable_fields;
     }
 
     function del($fieldName){

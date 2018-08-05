@@ -24,10 +24,8 @@ if(!empty($_GET['mode']) && $_GET['mode'] == 'JSON' && !empty($_GET['context']))
       $values = array();
       switch($_GET['type']) {
         case 'menu':
-          $values = Menu::getModalFormValues($_GET['action'], $_GET['id']);
-          break;
         case 'page':
-          $values = MenuPage::getModalFormValues($_GET['action'], $_GET['id']);
+          $values = MenuPage::getModalFormValues($_GET['action'], $_GET['id'], $_GET['type']);
           break;
         case 'admins':
           $values = Admins::getModalFormValues($_GET['action'], $_GET['id']);

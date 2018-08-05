@@ -6,16 +6,12 @@ class Page extends Entity {
   function Page($info=false){
     $this->Entity(getTablePrefix() . 'page');
     $this->form->addField('id');
-    $this->form->addField('content');
+    $this->form->addField('content', true);
     $this->form->set('menu_id', 0);
 
     if (!empty($info)) {
       $this->setInfo($info);
     }
-  }
-
-  public function getContentFields() {
-      return array('content');
   }
 
   function save() {

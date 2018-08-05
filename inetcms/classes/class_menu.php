@@ -8,6 +8,7 @@ class Menu extends Module {
   function Menu($info=false){
     $this->Entity(getTablePrefix() . 'menu');
     $this->form->addField('id');
+    $this->form->addField('name', true);
     $this->form->setRequired('name');
     $this->form->set('type', 'menu');
     $this->form->set('visible', 0);
@@ -186,36 +187,4 @@ class Menu extends Module {
     return '<h1 class="title">' . $title . '</h1>';
   }
 
-  public static function getModalFormValues($action, $id) {
-    $result = array(
-      'action_value' => '',
-      'submit_value' => '',
-      'content' => ''
-    );
-    switch($action) {
-      case 'add':
-        $result['action_value'] = ADMIN_INC_FILE . '/save_menu.php';
-        $result['submit_value'] = 'Добавить';
-        $result['content'] = SimplePage::process_template_file(
-          Module::getModulePath('core'),
-          'modalformx/menu_add',
-          array('parent_id' => $id)
-        );
-      break;
-      case 'change':
-        $result['action_value'] = ADMIN_INC_FILE . '/save_menu.php';
-        $result['submit_value'] = 'Изменить';
-        $result['content'] = SimplePage::process_template_file(
-          Module::getModulePath('core'),
-          'modalformx/menu_change',
-          array(
-            'id' => $id,
-            'name' => self::getNameById($id)
-          )
-        );
-      break;
-    }
-    return $result;
-  }
-  
 }
