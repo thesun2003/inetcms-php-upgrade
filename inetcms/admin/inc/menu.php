@@ -32,7 +32,7 @@ $logined_admin = Admins::get_logined_info();
           <td>
              <? echo admin_button::get('new_page', $modal->getLinkX('page', 'add', 0), ' новую страницу'); ?>
           </td>
-          <td width="100%" style="padding-left:5px"><a href="<? echo ADMIN_URL ?>/admin.php"><? echo SITE_NAME ?></a></td>
+          <td width="100%" style="padding-left:5px"><a href="<? echo ADMIN_URL ?>admin.php"><? echo SITE_NAME ?></a></td>
         </tr>
       </table>
   </div>
