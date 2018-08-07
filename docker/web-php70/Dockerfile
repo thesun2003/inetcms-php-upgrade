@@ -1,4 +1,24 @@
-FROM 1and1internet/ubuntu-16-apache
+FROM php:7.0-apache
 
-RUN apt-get install php7.0-fpm php-memcache php7.0-curl php7.0-cli \
-    php7.0-mcrypt php7.0-gd php7.0-mysql php7.0-xml bzip2 php7.0-zip
+COPY init/000-default.conf /etc/apache2/sites-available/
+
+RUN apt-get update && apt-get install -y --allow-unauthenticated \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libmcrypt-dev \
+        libjpeg-dev \
+        libpng-dev \
+    && docker-php-ext-install -j$(nproc) iconv \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install -j$(nproc) mbstring \
+    && docker-php-ext-install -j$(nproc) mcrypt
+
+RUN apt-get install -y --allow-unauthenticated iproute2
+
+RUN echo "ServerName $(ip route get 8.8.8.8 | awk '{print $NF; exit}')" >> /etc/apache2/apache2.conf && \
+    echo '127.0.0.1 website.com' >> /etc/hosts && \
+    echo "date.timezone = 'Pacific/Auckland'" >> /usr/local/etc/php/php.ini
+
+RUN a2enmod rewrite
+RUN service apache2 restart

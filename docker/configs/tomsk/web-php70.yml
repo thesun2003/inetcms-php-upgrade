@@ -1,0 +1,49 @@
+version: '3.2'
+services:
+
+  tomsk-web-php70:
+    build:
+      context: ./web-php70
+      args:
+        SITE: ${SITE}
+        SITE_DIR: ${SITE_DIR}
+    container_name: ${SITE}-web-php70
+    environment:
+      - SITE
+      - SITE_DIR
+    volumes:
+      - ${SITE_DIR}:/var/www/html
+      - ${CMS_DIR}:/var/www/html/vendor/inetcms
+    depends_on:
+      - tomsk-mysql
+    networks:
+      static-network:
+#        ipv4_address: 192.168.201.130
+    restart: always
+
+  tomsk-mysql:
+    build:
+      context: ./mysql
+      args:
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        MYSQL_DATABASE: 'aqq999'
+        MYSQL_USER: 'aqq999'
+        MYSQL_PASSWORD: 'password'
+        DATABASE_DIR: ${DATABASE_DIR}
+    environment:
+        - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+        - MYSQL_DATABASE=aqq999
+        - MYSQL_USER=aqq999
+        - MYSQL_PASSWORD=password
+        - DATABASE_DIR
+    container_name: ${SITE}-mysql
+    networks:
+      static-network:
+#        ipv4_address: 192.168.201.131
+    restart: always
+
+networks:
+  static-network:
+#    ipam:
+#      config:
+#        - subnet: 192.168.201.0/24
