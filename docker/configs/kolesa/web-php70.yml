@@ -15,13 +15,13 @@ services:
       - ${SITE_DIR}:/var/www/html
       - ${CMS_DIR}:/var/www/html/vendor/inetcms
     depends_on:
-      - kolesa-mysql
+      - kolesa-mysql-php70
     networks:
       static-network:
 #        ipv4_address: 192.168.201.130
     restart: always
 
-  kolesa-mysql:
+  kolesa-mysql-php70:
     build:
       context: ./mysql
       args:
@@ -36,7 +36,7 @@ services:
         - MYSQL_USER=aqq999
         - MYSQL_PASSWORD=password
         - DATABASE_DIR
-    container_name: ${SITE}-mysql
+    container_name: ${SITE}-mysql-php70
     networks:
       static-network:
 #        ipv4_address: 192.168.201.131
