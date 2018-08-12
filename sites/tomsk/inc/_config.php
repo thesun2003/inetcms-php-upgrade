@@ -27,6 +27,16 @@ define('CATALOG_USE_XURL', true);
 require_once(CMS_ROOT . '/inc/_config.php');
 require_once(LOCAL_INC . '/_db_config.php');
 
+if (!isset($JS_config_array)) {
+    $JS_config_array = array();
+}
+
+$JS_config_array = array_merge($JS_config_array, array(
+    'map_lng' => '84.99287849999997',
+    'map_lat' => '56.46383377433857',
+    'map_address' => 'г. Томск, ул. Елизаровых, 49, офис 28',
+));
+
 
 // METADATA
 $default_metadata = array('title' => 'Компания ТоргСтрой',

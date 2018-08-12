@@ -49,7 +49,7 @@ $page = new MenuPage($_GET);
   	theme_advanced_buttons2_add : 'filemanager',
 
 		// Example content CSS (should be your site CSS)
-    content_css : js_config['css_path'] + "/main.css",
+    // content_css : js_config['css_path'] + "/main.css",
 
     relative_urls : false,
     remove_script_host : true,

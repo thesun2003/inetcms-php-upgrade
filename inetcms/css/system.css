@@ -45,10 +45,9 @@
 
 .notification_message, .notification_message_js {
   position: fixed;
-  top: 0;
+  top: 0px;
   padding: 0px;
   width:100%;
-  left: 0;
 }
 
 .notification_message_js {

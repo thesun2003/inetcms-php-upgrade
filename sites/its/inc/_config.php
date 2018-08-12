@@ -25,6 +25,16 @@ define('GALLERY_LIST_IMAGE_WIDTH', 100);
 require_once(CMS_ROOT . '/inc/_config.php');
 require_once(LOCAL_INC . '/_db_config.php');
 
+if (!isset($JS_config_array)) {
+    $JS_config_array = array();
+}
+
+$JS_config_array = array_merge($JS_config_array, array(
+    'map_lng' => '82.95382',
+    'map_lat' => '54.965073',
+    'map_address' => 'ул. Обогатительная, 6',
+));
+
 
 // METADATA
 $default_metadata = array('title' => 'ИТ Сервис',

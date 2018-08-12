@@ -38,15 +38,13 @@ function getAdminImageURL() {
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <?//=using::add_css_file('main.css');?>
     <?=using::add_css_file('system.css');?>
     <?=using::add_css_file('admin.css', '/admin');?>
     <?=using::add_js_file('js_config.php')?>
-    <?=using::add_js_file('mootools-1.2.4-core-yc.js')?>
-    <?=using::add_js_file('mootools-1.2.5.1-more.js')?>
-    <?=using::add_js_file('ajax.js')?>
+    <?=using::add_js_file('mootools-1.2.4-core-yc.js', '/admin/js_libs/')?>
+    <?=using::add_js_file('mootools-1.2.5.1-more.js', '/admin/js_libs')?>
+    <?=using::add_js_file('ajax.js', '/admin/js_libs')?>
     <?=using::add_js_file('common.js')?>
-    <?=using::add_js_file('showflash.js')?>
 </head>
 <body>
 <?

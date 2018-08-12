@@ -1,1 +1,11 @@
-<!--<script src="http://api-maps.yandex.ru/1.1/index.xml?key=ABoSa0kBAAAAolmqRgIAcBDI8ItJMMjXhI2CpEkIo4D99qEAAAAAAAAAAAD2P3c6Is5lgVGwkYqlR7G39UGk7g==" type="text/javascript"></script>-->
+<script src="http://api-maps.yandex.ru/2.0/?load=package.standard&mode=release&lang=ru-RU" type="text/javascript" async></script>
+<script type="text/javascript">
+    function recount_sum() {
+        var total_sum = 0;
+        var computer_sum = parseFloat($('#computer_cost').html()) * parseInt($('#computer_count').val());
+        var laptop_sum =   parseFloat($('#laptop_cost').html())   * parseInt($('#laptop_count').val());
+        var server_sum =   parseFloat($('#server_cost').html())   * parseInt($('#server_count').val());
+        total_sum = computer_sum + laptop_sum + server_sum;
+        $('#total_sum').html(total_sum);
+    }
+</script>

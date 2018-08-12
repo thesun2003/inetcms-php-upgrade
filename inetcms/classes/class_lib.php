@@ -35,7 +35,7 @@ class using {
 
   static function add_css_file($name, $path=CSS_PATH) {
     $result = '';
-    if (!in_array($name, self::$js_files)) {
+    if (!in_array($name, self::$css_files)) {
       $result = '<link href="' . $path . '/' . $name . '" rel="stylesheet" type="text/css">'. "\n";;
       self::$css_files[] = $name;
     }

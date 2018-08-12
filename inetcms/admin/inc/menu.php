@@ -1,17 +1,17 @@
 <?
 using::add_class('search');
 using::add_class('admins');
+using::add_class('adminhelper');
 
 $logined_admin = Admins::get_logined_info();
 ?>
 <table border="0" width="100%" cellspacing="0" valign="top" style="font-size:17px">
   <tr>
-    <!-- TODO: move it to the templates/site related -->
-      <td align="center"><a href="<?= MAIN_URL ?>"><img src="<?= getAdminImageURL() ?>"></a></td>
+      <td align="center"><a href="<?= MAIN_URL ?>" title="<?= sprintf('Running on PHP %s', AdminHelper::getPHPVersion()) ?>"><img src="<?= getAdminImageURL() ?>"></a></td>
   </tr>
   <tr>
     <td align="center">
-      Добрый день, <b><?=$logined_admin['login']?></b>
+      Здравствуйте, <b><?=$logined_admin['login']?></b>
       (<a href="<?php echo ADMIN_URL ?>login.php?action=logout">Выход</a>)
     </td>
   </tr>

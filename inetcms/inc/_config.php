@@ -26,8 +26,8 @@ define('INC', CMS_ROOT . "/inc");
 define('LOCAL_CLASSES', ROOT . "classes");
 define('LOCAL_INC', ROOT . "/inc");
 
-define('JS_LIBS', "/js_libs");
-define('CSS_PATH', "/css");
+define('JS_LIBS', "/common/js_libs");
+define('CSS_PATH', "/common/css");
 
 
 // ADMIN

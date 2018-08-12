@@ -13,7 +13,7 @@ class TextEdit2
 ?>
 <script type="text/javascript" src="<?=ADMIN_URL .'/tinymce/jscripts/tiny_mce/tiny_mce.js'?>"></script>
 <script type="text/javascript" src="<?=ADMIN_URL .'/tinymce/jscripts/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php'?>"></script>
-<script type="text/javascript" src="<?=JS_LIBS .'/textedit2.js'?>"></script>
+<script type="text/javascript" src="<?=ADMIN_URL .'/js_libs/textedit2.js'?>"></script>
 
 <table width="100%">
   <tr>

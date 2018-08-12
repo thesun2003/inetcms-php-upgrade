@@ -21,11 +21,12 @@ $content = '<h3>Ошибка: страница, к которой Вы обра�
 $js_headers = array();
 $js_headers[] = using::add_js_file('js_config.php');
 $js_headers[] = using::add_js_file('common.js');
-$js_headers[] = using::add_js_file('mootools-1.2.4-core-yc.js');
+$js_headers[] = using::add_js_file('map2.js');
+$js_headers[] = using::add_js_file('jquery.min.js');
 
 $css_headers = array();
-$css_headers[] = using::add_css_file('main.css');
 $css_headers[] = using::add_css_file('system.css');
+$css_headers[] = using::add_css_file('main.css', '/css');
 
 $current_page = new SimplePage($metadata);
 $current_page->setJSHeaders(implode($js_headers));

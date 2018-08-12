@@ -106,15 +106,12 @@ if($page = find_page()) {
   $js_headers = array();
   $js_headers[] = using::add_js_file('js_config.php');
   $js_headers[] = using::add_js_file('common.js');
-  $js_headers[] = using::add_js_file('showflash.js');
-  $js_headers[] = using::add_js_file('map.js');
-  $js_headers[] = using::add_js_file('mootools-1.2.4-core-yc.js');
-  $js_headers[] = using::add_js_file('slimbox.js');
-  
+  $js_headers[] = using::add_js_file('map2.js');
+  $js_headers[] = using::add_js_file('jquery.min.js');
+
   $css_headers = array();
-  $css_headers[] = using::add_css_file('main.css');
   $css_headers[] = using::add_css_file('system.css');
-  $css_headers[] = using::add_css_file('slimbox.css');
+  $css_headers[] = using::add_css_file('main.css', '/css');
 
   $current_page = new SimplePage($default_metadata);
   $current_page->setJSHeaders(implode($js_headers));

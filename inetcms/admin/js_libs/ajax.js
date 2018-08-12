@@ -9,7 +9,7 @@
  * See http://www.gnu.org/copyleft/lesser.html
  *
  * Do not remove this comment if you want to use script!
- * Ќе гдалпйве даннлй комменварий, если вл еовиве использовавь скрипв!
+ * РќРµ СѓРґР°Р»СЏР№С‚Рµ РґР°РЅРЅС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№, РµСЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃРєСЂРёРїС‚!
  *
  * This library tries to use XMLHttpRequest (if available), and on
  * failure - use dynamically created <script> elements. Backend code
