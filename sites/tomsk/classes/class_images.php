@@ -3,10 +3,12 @@ using::add_class('entity');
 using::add_class('jpeg');
 //using::add_class('image_upload');
 
-class Images extends Entity {
+class Images extends Entity
+{
   var $width;
-  function Images($info=false){
-    $this->Entity(getTablePrefix() . 'images');
+
+  function __construct($info=false){
+    parent::__construct(getTablePrefix() . 'images');
 
     $this->form->addField('id');
     $this->form->set('filename', '');
@@ -54,13 +56,13 @@ class Images extends Entity {
     
     $form[] = '</td></tr>';
     $form[] = '<tr>';
-    $form[] = '<td align="center"><a onclick="return confirm(\'Âû òî÷íî õîòèòå óäàëèòü?\')" href="javascript:dropImage(' . $this->get('id') . ', ' . $gallery_id . ');"><img src="/admin/img/b_drop.png" border="0" alt="Óäàëèòü" title="Óäàëèòü"></a></td>';
-    $form[] = '<td align="center"><a onclick="showDescrForm(' . $this->get('id') . ')"><img src="/admin/img/b_edit.png" border="0" alt="Ðåäàêòèðîâàòü ïîäïèñü ê êàðòèíêå" title="Ðåäàêòèðîâàòü ïîäïèñü ê êàðòèíêå"></a></td>';
+    $form[] = '<td align="center"><a onclick="return confirm(\'Ð’Ñ‹ Ñ‚Ð¾Ñ‡Ð½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ?\')" href="javascript:dropImage(' . $this->get('id') . ', ' . $gallery_id . ');"><img src="/admin/img/b_drop.png" border="0" alt="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ" title="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ"></a></td>';
+    $form[] = '<td align="center"><a onclick="showDescrForm(' . $this->get('id') . ')"><img src="/admin/img/b_edit.png" border="0" alt="Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´Ð¿Ð¸ÑÑŒ Ðº ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐµ" title="Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´Ð¿Ð¸ÑÑŒ Ðº ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐµ"></a></td>';
     $form[] = '</tr>';
     $form[] = '<tr>';
     $form[] = '<td align="center" colspan="2">';
     $form[] = '<div class="image_description" id="descr_' . $this->get('id') . '">' . $this->get('descr', false) . '</div>';
-    $form[] = '<div style="display:none" id="change_descr_' . $this->get('id') . '"><textarea id="change_descr_text_' . $this->get('id') . '"style="width:200px;height:100px">' . $this->get('descr') . '</textarea><br /><input type="button" value="Èçìåíèòü" onclick="updateDescr(' . $this->get('id') . ');"></div>';
+    $form[] = '<div style="display:none" id="change_descr_' . $this->get('id') . '"><textarea id="change_descr_text_' . $this->get('id') . '"style="width:200px;height:100px">' . $this->get('descr') . '</textarea><br /><input type="button" value="Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ" onclick="updateDescr(' . $this->get('id') . ');"></div>';
     $form[] = '</td>';
     $form[] = '</tr>';
     $form[] = '</table>';
@@ -72,13 +74,13 @@ class Images extends Entity {
     $form[] = '<table border="0" width="200">';
     $form[] = '<tr><td colspan="2" align="center"><img src="' . $this->IMAGES_URL . $this->get('filename') . '" /></td></tr>';
     $form[] = '<tr>';
-    $form[] = '<td align="center"><a onclick="return confirm(\'Âû òî÷íî õîòèòå óäàëèòü?\')" href="javascript:dropImage(' . $this->get('id') . ', ' . $gallery_id . ');"><img src="/admin/img/b_drop.png" border="0" alt="Óäàëèòü" title="Óäàëèòü"></a></td>';
-    $form[] = '<td align="center"><a onclick="showDescrForm(' . $this->get('id') . ')"><img src="/admin/img/b_edit.png" border="0" alt="Ðåäàêòèðîâàòü ïîäïèñü ê êàðòèíêå" title="Ðåäàêòèðîâàòü ïîäïèñü ê êàðòèíêå"></a></td>';
+    $form[] = '<td align="center"><a onclick="return confirm(\'Ð’Ñ‹ Ñ‚Ð¾Ñ‡Ð½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ?\')" href="javascript:dropImage(' . $this->get('id') . ', ' . $gallery_id . ');"><img src="/admin/img/b_drop.png" border="0" alt="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ" title="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ"></a></td>';
+    $form[] = '<td align="center"><a onclick="showDescrForm(' . $this->get('id') . ')"><img src="/admin/img/b_edit.png" border="0" alt="Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´Ð¿Ð¸ÑÑŒ Ðº ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐµ" title="Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´Ð¿Ð¸ÑÑŒ Ðº ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐµ"></a></td>';
     $form[] = '</tr>';
     $form[] = '<tr>';
     $form[] = '<td align="center" colspan="2">';
     $form[] = '<div class="image_description" id="descr_' . $this->get('id') . '">' . $this->get('descr', false) . '</div>';
-    $form[] = '<div style="display:none" id="change_descr_' . $this->get('id') . '"><textarea id="change_descr_text_' . $this->get('id') . '"style="width:200px;height:100px">' . $this->get('descr') . '</textarea><br /><input type="button" value="Èçìåíèòü" onclick="updateDescr(' . $this->get('id') . ');"></div>';
+    $form[] = '<div style="display:none" id="change_descr_' . $this->get('id') . '"><textarea id="change_descr_text_' . $this->get('id') . '"style="width:200px;height:100px">' . $this->get('descr') . '</textarea><br /><input type="button" value="Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ" onclick="updateDescr(' . $this->get('id') . ');"></div>';
     $form[] = '</td>';
     $form[] = '</tr>';
     $form[] = '</table>';

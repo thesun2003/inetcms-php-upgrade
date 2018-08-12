@@ -44,8 +44,9 @@ class using {
 
 
   public static function show_used_items($type = 'class') {
-    $res = '';
     $delim = ', ';
+    $items = array();
+
     if($type == 'class') {
       $items = self::$classes;
     }
@@ -55,7 +56,8 @@ class using {
     if($type == 'css_files') {
       $items = self::$css_files;
     }
-    UserError::showText(implode($delim, $items));
+    $error = new UserError();
+    $error->showText(implode($delim, $items));
   }
 }
 

@@ -23,6 +23,14 @@ if (!empty($_GET['type']) && in_array($_GET['type'], array('editpage_new'))) {
   }
 }
 
+function getAdminImageURL() {
+    $adminImageFilename = sprintf('%s/images/admin_logo.jpg', ROOT);
+    $adminImageURL = sprintf('%s/images/admin_logo.jpg', MAIN_URL);
+    $defaultAdminImageURL = sprintf('%s/img/admin_logo.png', ADMIN_URL);
+
+    return file_exists($adminImageFilename) ? $adminImageURL : $defaultAdminImageURL;
+}
+
 ?>
 <html>
 <head>

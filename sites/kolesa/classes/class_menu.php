@@ -5,9 +5,11 @@ using::add_class('menutree');
 using::add_class('simplepage');
 using::add_class('custom');
 
-class Menu extends Module {
-  function Menu($info=false){
-    $this->Entity(getTablePrefix() . 'menu');
+class Menu extends Module
+{
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'menu');
+
     $this->form->addField('id');
     $this->form->addField('name', true);
     $this->form->setRequired('name');
@@ -233,8 +235,8 @@ class Menu extends Module {
     return '<h1 class="title">' . $title . '</h1>';
   }
 
-  function get_history($pre_history = array()) {
-    return '<div class="history_path">' . parent::get_history() . '</div>';
+  function get_history($pre_history = array(), $css_class = '', $delim = '/') {
+    return '<div class="history_path">' . parent::get_history($pre_history, $css_class, $delim) . '</div>';
   }
 
   public static function renderLeftMenu($parent_id = 0) {

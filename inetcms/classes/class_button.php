@@ -1,9 +1,7 @@
-<?
+<?php
 
-class button {
-  function button() {
-    # nothing to do
-  }
+class button
+{
 
   public static function get($button_config = array(), $url = '', $title = '') {
     $title = strip_tags($title);
@@ -18,7 +16,8 @@ class button {
 }
 
 
-class admin_button extends button {
+class admin_button extends button
+{
   static $buttons_config = array(
     'new_menu' => array('/admin/img/fldr.gif', 'Добавить '),
     'new_page' => array('/admin/img/new.gif', 'Добавить '),
@@ -33,9 +32,6 @@ class admin_button extends button {
     'arrow_down' => array('/admin/img/sort_desc.gif', "Вниз"),
     'new_admin' => array('/admin/img/users_icon.png', "Добавить "),
   );
-  function __construct() {
-    #nothing to do
-  }
 
   public static function get($button_name = 'none', $url = '', $title = '') {
     if(isset(self::$buttons_config[$button_name])) {
@@ -43,19 +39,3 @@ class admin_button extends button {
     }
   }
 }
-
-/*
-class text_button extends button {
-  function text_button($text = "", $title = "") {
-    $this->title = $title;
-    $this->text  = $text;
-  }
-
-  function show($url = "", $title = "", $show_it = true) {
-    $this->url = $url;
-    $this->href = "<a href=\"" . $this->url . "\" title=\"" . $this->title . $title . "\">" . $this->text . "</a>";
-    if ($show_it) echo $this->href; else return $this->href;
-  }
-}
-
-*/

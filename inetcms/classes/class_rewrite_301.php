@@ -1,8 +1,10 @@
 <?
 
-class Rewrite_301 extends Entity {
-  function Rewrite_301($info=false){
-    $this->Entity(getTablePrefix() . 'rewrite_301');
+class Rewrite_301 extends Entity
+{
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'rewrite_301');
+
     $this->form->addField('id');
     $this->form->setRequired('template_url');
     $this->form->setRequired('serialized_template_url');

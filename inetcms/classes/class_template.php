@@ -4,7 +4,8 @@ using::add_class('fieldmanager');
 /** Placeholder to use when cutting long strings. */
 define('HELLIP', '&hellip;');
 
-class Template{
+class Template
+{
     var $_htmlfile;
     var $_cssFile;
     var $_title;
@@ -13,9 +14,11 @@ class Template{
     var $isSecure;
     var $overridenHeaders = array();
 
-    function Template($fileName){
+    function __construct($fileName) {
+        global $default_metadata;
+
         $this->_htmlfile = $fileName;
-        $this->_title = DEFAULT_TITLE;
+        $this->_title = $default_metadata['title'];
         $this->form = new FieldManager();
         $this->content  = array();
         $this->isSecure = false;

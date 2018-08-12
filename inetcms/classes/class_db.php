@@ -12,7 +12,8 @@ if (!defined('DB_AUTOQUERY_UPDATE')) {
  *
  * PEAR::DB interface is used with some changes.
  */
-class DB {
+class DB
+{
     /**
      * Current DB connection.
      *
@@ -35,7 +36,6 @@ class DB {
      * Connects to the database.
      *
      * @return  object  Newly created DB object or error object on failure.
-     * @static
      */
     function &connect($dbhost, $dbname, $dbuser, $dbpass){
         global $LNG;
@@ -53,7 +53,7 @@ class DB {
         return $res;
     }
 
-    function DB($link=false){
+    function __construct($link=false){
         $this->_link = &$link;
     }
 
@@ -311,7 +311,7 @@ class DB_Error{
      * @param mixed DB connection resource of false if no connection was created yet.
      * @param string SQL sentence caused the error.
      */
-    function DB_Error($message, $link, $sql=''){
+    function __construct($message, $link, $sql=''){
         $this->message = $message;
         $this->userinfo = mysql_error($link);
         $this->sql = $sql;
@@ -327,7 +327,7 @@ class DB_Result{
     /**
      * @param mixed Result of executed query.
      */
-    function DB_Result($result){
+    function __construct($result){
         $this->_result = $result;
     }
 
@@ -337,7 +337,7 @@ class DB_Result{
      * @return mixed
      */
     function &fetchOne(){
-        if (is_resource($this->_result)) {
+        if (is_resource($this->_result) || is_object($this->_result)) {
             $res = @mysql_result($this->_result, 0);
             $this->_free();
         } else {
@@ -361,7 +361,7 @@ class DB_Result{
      * @return mixed Next data row or false.
      */
     function &fetchRow(){
-        if (is_resource($this->_result)) {
+        if (is_resource($this->_result) || is_object($this->_result)) {
             $res = mysql_fetch_assoc($this->_result);
             if ($res === false) {
                 $this->_free();
@@ -393,4 +393,3 @@ class DB_Result{
         return mysql_data_seek($this->_result, $rowNum);
     }
 }
-?>

@@ -7,13 +7,15 @@ using::add_class('textedit2');
 using::add_class('gallery');
 using::add_class('news_button', Module::getModulePath('articles'));
 
-class Articles extends Module {
+class Articles extends Module
+{
     var $module_id_field = 'project_id';
     var $module_name = 'projects';
     static $name = 'Реализованные проекты';
+
     function __construct($info=false){
-        parent::__construct($info);
-        $this->Entity(getTablePrefix() . 'articles');
+        parent::__construct(getTablePrefix() . 'articles');
+
         $this->form->addField('id');
         $this->form->setRequired('name');
         $this->form->set('description', '');

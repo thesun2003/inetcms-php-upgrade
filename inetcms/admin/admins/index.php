@@ -12,7 +12,7 @@ if (!empty($_GET['action'])) {
       $admin->del();
       Notification::setNotice('AdminDeleted', 'ok');
     }
-    reload(ADMIN_URL . '/admin.php');
+    reload(ADMIN_URL . 'admin.php');
     die();
   }
 }

@@ -7,12 +7,12 @@ $logined_admin = Admins::get_logined_info();
 <table border="0" width="100%" cellspacing="0" valign="top" style="font-size:17px">
   <tr>
     <!-- TODO: move it to the templates/site related -->
-    <td align="center"><img src="<?= MAIN_URL ?>/images/admin_logo.jpg"></td>
+      <td align="center"><a href="<?= MAIN_URL ?>"><img src="<?= getAdminImageURL() ?>"></a></td>
   </tr>
   <tr>
     <td align="center">
       Добрый день, <b><?=$logined_admin['login']?></b>
-      (<a href="<?php echo ADMIN_URL ?>/login.php?action=logout">Выход</a>)
+      (<a href="<?php echo ADMIN_URL ?>login.php?action=logout">Выход</a>)
     </td>
   </tr>
   <tr>
@@ -32,7 +32,7 @@ $logined_admin = Admins::get_logined_info();
           <td>
              <? echo admin_button::get('new_page', $modal->getLinkX('page', 'add', 0), ' новую страницу'); ?>
           </td>
-          <td width="100%" style="padding-left:5px"><a href="<? echo ADMIN_URL ?>admin.php"><? echo SITE_NAME ?></a></td>
+          <td width="100%" style="padding-left:5px"><a href="<? echo ADMIN_URL ?>"><? echo SITE_NAME ?></a></td>
         </tr>
       </table>
   </div>

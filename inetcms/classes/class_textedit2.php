@@ -1,8 +1,9 @@
 <?php
 using::add_class('images');
 
-class TextEdit2 {
-  function TextEdit2($field_name = 'content', $content = ''){
+class TextEdit2
+{
+  function __construct($field_name = 'content', $content = '') {
     $this->field_name = $field_name;
     $this->content = $content;
   }

@@ -1,14 +1,16 @@
-<?
-using::add_class('field');
-define("GLOBAL_ERROR", "_global");
+<?php
 
-/* Used to log validation errors. */
+using::add_class('field');
+
+define("GLOBAL_ERROR", "_global");
 define('EMPTY_FIELD_PREFIX', 'empty_');
-class FieldManager{
+
+class FieldManager
+{
     var $_fields;
     var $_admin_editable_fields;
 
-    function FieldManager(){
+    function __construct() {
         $this->_fields  = array();
         $this->_admin_editable_fields = array();
     }
@@ -101,7 +103,7 @@ class FieldManager{
         return isset($this->_fields[$fieldName]);
     }
 
-    function isValid($fields = false){
+    function isValid($fields = array()){
         $res = true;
         foreach(array_keys($this->_fields) as $fName) {
             if ((!$fields || in_array($fName, $fields)) && !$this->_fields[$fName]->isValid()) {
@@ -126,4 +128,3 @@ class FieldManager{
         }
     }
 }
-?>

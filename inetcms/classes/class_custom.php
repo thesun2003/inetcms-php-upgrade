@@ -1,6 +1,7 @@
 <?
 
-class Custom {
+class Custom
+{
   public static function getMenuClass($cat_id) {
     if (self::isActive($cat_id)) {
       $class = "menu_tab_active";

@@ -7,14 +7,15 @@ using::add_class('textfield');
 using::add_class('textedit2');
 using::add_class('captcha');
 
-class GuestBook extends Module {
+class GuestBook extends Module
+{
   var $module_id_field = 'guestbook_id';
   var $module_name = 'guestbook';
   static $name = 'Вопрос-Ответ';
 
   function __construct($info=false){
-    parent::__construct($info);
-    $this->Entity(getTablePrefix() . 'guestbook');
+    parent::__construct(getTablePrefix() . 'guestbook');
+
     $this->form->addField('id');
     $this->form->addField('name');
     $this->form->addField('email');

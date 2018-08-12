@@ -4,9 +4,11 @@ using::add_class('module');
 using::add_class('menutree');
 using::add_class('simplepage');
 
-class Menu extends Module {
-  function Menu($info=false){
-    $this->Entity(getTablePrefix() . 'menu');
+class Menu extends Module
+{
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'menu');
+
     $this->form->addField('id');
     $this->form->addField('name', true);
     $this->form->setRequired('name');

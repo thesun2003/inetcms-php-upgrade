@@ -145,7 +145,7 @@ if (!empty($_GET['action']) && !empty($_GET['action_suffix'])) {
       if ($new_item) {
         $new_item->del();
         Notification::setNotice('CatalogDeleted', 'ok');
-        reload(ADMIN_URL . '/admin.php');
+        reload(ADMIN_URL . 'admin.php');
         die();
       }
     }
@@ -166,7 +166,7 @@ if (!empty($_GET['action']) && !empty($_GET['action_suffix'])) {
         $from_menu->save();
         $to_menu->save();
         Notification::setNotice('position_changed', 'ok');
-        reload(ADMIN_URL . '/admin.php');
+        reload(ADMIN_URL . 'admin.php');
         die();
       }
     }
@@ -178,7 +178,7 @@ if (!empty($_GET['action']) && !empty($_GET['action_suffix'])) {
       if ($new_item) {
         $new_item->del();
         Notification::setNotice('CatalogDeleted', 'ok');
-        reload(ADMIN_URL . '/admin.php');
+        reload(ADMIN_URL . 'admin.php');
         die();
       }
     }
@@ -199,7 +199,7 @@ if (!empty($_GET['action']) && !empty($_GET['action_suffix'])) {
         $from_menu->save();
         $to_menu->save();
         Notification::setNotice('position_changed', 'ok');
-        reload(ADMIN_URL . '/admin.php');
+        reload(ADMIN_URL . 'admin.php');
         die();
       }
     }

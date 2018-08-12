@@ -4,14 +4,15 @@ using::add_class('modules');
 using::add_class('menu');
 using::add_class('catalog_item', Module::getModulePath('catalog'));
 
-class Catalog extends Module {
+class Catalog extends Module
+{
   var $module_id_field = 'catalog_id';
   var $module_name = 'catalog';
   static $name = 'Каталог товаров';
 
-  function __construct($info=false){
-    parent::__construct();
-    $this->Entity(getTablePrefix() . 'catalog');
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'catalog');
+
     $this->form->addField('id');
     $this->form->addField('site_id');
 

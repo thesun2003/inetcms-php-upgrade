@@ -2,15 +2,17 @@
 using::add_class('module');
 using::add_class('button');
 
-class Search extends Module {
+class Search extends Module
+{
   const page_count = 20;
   var $module_id_field = 'search_id';
   var $module_name = 'search';
   static $name = 'История запросов поиска';
   static $is_google_search = false;
 
-  function Search($info=false){
-    $this->Entity(getTablePrefix() . 'search');
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'search');
+
     $this->form->addField('id');
     $this->form->setRequired('query_data');
     $this->form->set('date_added', strftime(MYSQL_TIME));

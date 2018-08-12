@@ -7,7 +7,7 @@ if (!empty($_GET['action'])) {
     global $DB;
     $DB->query('DELETE FROM '.getTablePrefix().'search WHERE DATE_FORMAT( date_added, "%m_%Y" ) = "'.$_GET['list_id'].'"');
     Notification::setNotice('SearchDeleted', 'ok');
-    reload(ADMIN_URL . '/admin.php');
+    reload(ADMIN_URL . 'admin.php');
     die();
   }
 } elseif(!empty($_GET['list_id'])) {

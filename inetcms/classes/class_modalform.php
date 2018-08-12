@@ -1,8 +1,10 @@
 <?php
 
-class ModalForm {
-  const ID = "modal_form";
-    function ModalForm() {
+class ModalForm
+{
+    const ID = "modal_form";
+
+    function __construct() {
       echo using::add_js_file('modalform.js');
       $this->form = "\n" . '
 <div id="' . self::ID . '">
@@ -52,9 +54,8 @@ class ModalForm {
         '/modalformx/modalform',
         array(
           'self_ID' => self::ID,
-          'ajax_loading' => Ajax_Loader::run(ADMIN_URL . '/img/upload.gif'),
+          'ajax_loading' => Ajax_Loader::run(ADMIN_URL . 'img/upload.gif'),
         )
       );
     }
 }
-?>

@@ -1,6 +1,7 @@
-<?
+<?php
 
-class All{
+class All
+{
   public static function Array2JSArray($array) {
     if (!is_array($array)) {
       return '{}';
@@ -95,5 +96,3 @@ class All{
   }
   
 }
-
-?>

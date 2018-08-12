@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y --allow-unauthenticated \
     && docker-php-ext-install -j$(nproc) mbstring \
     && docker-php-ext-install -j$(nproc) mcrypt
 
+RUN docker-php-ext-install -j$(nproc) mysqli
+
 RUN apt-get install -y --allow-unauthenticated iproute2
 
 RUN echo "ServerName $(ip route get 8.8.8.8 | awk '{print $NF; exit}')" >> /etc/apache2/apache2.conf && \

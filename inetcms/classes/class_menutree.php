@@ -2,8 +2,9 @@
 using::add_class('modalform');
 using::add_class('button');
 
-class MenuTree {
-  function MenuTree(){
+class MenuTree
+{
+  function __construct() {
     $this->class_name = 'Menu';
     $this->begin_delimeter = '<div style="display:[display]" id="menu_[item_id]">';
     $this->end_delimeter = '</div>';

@@ -12,9 +12,9 @@ class Admins extends Module {
   var $module_name = 'admins';
   static $name = 'Администраторы';
 
-  function Admins($info=false){
-    parent::__construct($info);
-    $this->Entity(getTablePrefix() . 'admins');
+  function __construct($info=false){
+    parent::__construct(getTablePrefix() . 'admins');
+
     $this->form->addField('id');
     $this->form->setRequired('login');
     $this->form->setRequired('passw');

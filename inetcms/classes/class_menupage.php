@@ -2,10 +2,11 @@
 using::add_class('menu');
 using::add_class('page');
 
-class MenuPage {
+class MenuPage
+{
   var $menu, $page;
 
-  function MenuPage($info=false){
+  function __construct($info=false){
     $this->menu = new Menu();
     $this->page = new Page();
 

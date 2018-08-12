@@ -4,14 +4,15 @@ using::add_class('button');
 using::add_class('textedit2');
 using::add_class('clientmessage', Module::getModulePath('clients'));
 
-class Clients extends Admins {
+class Clients extends Module
+{
   var $module_id_field = 'client_id';
   var $module_name = 'clients';
   static $name = 'Клиенты';
 
-  function Clients($info=false){
-    parent::__construct($info);
-    $this->Entity(getTablePrefix() . 'clients');
+  function __construct($info=false){
+    parent::__construct(getTablePrefix() . 'clients');
+
     $this->form->addField('id');
     $this->form->setRequired('login');
     $this->form->setRequired('passw');
@@ -119,7 +120,6 @@ class Clients extends Admins {
   }
 
   static function get_search_list() {
-    global $DB;
     $result = array();
 
     $admins = new self();
@@ -137,7 +137,6 @@ class Clients extends Admins {
   }
 
   static function getNameById($id) {
-    global $DB;
     $menu = new self();
     $search = $menu->find(array('id' => $id));
     if ($search->hasNext()) {

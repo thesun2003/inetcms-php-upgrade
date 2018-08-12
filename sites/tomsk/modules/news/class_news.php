@@ -7,14 +7,15 @@ using::add_class('textfield');
 using::add_class('textedit2');
 using::add_class('news_button', Module::getModulePath('news'));
 
-class News extends Module {
+class News extends Module
+{
   var $module_id_field = 'news_id';
   var $module_name = 'news';
   static $name = 'Новости';
 
   function __construct($info=false){
-    parent::__construct($info);
-    $this->Entity(getTablePrefix() . 'news');
+    parent::__construct(getTablePrefix() . 'news');
+
     $this->form->addField('id');
     $this->form->setRequired('name');
     $this->form->set('description', '');

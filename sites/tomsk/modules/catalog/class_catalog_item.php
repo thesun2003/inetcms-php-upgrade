@@ -1,12 +1,14 @@
 <?php
-//using::add_class('textedit');
+
 using::add_class('textedit2');
 using::add_class('textfield');
 using::add_class('gallery');
 
-class CatalogItem extends Entity {
+class CatalogItem extends Entity
+{
   function __construct($info=false){
-    $this->Entity(getTablePrefix() . 'catalog_items');
+    parent::__construct(getTablePrefix() . 'catalog_items');
+
     $this->form->addField('id');
     $this->form->addField('site_id', 0);
 

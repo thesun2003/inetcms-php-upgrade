@@ -8,9 +8,10 @@ class Module extends Entity
   var $module_name = 'default_module';
 
   function __construct($info=false) {
-    $this->path = self::getModulePath(strtolower(get_class($this)));
-    $this->url = self::getModuleUrl(strtolower(get_class($this)));
-    parent::__construct($info);
+      parent::__construct($info);
+
+      $this->path = self::getModulePath(strtolower(get_class($this)));
+      $this->url = self::getModuleUrl(strtolower(get_class($this)));
   }
 
   function getMetadata() {

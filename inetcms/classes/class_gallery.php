@@ -2,10 +2,12 @@
 using::add_class('images');
 using::add_class('ajax');
 
-class Gallery extends Entity {
+class Gallery extends Entity
+{
   var $images;
-  function Gallery($info=false){
-    $this->Entity(getTablePrefix() . 'gallery');
+
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'gallery');
 
     $this->form->addField('id');
     $this->form->addField('col_num');

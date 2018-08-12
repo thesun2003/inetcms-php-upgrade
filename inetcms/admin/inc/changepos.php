@@ -1,4 +1,5 @@
-<?
+<?php
+
 session_start(); 
 error_reporting(7);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
@@ -22,4 +23,4 @@ if (!empty($_GET['fid']) && (!empty($_GET['tid']))) {
   $to_menu->save();
 }
 
-reload("/admin/admin.php");
+reload(ADMIN_URL . "admin.php");

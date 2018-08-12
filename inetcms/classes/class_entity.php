@@ -2,14 +2,15 @@
 using::add_class('fieldmanager');
 using::add_class('dbpager');
 
-class Entity{
+class Entity
+{
     var $form;
     var $_table;
 
     /** 
      * @param  string DB table name.
      */
-    function Entity($table){
+    function __construct($table) {
         $this->form = new FieldManager();
         $this->_table   = $table;
     }
@@ -134,4 +135,3 @@ class Entity{
       return $list;
     }
 }
-?>

@@ -1,7 +1,8 @@
 <?php
 using::add_class('simpletemplate');
 
-class SimplePage {
+class SimplePage
+{
   private $_content = '';
   private $_metadata = array('title' => '',
                              'keywords' => '',
@@ -11,7 +12,7 @@ class SimplePage {
   private $_template_values = array();
   private $_page_html = '';
 
-  function SimplePage($default_metadata = array()) {
+  function __construct($default_metadata = array()) {
     $this->setMetadata($default_metadata);
   }
 

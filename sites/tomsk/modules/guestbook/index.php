@@ -68,7 +68,7 @@ if (!empty($_GET['action']) && $_GET['action'] == 'delete') {
   if ($new_item) {
     $new_item->del();
     Notification::setNotice('MenuDeleted', 'ok');
-    reload(ADMIN_URL . '/admin.php');
+    reload(ADMIN_URL . 'admin.php');
     die();
   }
 }

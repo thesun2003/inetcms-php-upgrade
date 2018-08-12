@@ -1,9 +1,8 @@
 <?php
 
-global $use;
-
-class TextField {
-  function TextField($field_title, $field_name, $content){
+class TextField
+{
+  function __construct($field_title, $field_name, $content) {
     $this->field_title = $field_title;
     $this->field_name = $field_name;
     $this->content = $content;

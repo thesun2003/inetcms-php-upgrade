@@ -3,9 +3,11 @@
 using::add_class('module');
 using::add_class('modules');
 
-class SimpleTemplate {
+class SimpleTemplate
+{
   private $_template = '';
   private $template = '';
+
   function __construct($template = '') {
     $this->_template = $this->template = $template;
   }

@@ -1,12 +1,15 @@
-<?
+<?php
+
 define('ERR_SEPARATOR', "<br />");
-class Field{
+
+class Field
+{
     var $_error;
     var $_value;
     var $_isRequired;
     var $_isStored;
 
-    function Field(){
+    function __construct() {
         $this->_error = $this->_value   = '';
         $this->_isRequired = false;
         $this->_isStored = true; // Temporary fields won't be saved

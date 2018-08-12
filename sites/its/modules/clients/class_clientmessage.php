@@ -1,9 +1,11 @@
 <?php
 using::add_class('simplepage');
 
-class ClientMessage extends Entity {
-  function ClientMessage($info=false){
-    $this->Entity(getTablePrefix() . 'messages');
+class ClientMessage extends Entity
+{
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'messages');
+
     $this->form->addField('id');
     $this->form->set('type', 'ask');
     $this->form->setRequired('client_id');

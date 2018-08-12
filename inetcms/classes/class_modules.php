@@ -2,9 +2,11 @@
 using::add_class('entity');
 using::add_class('module');
 
-class Modules extends Entity {
-  function __construct($info=false){
-    $this->Entity(getTablePrefix() . 'installed_modules');
+class Modules extends Entity
+{
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'installed_modules');
+
     $this->form->addField('id');
     $this->form->setRequired('name');
     $this->form->setRequired('module_name');

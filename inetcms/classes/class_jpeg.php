@@ -1,7 +1,8 @@
-<?
+<?php
 
-class JPEG {
-    function JPEG($img, $toSize = array(480, 200)) {
+class JPEG
+{
+    function __construct($img, $toSize = array(480, 200)) {
         $this->img = $img;
         $type = getimagesize($this->img);
         $this->width = $type[0];

@@ -4,7 +4,9 @@ using::add_class('template');
 define('LINKS_NUM', 10);
 define('PAGE_SIZE', 10);
 define('NO_LIMIT', '0, 18446744073709551615');
-class DBPager{
+
+class DBPager
+{
     var $select;
     var $className;
     var $tableName;
@@ -24,7 +26,7 @@ class DBPager{
      * @param string SQL subquery (e.g. "WHERE where GROUP BY gr").
      * @param mixed String containg sort order or empty value when no order is required.
      */
-    function DBPager($className, $tableName, $subquery, $order, $limit = false){
+    function __construct($className, $tableName, $subquery, $order, $limit = false) {
         $this->className    = $className;
         $this->tableName    = $tableName;
         $this->select   = "$this->tableName.*";
@@ -137,7 +139,6 @@ class DBPager{
         $this->countQuery   = $query;
     }
 
-    /** @param  int Counts from 0. */
     function &getAt($pos){
         global $DB;
         if ($pos < 0 || $pos >= $this->getSize()) {

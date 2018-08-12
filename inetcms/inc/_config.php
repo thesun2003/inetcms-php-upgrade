@@ -35,9 +35,9 @@ define('CSS_PATH', "/css");
 define('ADMIN_URL', MAIN_URL . '/admin/');
 define('ADMIN', CMS_ROOT . '/admin');
 define('ADMIN_INC', ADMIN . '/inc');
-define('ADMIN_INC_FILE', ADMIN_URL . '/inc');
+define('ADMIN_INC_FILE', ADMIN_URL . 'inc');
 
-define('MODULES_URL', ADMIN_URL . "/modules");
+define('MODULES_URL', ADMIN_URL . "modules");
 define('MODULES', ADMIN . "/modules");
 define('LOCAL_MODULES_URL', MAIN_URL . "/modules");
 define('LOCAL_MODULES', ROOT . "/modules");

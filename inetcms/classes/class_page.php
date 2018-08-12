@@ -2,9 +2,11 @@
 
 using::add_class('entity');
 
-class Page extends Entity {
-  function Page($info=false){
-    $this->Entity(getTablePrefix() . 'page');
+class Page extends Entity
+{
+  function __construct($info=false) {
+    parent::__construct(getTablePrefix() . 'page');
+
     $this->form->addField('id');
     $this->form->addField('content', true);
     $this->form->set('menu_id', 0);
