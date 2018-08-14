@@ -12,8 +12,12 @@ class SimplePage
   private $_template_values = array();
   private $_page_html = '';
 
-  function __construct($default_metadata = array()) {
-    $this->setMetadata($default_metadata);
+  function __construct($metadata = array()) {
+    // TODO: replace with Config class
+    global $default_metadata;
+
+    $metadata = !empty($metadata) ? $metadata : $default_metadata;
+    $this->setMetadata($metadata);
   }
 
   function setJSHeaders($js_headers = '') {
@@ -75,6 +79,14 @@ class SimplePage
   public static function process_template_file($path = '', $template_name = 'template', $values = array()) {
     $filename = $path . '/templates/' . $template_name . '.html';
     return SimpleTemplate::process_file($filename, $values);
+  }
+
+  static function add_js_file($name, $path=JS_LIBS) {
+      return using::add_js_file($name, $path);
+  }
+
+  static function add_css_file($name, $path=CSS_PATH) {
+      return using::add_css_file($name, $path);
   }
 
 }

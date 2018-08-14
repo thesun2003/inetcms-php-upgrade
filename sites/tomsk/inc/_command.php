@@ -13,7 +13,6 @@ using::add_class('simplepage');
 using::add_class('modules');
 using::add_class('search');
 
-
 function isMainPage() {
     $url = get_url();
     $query = str_replace('use_1024=1', '', $url['query']);
@@ -24,25 +23,17 @@ function find_page() {
   global $default_metadata;
   $page = array();
 
-  $is_page_found = true;
   $content = $metadata = '';
   if(isMainPage()) {
     $menu = new Menu();
-    $main_id = 1; //$menu->getIdByName('главная');
+    $main_id = 1; // $menu->getIdByName('главная');
     $menu = $menu->find(array('id' => $main_id))->next();
-  
-    $replaces = array();
-  
-    $content = SimplePage::process_template_file(
-      ROOT,
-      'main/main_content',
-      $replaces
-    );
-  
-    if($menu) {
+
+    if ($menu) {
       $content .= $menu->getContent();
       $metadata = $menu->getMetadata();
     }
+
   } else {
     if (!empty($_GET['action_id'])) {
       //send404();
@@ -100,26 +91,9 @@ function find_page() {
   return $page;
 }
 
-if($page = find_page()) {
-  $js_headers = array();
-  $js_headers[] = using::add_js_file('js_config.php');
-  $js_headers[] = using::add_js_file('common.js');
-  $js_headers[] = using::add_js_file('map2.js');
-  $js_headers[] = using::add_js_file('jquery.min.js');
-  $js_headers[] = using::add_js_file('slimbox2.js');
-  
-  $css_headers = array();
-  $css_headers[] = using::add_css_file('system.css');
-  $css_headers[] = using::add_css_file('main.css', '/css');
-  $css_headers[] = using::add_css_file('slimbox2.css', '/css');
-
-  $current_page = new SimplePage($default_metadata);
-  $current_page->setJSHeaders(implode($js_headers));
-  $current_page->setCSSHeaders(implode($css_headers));
-  
+if ($page = find_page()) {
+  $current_page = new SimplePage($page['metadata']);
   $current_page->setContent($page['content']);
-  $current_page->setMetadata($page['metadata']);
-  
   $current_page->processPageHTML();
   $current_page->display();
 } else {

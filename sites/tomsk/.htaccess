@@ -1,6 +1,6 @@
 Options -Indexes
-#AddDefaultCharset windows-1251
-AddDefaultCharset Off
+AddDefaultCharset UTF-8
+# AddDefaultCharset Off
 DirectoryIndex index.php
 
 #php_value date.timezone "Asia/Novosibirsk"
@@ -12,9 +12,9 @@ AddType application/vnd.ms-excel .xls
 
 AddType application/octet-stream .rar .doc .mov .avi .pdf .xls .mp4
 
-ErrorDocument 403 /error.php?error_code=403
-ErrorDocument 404 /error.php?error_code=404
-ErrorDocument 500 /error.php?error_code=500
+#ErrorDocument 403 /error.php?error_code=403
+#ErrorDocument 404 /error.php?error_code=404
+#ErrorDocument 500 /error.php?error_code=500
 
 # rewrite
 RewriteEngine On

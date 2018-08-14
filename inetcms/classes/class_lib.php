@@ -27,7 +27,7 @@ class using {
   static function add_js_file($name, $path=JS_LIBS) {
     $result = '';
     if (!in_array($name, self::$js_files)) {
-      $result = '<script type="text/javascript" src="' . $path . '/' . $name . '"></script>'. "\n";
+      $result = '<script type="text/javascript" src="' . $path . '/' . $name . '"></script>';
       self::$js_files[] = $name;
     }
     return $result;
@@ -36,7 +36,7 @@ class using {
   static function add_css_file($name, $path=CSS_PATH) {
     $result = '';
     if (!in_array($name, self::$css_files)) {
-      $result = '<link href="' . $path . '/' . $name . '" rel="stylesheet" type="text/css">'. "\n";;
+      $result = '<link href="' . $path . '/' . $name . '" rel="stylesheet" type="text/css">';
       self::$css_files[] = $name;
     }
     return $result;

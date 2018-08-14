@@ -15,7 +15,6 @@ using::add_class('menupage');
 using::add_class('simplepage');
 using::add_class('modules');
 using::add_class('search');
-using::add_class('custom');
 
 function isMainPage() {
     $query = str_replace('', '', $_SERVER['QUERY_STRING']);
@@ -26,25 +25,16 @@ function find_page() {
   global $default_metadata;
   $page = array();
 
-  $is_page_found = true;
   $content = $metadata = '';
   if(isMainPage()) {
     $menu = new Menu();
     $main_id = 1; // $menu->getIdByName('главная');
     $menu = $menu->find(array('id' => $main_id))->next();
-  
-    if($menu) {
-      $main_content = $menu->getContent();
+
+    if ($menu) {
+      $content .= $menu->getContent();
       $metadata = $menu->getMetadata();
     }
-
-    $content = SimplePage::process_template_file(
-      ROOT,
-      'main/main_content',
-      array(
-        'page_content' => $main_content
-      )
-    );
 
   } else {
     if (!empty($_GET['action_id'])) {
@@ -52,7 +42,7 @@ function find_page() {
       return $page = array();
     }
   
-    if (isset($_GET['fast_search'])) {
+    if (!empty($_GET['fast_search'])) {
       $content = Search::process_user_page();
       $metadata = $default_metadata;
       $page['content'] = $content;
@@ -102,24 +92,10 @@ function find_page() {
   return $page;
 }
 
-if($page = find_page()) {
-  $js_headers = array();
-  $js_headers[] = using::add_js_file('js_config.php');
-  $js_headers[] = using::add_js_file('common.js');
-  $js_headers[] = using::add_js_file('map2.js');
-  $js_headers[] = using::add_js_file('jquery.min.js');
-
-  $css_headers = array();
-  $css_headers[] = using::add_css_file('system.css');
-  $css_headers[] = using::add_css_file('main.css', '/css');
-
-  $current_page = new SimplePage($default_metadata);
-  $current_page->setJSHeaders(implode($js_headers));
-  $current_page->setCSSHeaders(implode($css_headers));
-  
+if ($page = find_page()) {
+  $current_page = new SimplePage($page['metadata']);
   $current_page->setContent($page['content']);
-  $current_page->setMetadata($page['metadata']);
- 
+
   if ($_lang == 'eng') {
     $current_page->processPageHTML('main/main_eng');
   } else {

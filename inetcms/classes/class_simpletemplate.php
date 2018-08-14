@@ -40,7 +40,9 @@ class SimpleTemplate
           if (!method_exists($variable[0], $variable[1])) {
               throw new Exception('Cannot find a method');
           }
-          $result[$var_name] = call_user_func($func_name, $variable[2]);
+
+          $parameters = explode(',', $variable[2]);
+          $result[$var_name] = call_user_func_array($func_name, $parameters);
       } catch (Exception $e) {
           $func_name = 'SimpleTemplate::method_not_found';
           $result[$var_name] = call_user_func($func_name, $variable);

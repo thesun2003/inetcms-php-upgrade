@@ -31,7 +31,7 @@ function translit($text) {
 function send404() {
   header("HTTP/1.0 404 Not Found");
   $error_code = 404;
-  include_once(ROOT . 'error.php');
+  include_once(CMS_ROOT . '/error.php');
   exit();
 }
 
