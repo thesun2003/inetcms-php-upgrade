@@ -47,6 +47,8 @@ define('LOCAL_MODULES', ROOT . "/modules");
 define('SECRET_KEY', '%@!sW92D%&s');
 
 define('GALLERY_LIST_IMAGE_WIDTH', 100);
+define('IMAGES_UPLOAD_RESIZE', 480);
+define('IMAGES_WATERMARK_URL', '');
 
 $GLOBALS['site_admin_email'] = 'thesun2003@gmail.com';
 $GLOBALS['send_email_on_error'] = false; //set to TRUE on production server

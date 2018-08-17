@@ -239,6 +239,12 @@ class Menu extends Module
     return '<div class="history_path">' . parent::get_history($pre_history, $css_class, $delim) . '</div>';
   }
 
+  function get_history_name() {
+      global $_lang;
+
+      return $_lang == 'eng' ? $this->get('name_eng') : $this->get('name');
+  }
+
   public static function renderLeftMenu($parent_id = 0) {
     $result = '';
     $parent_item = new Menu();

@@ -1,11 +1,14 @@
 <?php
 using::add_class('entity');
 using::add_class('jpeg');
-//using::add_class('image_upload');
+using::add_class('image_upload');
 
 class Images extends Entity
 {
-  var $width;
+  protected $width;
+  protected $watermarkImage;
+  protected $IMAGES_DIR;
+  protected $IMAGES_URL;
 
   function __construct($info=false) {
     parent::__construct(getTablePrefix() . 'images');
@@ -22,7 +25,8 @@ class Images extends Entity
     if (!empty($info)) {
       $this->setInfo($info);
     }
-    $this->width = 480;
+    $this->width = IMAGES_UPLOAD_RESIZE;
+    $this->watermarkImage = IMAGES_WATERMARK_URL;
   }
 
   function get_url() {
@@ -120,7 +124,8 @@ class Images extends Entity
               $ff=$dop.$ff;
              }
              if ($ff !='') {
-                 $image = new JPEG($image['tmp_name'], array($this->width, $this->width));
+                 $toSize = $this->width ? array($this->width, $this->width) : array();
+                 $image = new JPEG($image['tmp_name'], $toSize, $this->watermarkImage);
                  $image->save($this->IMAGES_DIR . $ff);
              }
              $attr[$key] = $ff;

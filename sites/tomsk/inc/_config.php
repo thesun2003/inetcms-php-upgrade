@@ -20,6 +20,8 @@ define('ROOT', getRoot());
 define('CMS_ROOT', ROOT . 'vendor/inetcms');
 
 define('GALLERY_LIST_IMAGE_WIDTH', 150);
+define('IMAGES_UPLOAD_RESIZE', false);
+define('IMAGES_WATERMARK_URL', ROOT . '/images/watermark.png');
 define('CATALOG_USE_XURL', true);
 
 

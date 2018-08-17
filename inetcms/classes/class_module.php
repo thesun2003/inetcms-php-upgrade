@@ -8,9 +8,10 @@ class Module extends Entity
   var $module_name = 'default_module';
 
   function __construct($info=false) {
-    $this->path = self::getModulePath(strtolower(get_class($this)));
-    $this->url = self::getModuleUrl(strtolower(get_class($this)));
-    parent::__construct($info);
+      parent::__construct($info);
+
+      $this->path = self::getModulePath(strtolower(get_class($this)));
+      $this->url = self::getModuleUrl(strtolower(get_class($this)));
   }
 
   function getMetadata() {
@@ -98,7 +99,12 @@ class Module extends Entity
  
     if($item) {
       while ($item->get('id')) {
-        $history[] = '<a '.($css_class ? 'class="'.$css_class.'"' : '').' href="' . $item->get_url() . '">' . $item->get('name') . '</a>';
+        if (method_exists($item, 'get_history_name')) {
+            $itemName = $item->get_history_name();
+        } else {
+            $itemName = $item->get('name');
+        }
+        $history[] = '<a '.($css_class ? 'class="'.$css_class.'"' : '').' href="' . $item->get_url() . '">' . $itemName . '</a>';
         $parent_id = $item->get('parent_id');
         $item = $item->find(array('id' => $parent_id))->next();
         if (!$item) {
