@@ -26,6 +26,7 @@ define('INC', CMS_ROOT . "/inc");
 define('LOCAL_CLASSES', ROOT . "classes");
 define('LOCAL_INC', ROOT . "/inc");
 
+define('COMMON_URL', '/common');
 define('JS_LIBS', "/common/js_libs");
 define('CSS_PATH', "/common/css");
 

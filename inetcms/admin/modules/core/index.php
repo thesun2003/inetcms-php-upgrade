@@ -10,11 +10,6 @@ using::add_class('menutree');
 using::add_class('search');
 using::add_class('admins');
 
-// TODO: move to a module level
-if (Modules::isModuleInstalled('catalog')) {
-  using::add_class('catalog_item', Module::getModulePath('catalog'));
-}
-
 // all ajax actions go here
 if(!empty($_GET['mode']) && $_GET['mode'] == 'JSON' && !empty($_GET['context'])) {
   $response = array();
@@ -45,34 +40,22 @@ if(!empty($_GET['mode']) && $_GET['mode'] == 'JSON' && !empty($_GET['context']))
         $response['content'] = Admins::show_admin_items();
         break;
       }
-      if (Modules::isModuleInstalled('clients')) {
-        Module::addClass('clients');
-        if ($_GET['id'] == 'clients') {
-          $response['content'] = Clients::show_admin_items();
-          break;
-        }
+
+      // TODO: Move to the module level
+      $moduleFound = false;
+      foreach (Modules::getList() as $module) {
+          $moduleName = $module->get('module_name');
+          if ($_GET['id'] == strtolower($moduleName)) {
+              $moduleFound = true;
+              Module::addClass($moduleName);
+              $response['content'] = $moduleName::show_admin_items();
+              break;
+          }
       }
-      if (Modules::isModuleInstalled('news')) {
-        Module::addClass('news');
-        if ($_GET['id'] == 'news') {
-          $response['content'] = News::show_admin_items();
+      if ($moduleFound) {
           break;
-        }
       }
-      if (Modules::isModuleInstalled('articles')) {
-        Module::addClass('articles');
-        if ($_GET['id'] == 'articles') {
-          $response['content'] = Articles::show_admin_items();
-          break;
-        }
-      }
-      if (Modules::isModuleInstalled('guestbook')) {
-        Module::addClass('guestbook');
-        if ($_GET['id'] == 'guestbook') {
-          $response['content'] = GuestBook::show_admin_items();
-          break;
-        }
-      }
+
       $menutree = new MenuTree();
       $response['content'] = $menutree->new_render($_GET['id']);
       break;

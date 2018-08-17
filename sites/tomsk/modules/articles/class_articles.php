@@ -228,7 +228,7 @@ class Articles extends Module
             $gallery = new Gallery();
             $gallery = $gallery->find(array('id' => $item->get('gallery_id')))->next();
 
-            $image_url = '/images/empty.gif';
+            $image_url = Module::getModuleURL('articles') . '/images/empty.gif';
             if($gallery->images) {
                 $image = array_shift($gallery->images);
                 $image_url = $image->IMAGES_URL . $image->get('filename');
@@ -268,7 +268,7 @@ class Articles extends Module
             $gallery = new Gallery();
             $gallery = $gallery->find(array('id' => $item->get('gallery_id')))->next();
 
-            $image_url = '/images/empty.gif';
+            $image_url = Module::getModuleURL('articles') . '/images/empty.gif';
             if($gallery->images) {
                 $image = array_shift($gallery->images);
                 $image_url = $image->IMAGES_URL . $image->get('filename');

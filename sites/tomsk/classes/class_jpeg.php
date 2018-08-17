@@ -4,7 +4,7 @@ using::add_class('bmp');
 class JPEG
 {
     function __construct($img, $toSize = array(480, 200)) {
-        $this->watermark_image = ROOT . '/img/watermark.png';
+        $this->watermark_image = ROOT . '/images/watermark.png';
         $this->img = $img;
         $type = getimagesize($this->img);
         $this->width = $type[0];

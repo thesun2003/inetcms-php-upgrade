@@ -40,7 +40,7 @@ if (isAdminLogined()) {
     <td><input type="password" name="PW" value=''></td>
   </tr>
   <tr>
-    <td><img src="<?=ADMIN_URL?>/captcha.php"></td>
+    <td><img src="<?=COMMON_URL?>/captcha.php"></td>
     <td><input type="text" name="captcha_word" value=''></td>
   </tr>
   <tr>

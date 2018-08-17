@@ -421,7 +421,7 @@ class Catalog extends Module
       $gallery1 = new Gallery();
       $gallery1 = $gallery1->find(array('id' => $item->get('gallery1_id')))->next();
       
-      $image_url = '/images/empty.gif';
+      $image_url = Module::getModuleURL('articles') . '/images/empty.gif';
       if($gallery1->images) {
         $image = array_shift($gallery1->images);
         $image_url = $image->IMAGES_URL . $image->get('filename');
@@ -436,7 +436,7 @@ class Catalog extends Module
         'gallery1' => $image_url,
         'class' => $class,
         'item_url' => $item->get_url(),
-        'item_name' => $item->get('name'),
+        'item_name' => $item->get('name') . '_1',
         'item_description' => str_replace("<br />\n<br />", '<br>', $item->get('description', false)),
         'parity_clear' => $parity ? '<br style="clear:both">' : ''
       );
@@ -467,7 +467,6 @@ class Catalog extends Module
   }
 
   function get_action_items() {
-    global $DB;
     $items_on_page = 20;
     $pn = 1;
     $limit = All::get_limit($items_on_page, $pn, false);

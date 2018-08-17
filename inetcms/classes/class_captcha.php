@@ -42,7 +42,7 @@ class Captcha {
     $config_font = self::get_font_size();
     $config_code_color  = "FF0000"; //real color will not be exactly as this code, but closest existing in image palete
 
-    $img_path = ROOT . "/images/captcha-backgrounds.png";
+    $img_path = CMS_ROOT . "/images/captcha-backgrounds.png";
     $noautomationcode = substr(
       hash_hmac(
        'md5',
@@ -79,7 +79,7 @@ class Captcha {
                   );
 
     // Set the enviroment variable for GD
-    putenv('GDFONTPATH=' . ROOT . 'images/');
+    putenv('GDFONTPATH=' . CMS_ROOT . '/images/');
     imagettftext ($img, $config_font, self::get_angle(), $x, $y, $color, getenv('GDFONTPATH') . self::get_font(), $noautomationcode);
 
     header("Content-type: image/jpeg");

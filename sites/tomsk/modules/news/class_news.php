@@ -34,7 +34,7 @@ class News extends Module
 
   public function init() {
     global $JS_config_array;
-    $JS_config_array['news_path'] = Module::getModulePath('news') . '/';
+    $JS_config_array['news_path'] = Module::getModuleURL('news') . '/';
   }
 
   function hasChildren() {
@@ -56,6 +56,8 @@ class News extends Module
   }
 
   static function getIdByName($name) {
+    global $DB;
+
     $news = new self();
     $news = $news->find(array(), false, false, "LOWER(name) = " . $DB->quote(strtolower($name)))->next();
     if($news) {

@@ -14,9 +14,9 @@ if (!empty($_GET['gallery_id']) && is_numeric($_GET['gallery_id'])) {
     $image->add();
   }
 
-  echo using::add_js_file('ajax.js');
+  echo using::add_js_file('ajax.js', '/admin/js_libs');
   echo using::add_js_file('js_config.php');
   echo using::add_js_file('common.js');
-  echo using::add_js_file('mootools-1.2.4-core-yc.js');
+  echo using::add_js_file('mootools-1.2.4-core-yc.js', '/admin/js_libs');
   echo Gallery::getAdminAddForm($gallery_id);
 }

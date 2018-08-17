@@ -365,7 +365,7 @@ function checkForm(f) {
         <td valign="top"><textarea name="content" rows="8" style="width: 100%;">'.$newsmap->get('content').'</textarea></td>
       </tr>
       <tr>
-       <td><img src="/captcha.php"></td>
+       <td><img src="'.COMMON_URL.'/captcha.php"></td>
        <td><input type="text" name="captcha_word" value="" style="width: 100%;"></td>
       </tr>
       <tr>
