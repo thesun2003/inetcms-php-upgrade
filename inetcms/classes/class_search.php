@@ -109,10 +109,10 @@ class Search extends Module
   }
 
   static function get_google_results() {
-    $content = self::get_page_title('Результаты поиска');
+    $search = new self();
+    $content = $search->get_page_title('Результаты поиска');
     $search_query = isset($_GET['fast_search']) ? $_GET['fast_search'] : '';
     if($search_query) {
-      $search = new Search();
       $search->updateInfo($search_query);
     }
     $content .= SimplePage::process_template_file(
@@ -127,8 +127,10 @@ class Search extends Module
 
   static function getResult() {
     global $DB;
+
+    $search = new self();
     $content = '';
-    $content .= self::get_page_title('Результаты поиска');
+    $content .= $search->get_page_title('Результаты поиска');
 
     $find_words = !empty($_GET['fast_search']) ? $_GET['fast_search'] : '';
     if (!empty($find_words) && strlen($find_words) > 2) {
