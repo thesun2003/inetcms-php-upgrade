@@ -5,10 +5,10 @@ using::add_class('image_upload');
 
 class Images extends Entity
 {
-  protected $width;
-  protected $watermarkImage;
-  protected $IMAGES_DIR;
-  protected $IMAGES_URL;
+  public $width;
+  public $watermarkImage;
+  public $IMAGES_DIR;
+  public $IMAGES_URL;
 
   function __construct($info=false) {
     parent::__construct(getTablePrefix() . 'images');
