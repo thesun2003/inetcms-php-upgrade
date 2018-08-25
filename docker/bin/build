@@ -3,11 +3,21 @@
 SITE="$1"
 ENV="$2"
 
-function usage {
+function usage() {
     echo "Usage: ./build <SITE> <ENV>"
     echo "<SITE> is your site"
     echo "<ENV> is your environment [php53|php70]"
     exit
+}
+
+function checkProxyRunning() {
+    isProxyRunning="$(docker ps | grep proxy | wc -l)"
+
+    if [ ${isProxyRunning} == 0 ]; then
+        PROXY="-f proxy.yml"
+        PROXY_COMMAND="docker-compose ${PROXY} up --build -d"
+        ${PROXY_COMMAND}
+    fi
 }
 
 if [ ! ${ENV} ] || [ ! ${SITE} ]
@@ -29,6 +39,11 @@ CMS_DIR="./../inetcms"
 
 CONFIG=" -f ${CONFIG_DIR}/web-${ENV}.yml"
 PATH_FIX="-f fix-path.yml"
+
+VIRTUAL_HOST="${ENV}.${SITE}.local"
+PROXY_IP='172.18.0.250'
+addHostCommand="./bin/manage-hosts add ${VIRTUAL_HOST} ${PROXY_IP}"
+removeHostCommand="./bin/manage-hosts remove ${VIRTUAL_HOST} ${PROXY_IP}"
 
 #echo ${CONFIG_DIR}
 #echo ${SITE_DIR}
@@ -53,9 +68,20 @@ SITE_DIR=${SITE_DIR}
 CMS_DIR=${CMS_DIR}
 FULL_SITE_DIR=${FULL_SITE_DIR}
 DATABASE_DIR=${DATABASE_DIR}
+VIRTUAL_HOST=${VIRTUAL_HOST}
+PROXY_IP=${PROXY_IP}
 set +a
+
+# run proxy if not running
+checkProxyRunning
+
+# add host
+${addHostCommand}
 
 # run command
 COMMAND="docker-compose ${PATH_FIX} ${CONFIG} up --build"
 echo "Running ${COMMAND}"
 ${COMMAND}
+
+# remove host
+${removeHostCommand}

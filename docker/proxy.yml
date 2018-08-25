@@ -1,0 +1,19 @@
+version: '3.2'
+services:
+
+  nginx-proxy:
+    ports:
+      - '80:80'
+    volumes:
+      - '/var/run/docker.sock:/tmp/docker.sock:ro'
+    image: jwilder/nginx-proxy
+    restart: always
+    networks:
+      static-network:
+        ipv4_address: ${PROXY_IP}
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.18.0.0/24

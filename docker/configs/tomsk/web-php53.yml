@@ -4,13 +4,9 @@ services:
   tomsk-web-php53:
     build:
       context: ./web-php53
-      args:
-        SITE: ${SITE}
-        SITE_DIR: ${SITE_DIR}
     container_name: ${SITE}-web-php53
     environment:
-      - SITE
-      - SITE_DIR
+      - VIRTUAL_HOST
     volumes:
       - ${SITE_DIR}:/var/www/html
       - ${CMS_DIR}:/var/www/html/vendor/inetcms
@@ -18,7 +14,6 @@ services:
       - tomsk-mysql
     networks:
       static-network:
-#        ipv4_address: 192.168.201.130
     restart: always
 
   tomsk-mysql:
@@ -29,25 +24,20 @@ services:
         MYSQL_DATABASE: 'aqq999'
         MYSQL_USER: 'aqq999'
         MYSQL_PASSWORD: 'password'
-        SITE: ${SITE}
-        SITE_DIR: ${SITE_DIR}
         DATABASE_DIR: ${DATABASE_DIR}
     environment:
         - MYSQL_ALLOW_EMPTY_PASSWORD=yes
         - MYSQL_DATABASE=aqq999
         - MYSQL_USER=aqq999
         - MYSQL_PASSWORD=password
-        - SITE
-        - SITE_DIR
         - DATABASE_DIR
     container_name: ${SITE}-mysql
     networks:
       static-network:
-#        ipv4_address: 192.168.201.131
     restart: always
 
 networks:
   static-network:
-#    ipam:
-#      config:
-#        - subnet: 192.168.201.0/24
+    ipam:
+      config:
+        - subnet: 172.18.0.0/24
