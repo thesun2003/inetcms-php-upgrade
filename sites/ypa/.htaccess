@@ -1,3 +1,7 @@
+DefaultLanguage ru
+AddDefaultCharset windows-1251
+php_value default_charset "cp1251"
+
 RewriteEngine On
 
 RewriteCond %{HTTP_HOST} ^ypa\.ru [NC]

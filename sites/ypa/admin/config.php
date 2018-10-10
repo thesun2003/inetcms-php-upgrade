@@ -5,10 +5,91 @@ $dbuser = 'aqq999';
 $dbpass = 'password';
 $dbname = 'aqq999';
 
-mysql_connect($dbhost, $dbuser, $dbpass) or die ("Нет контакта");
-mysql_select_db($dbname) or die ("Не выбрана база");
-mysql_query("SET NAMES cp1251");
+// php7.0 additional code
+if (!function_exists('mysql_connect')) {
 
+    function mysql_connect($dbhost, $dbuser, $dbpass) {
+        return mysqli_connect($dbhost, $dbuser, $dbpass);
+    }
+
+    function mysql_select_db($dbname, $conn) {
+        return mysqli_select_db($conn, $dbname);
+    }
+
+    function mysql_close($conn)
+    {
+        return mysqli_close($conn);
+    }
+
+    function mysql_error($conn)
+    {
+        return mysqli_error($conn);
+    }
+
+    function mysql_real_escape_string($value)
+    {
+        global $conn;
+
+        return mysqli_real_escape_string($conn, $value);
+    }
+
+    function mysql_query($query, $link = null)
+    {
+        global $conn;
+        $conn = isset($link) ? $link : $conn;
+
+        return mysqli_query($conn, $query);
+    }
+
+    function mysql_fetch_assoc($result)
+    {
+        $result = mysqli_fetch_assoc($result);
+
+        return is_null($result) ? false : $result;
+    }
+
+    function mysql_insert_id($link = null)
+    {
+        global $conn;
+        $conn = isset($link) ? $link : $conn;
+
+        return mysqli_insert_id($conn);
+    }
+
+    function mysql_result($result, $number, $field=0)
+    {
+        mysqli_data_seek($result, $number);
+        $row = mysqli_fetch_array($result);
+        return $row[$field];
+    }
+
+    function mysql_free_result($result)
+    {
+        mysqli_free_result($result);
+    }
+
+    function mysql_num_rows($result)
+    {
+        return mysqli_num_rows($result);
+    }
+
+    function mysql_data_seek($result, $rowNum)
+    {
+        return mysqli_data_seek($result, $rowNum);
+    }
+
+    function ereg_replace($pattern, $replacement, $string) {
+        return preg_replace('#' . $pattern . '#', $replacement, $string);
+    }
+
+    function mysql_fetch_array($result, $result_type = MYSQL_BOTH) {
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+}
+
+$conn = mysql_connect($dbhost, $dbuser, $dbpass) or die ("Нет контакта");
+mysql_select_db($dbname, $conn) or die ("Не выбрана база");
+mysql_query("SET NAMES cp1251");
 
 if (get_magic_quotes_gpc()) {
     function stripslashes_gpc(&$value)
