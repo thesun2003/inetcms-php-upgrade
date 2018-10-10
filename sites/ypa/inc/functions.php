@@ -17,7 +17,7 @@
 	}
 
 	// Добавление даты
-	function date_add ($date) {
+	function custom_date_add ($date) {
 		if (empty($date)) {
 			$year = date('Y');
 			$mon = date('m');

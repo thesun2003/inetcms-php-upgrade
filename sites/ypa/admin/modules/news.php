@@ -1,10 +1,10 @@
 <?php
 
-	if (!defined('ADMIN')) { die('Ошибочный URL.'); }
+	if (!defined('ADMIN')) { die('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ URL.'); }
 
 	$cat = $_GET['cat'];
 
-	// Добавление новости
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (isset($_POST['add'])) {
 		include_once 'red.inc.php';
 		$anons = (isset($_POST['anons'])) ? 1 : 0;
@@ -22,10 +22,10 @@
                            title = '$title',
                            brieftext = '$brieftext',
                            content = '$content'");
-		if (!$result) echo 'Ошибка: '. mysql_error();
+		if (!$result) echo 'пїЅпїЅпїЅпїЅпїЅпїЅ: '. mysql_error();
 	}
 
-	// Редактирование новости
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (isset($_POST['red']) && $_POST['del'] == 'no') {
 		include_once 'red.inc.php';
 		$anons = (isset($_POST['anons'])) ? 1 : 0;
@@ -58,17 +58,17 @@
                            brieftext = '$brieftext',
                            content = '$content'
                            WHERE id = $_GET[id]");
-		if (!$result) echo 'Ошибка: '. mysql_error();
+		if (!$result) echo 'пїЅпїЅпїЅпїЅпїЅпїЅ: '. mysql_error();
 	}
 
-	// Удаление новости
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (isset($_POST['red']) && $_POST['del'] == 'yes') {
 		if (!empty($_POST['oldimg'])) unlink('../i/intro/'.$_POST['oldimg']);
 		$result = mysql_query("DELETE FROM $cat WHERE id = $_GET[id]");
-		if (!$result) echo 'Ошибка: '. mysql_error();
+		if (!$result) echo 'пїЅпїЅпїЅпїЅпїЅпїЅ: '. mysql_error();
 	}
 
-	///// СОДЕРЖИМОЕ СТРАНИЦЫ /////
+	///// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ /////
 ?>
 
 <script language="javascript" type="text/javascript">
@@ -89,14 +89,14 @@ function switch_off(el_id) {
 </script>
 
 <?php
-	// Добавление новости
-	echo '<h2>Новости и анонсы</h2>';
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	echo '<h2>пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</h2>';
 
 	if ($_GET['act'] == 'new') {
 ?>
-<h3>Добавление новой заметки</h3>
+<h3>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</h3>
 <form action="index.php?cat=<?=$cat?>&act=list" method="post" name="cont" enctype="multipart/form-data">
-<div class="tooltip"><a href="javascript:void;" onclick="showTooltip()"> мета-теги </a></div>
+<div class="tooltip"><a href="javascript:void;" onclick="showTooltip()"> пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ </a></div>
 <div id=tooltip style='display: none'>
 <table class="table2" cellspacing="5">
   <tr>
@@ -116,43 +116,43 @@ function switch_off(el_id) {
 
 <table class="table2" cellspacing="5">
   <tr>
-    <td width="130">Заголовок заметки:</td>
+    <td width="130">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input size="50" maxlength="120" type="text" name="title" value="" /></td>
   </tr>
   <tr>
-    <td width="130">Дата:</td>
-    <td><?php date_add('') ?></td>
+    <td width="130">пїЅпїЅпїЅпїЅ:</td>
+    <td><?php custom_date_add('') ?></td>
   </tr>
   <tr>
-    <td>Вступление:</td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td>
     <textarea name="brieftext" cols="50" rows="3"></textarea></td>
   </tr>
   <tr>
-    <td>Фото закачать:</td>
+    <td>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input type="file" size="40" name="img" />
     </td>
   </tr>
   <tr>
-    <td>Фото выбрать:</td>
+    <td>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input type="text" size="30" name="simg" value="" />
-    <input type="button" value="Выбрать" onclick="window.open('simg.php','mywin','height=500,width=500,scrollbars')" />
+    <input type="button" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" onclick="window.open('simg.php','mywin','height=500,width=500,scrollbars')" />
     </td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Полный текст заметки:<br />
+    <td align="center" colspan="2">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:<br />
 
 <?php editor('content', ''); ?>
 
     </td>
   </tr>
   <tr>
-    <td>Анонс:</td>
-    <td><input type="checkbox" name="anons" id="anons" onchange="switch_off('top');" /> <i>(отображать как анонс)</i></td>
+    <td>пїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="anons" id="anons" onchange="switch_off('top');" /> <i>(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
   <tr>
-    <td>Приоритет:</td>
-    <td><input type="checkbox" name="top" id="top" onchange="switch_off('anons');" /> <i>(отображать отдельно от остальных и выше анонса)</i></td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="top" id="top" onchange="switch_off('anons');" /> <i>(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
 
   <tr>
@@ -161,7 +161,7 @@ function switch_off(el_id) {
   </tr>
   
   <tr>
-    <td align="center" colspan="2"><input class="button" onmouseover="this.style.backgroundColor='#FDE3CE'; this.style.color='#47362A'" onmouseout="this.style.backgroundColor='#FBEADE'; this.style.color='#856B56'" type="submit" name="add" value="Добавить!" /></td>
+    <td align="center" colspan="2"><input class="button" onmouseover="this.style.backgroundColor='#FDE3CE'; this.style.color='#47362A'" onmouseout="this.style.backgroundColor='#FBEADE'; this.style.color='#856B56'" type="submit" name="add" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!" /></td>
   </tr>
 </table>
 </form>
@@ -169,13 +169,13 @@ function switch_off(el_id) {
 <?php
 }
 
-	// Редактирование новостей
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if ($_GET['act'] == 'red') {
 		$id = ereg_replace('[^0-9]', '', $_GET['id']);
 		$result = mysql_query("SELECT * FROM $cat WHERE id = $id");
 		$row = mysql_fetch_assoc($result);
 ?>
-<h3>Редактирование заметки</h3>
+<h3>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</h3>
 <form action="index.php?cat=<?=$cat?>&act=list&id=<?=$id?>" method="post" name="cont" enctype="multipart/form-data">
 <script language="javascript" type="text/javascript">
 function showTooltip()
@@ -190,7 +190,7 @@ myDiv.style.display = 'none';
 return false;
 }
 </script>
-<div class="tooltip"><a href="javascript:void;" onclick="showTooltip()"> мета-теги </a></div>
+<div class="tooltip"><a href="javascript:void;" onclick="showTooltip()"> пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ </a></div>
 <div id=tooltip style='display: none'>
 <table class="table2" cellspacing="5">
   <tr>
@@ -206,32 +206,32 @@ return false;
     <td><textarea name="mdescr" cols="50" rows="2"><?=$row['mdescr']?></textarea></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><input type="submit" name="red" value="Изменить" /></td>
+    <td colspan="2" align="center"><input type="submit" name="red" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" /></td>
   </tr>
 </table>
 </div>
 
 <table class="table2" cellspacing="5">
   <tr>
-    <td width="130">Заголовок заметки:</td>
+    <td width="130">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input size="50" maxlength="120" type="text" name="title" value="<?=$row['title']?>" /></td>
   </tr>
   <tr>
-    <td width="130">Дата:</td>
-    <td><?php date_add($row['date']) ?></td>
+    <td width="130">пїЅпїЅпїЅпїЅ:</td>
+    <td><?php custom_date_add($row['date']) ?></td>
   </tr>
   <tr>
-    <td>Вступление:</td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td>
     <textarea name="brieftext" cols="50" rows="3"><?=$row['brieftext']?></textarea></td>
   </tr>
   <tr>
-    <td>Фото закачать:</td>
+    <td>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td>
 <?php
 	if (!empty($row['img']) && glob('../i/intro/'.$row['img'])) {
 		echo '<img src="../i/intro/'.$row['img'].'" alt="" align="left" hspace="5" vspace="5" />';
-		echo '<input type="checkbox" name="delimg" /> - удалить картинку<br clear="all" />';
+		echo '<input type="checkbox" name="delimg" /> - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ<br clear="all" />';
 	}
 ?>
     <input type="file" size="40" name="img" />
@@ -239,13 +239,13 @@ return false;
     </td>
   </tr>
   <tr>
-    <td>Фото выбрать:</td>
+    <td>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input type="text" size="30" name="simg" value="" />
-    <input type="button" value="Выбрать" onclick="window.open('simg.php','mywin','height=500,width=500,scrollbars')" />
+    <input type="button" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" onclick="window.open('simg.php','mywin','height=500,width=500,scrollbars')" />
     </td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Полный текст заметки:<br />
+    <td align="center" colspan="2">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:<br />
 <?php
 	editor('content', $row['content']);
 
@@ -257,12 +257,12 @@ return false;
     </td>
   </tr>
   <tr>
-    <td>Анонс:</td>
-    <td><input type="checkbox" name="anons"<?=$anons?>  id="anons" onchange="switch_off('top');" /> <i>(отображать как анонс)</i></td>
+    <td>пїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="anons"<?=$anons?>  id="anons" onchange="switch_off('top');" /> <i>(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
   <tr>
-    <td>Приоритет:</td>
-    <td><input type="checkbox" name="top"<?=$top?>  id="top" onchange="switch_off('anons');" /> <i>(отображать отдельно от остальных и выше анонса)</i></td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="top"<?=$top?>  id="top" onchange="switch_off('anons');" /> <i>(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
 
   <tr>
@@ -271,17 +271,17 @@ return false;
   </tr>
   
   <tr>
-    <td>Скрыть:</td>
-    <td><input type="checkbox" name="rem"<?=$removed?> /> <i>(не отображать в списке новостей)</i></td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="rem"<?=$removed?> /> <i>(пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
   <tr>
-    <td>Удалить:</td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td>
-    <input type="radio" name="del" value="no" checked="checked" /> - нет&nbsp;&nbsp;&nbsp;
-    <input type="radio" name="del" value="yes" /> - да</td>
+    <input type="radio" name="del" value="no" checked="checked" /> - пїЅпїЅпїЅ&nbsp;&nbsp;&nbsp;
+    <input type="radio" name="del" value="yes" /> - пїЅпїЅ</td>
   </tr>
   <tr>
-    <td align="center" colspan="2"><input class="button" onmouseover="this.style.backgroundColor='#FDE3CE'; this.style.color='#47362A'" onmouseout="this.style.backgroundColor='#FBEADE'; this.style.color='#856B56'" type="submit" name="red" value="Изменить!" />
+    <td align="center" colspan="2"><input class="button" onmouseover="this.style.backgroundColor='#FDE3CE'; this.style.color='#47362A'" onmouseout="this.style.backgroundColor='#FBEADE'; this.style.color='#856B56'" type="submit" name="red" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!" />
     </td>
   </tr>
 </table>
@@ -289,10 +289,10 @@ return false;
 <?php
 }
 
-	// Список новостей
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if ($_GET['act'] == 'list') {
 		if ($_GET['cat'] == 'news') {
-			echo '<center>Показать заголовки за <form style="display:inline" method="post" name="pageform">';
+			echo '<center>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ <form style="display:inline" method="post" name="pageform">';
 			echo '<select name="year" class="yselect" onchange="document.pageform.submit();">';
 
 			$yearnow = date("Y");
@@ -303,7 +303,7 @@ return false;
 				$sel = ($i == @$_POST['year']) ? ' selected="selected"' : '';
 				echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
 			}
-    			echo '</select></form> год.</center>';
+    			echo '</select></form> пїЅпїЅпїЅ.</center>';
 			$result = mysql_query("SELECT * FROM news WHERE date LIKE '$year%' ORDER BY date DESC");
 		} else {
 			$result = mysql_query("SELECT * FROM anons ORDER BY date DESC");
@@ -311,7 +311,7 @@ return false;
 
 		echo '<table class="list" border="0" cellspacing="2" width="100%">';
 		while ($row = mysql_fetch_assoc($result)) {
-			$removed = (empty($row['remove'])) ? '' : '<img src="../img/rem.png" alt="На главной" />&nbsp;';
+			$removed = (empty($row['remove'])) ? '' : '<img src="../img/rem.png" alt="пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" />&nbsp;';
 			$date = explode('-', $row['date']);
 			echo '<tr><td width="70"><i>'.$date[2].'.'.$date[1].'.'.$date[0].'</i></td>';
 			echo '<td>'.$removed.'<a href="index.php?cat='.$cat.'&act=red&id='.$row['id'].'">';

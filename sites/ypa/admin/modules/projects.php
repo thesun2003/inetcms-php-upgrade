@@ -1,7 +1,7 @@
 <?php
-if (!defined('ADMIN')) { die('Ошибочный URL.'); }
+if (!defined('ADMIN')) { die('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ URL.'); }
 
-// Добавление новости
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if (isset($_POST['add']))
 {
     $client_id = isset($_POST['country_ID']) ? $_POST['country_ID'] : 0;
@@ -21,10 +21,10 @@ if (isset($_POST['add']))
                                   title = '$title',
                                   brieftext = '$brieftext',
                                   content = '$content'");
-    if (!$result) echo 'Ошибка: '. mysql_error();
+    if (!$result) echo 'пїЅпїЅпїЅпїЅпїЅпїЅ: '. mysql_error();
 }
 
-// Редактирование новости
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if (isset($_POST['red']) && $_POST['del'] == 'no')
 {
     include_once 'red.inc.php';
@@ -53,25 +53,25 @@ if (isset($_POST['red']) && $_POST['del'] == 'no')
                                   brieftext = '$brieftext',
                                   content = '$content'
                             WHERE id = $_GET[id]");
-    if (!$result) echo 'Ошибка: '. mysql_error();
+    if (!$result) echo 'пїЅпїЅпїЅпїЅпїЅпїЅ: '. mysql_error();
 }
 
-// Удаление новости
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if (isset($_POST['red']) && $_POST['del'] == 'yes')
 {
     if (!empty($_POST['oldimg'])) unlink('../i/intro/'.$_POST['oldimg']);
 	$result = mysql_query("DELETE FROM projects WHERE id = $_GET[id]");
-	if (!$result) echo 'Ошибка: '. mysql_error();
+	if (!$result) echo 'пїЅпїЅпїЅпїЅпїЅпїЅ: '. mysql_error();
 }
 
-///// СОДЕРЖИМОЕ СТРАНИЦЫ /////
-echo '<h2>Проекты</h2>';
+///// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ /////
+echo '<h2>пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</h2>';
 
-// Добавление новости
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if ($_GET['act'] == 'new')
 {
 ?>
-<h3>Добавление новой заметки</h3>
+<h3>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</h3>
 <FORM NAME="z"></FORM>
 <form action="index.php?cat=projects&act=list" name="cont" method="post" enctype="multipart/form-data">
 <script language="javascript" type="text/javascript">
@@ -87,7 +87,7 @@ myDiv.style.display = 'none';
 return false;
 }
 </script>
-<div class="tooltip"><a href="javascript:void;" onclick="showTooltip()"> мета-теги </a></div>
+<div class="tooltip"><a href="javascript:void;" onclick="showTooltip()"> пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ </a></div>
 <div id=tooltip style='display: none'>
 <table class="table2" cellspacing="5">
   <tr>
@@ -107,53 +107,53 @@ return false;
 
 <table class="table2" cellspacing="5">
   <tr>
-    <td width="130">Заголовок заметки:</td>
+    <td width="130">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input size="50" maxlength="120" type="text" name="title" value="" /></td>
   </tr>
   <tr>
-    <td width="130">Дата:</td>
-    <td><?php date_add('') ?></td>
+    <td width="130">пїЅпїЅпїЅпїЅ:</td>
+    <td><?php custom_date_add('') ?></td>
   </tr>
   <tr>
-    <td>Анонс заметки:</td>
+    <td>пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td>
     <textarea name="brieftext" cols="50" rows="3"></textarea></td>
   </tr>
   <tr>
-    <td>Фото закачать:</td>
+    <td>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input type="file" size="35" name="img" />
     </td>
   </tr>
   <tr>
-    <td>Фото выбрать:</td>
+    <td>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input type="text" size="30" name="simg" value="" />
-    <input type="button" value="Выбрать" onclick="window.open('simg.php','mywin','height=500,width=500,scrollbars,resizable=yes')" />
+    <input type="button" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" onclick="window.open('simg.php','mywin','height=500,width=500,scrollbars,resizable=yes')" />
     </td>
   </tr>
   <tr>
-    <td>Клиент:</td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input type="client" size="30" id="country" name="country" value="" onkeyup="ajax_showOptions(this,'getCountriesByLetters',event,'articles')" />
     <input type="hidden" id="country_hidden" name="country_ID">
-    <i>(Если клиента нет в списке, сначала добавьте его в разделе "Клиенты")</i>
+    <i>(пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")</i>
     </td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Полный текст заметки:<br />
+    <td align="center" colspan="2">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:<br />
 
 <?php editor('content', ''); ?>
 
     </td>
   </tr>
   <tr>
-    <td>На главную:</td>
-    <td><input type="checkbox" name="index" /> <i>(выводить на главной странице)</i></td>
+    <td>пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="index" /> <i>(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
   <tr>
-    <td>Приоритет:</td>
-    <td><input type="checkbox" name="top" id="top" /> <i>(отображать в отдельном списке перед основным)</i></td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="top" id="top" /> <i>(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
   <tr>
-    <td align="center" colspan="2"><input class="button" onmouseover="this.style.backgroundColor='#FDE3CE'; this.style.color='#47362A'" onmouseout="this.style.backgroundColor='#FBEADE'; this.style.color='#856B56'" type="submit" name="add" value="Добавить!" /></td>
+    <td align="center" colspan="2"><input class="button" onmouseover="this.style.backgroundColor='#FDE3CE'; this.style.color='#47362A'" onmouseout="this.style.backgroundColor='#FBEADE'; this.style.color='#856B56'" type="submit" name="add" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!" /></td>
   </tr>
 </table>
 </form>
@@ -161,14 +161,14 @@ return false;
 <?php
 }
 
-// Редактирование новостей
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if ($_GET['act'] == 'red')
 {
 $id = ereg_replace('[^0-9]', '', $_GET['id']);
 $result = mysql_query("SELECT * FROM projects WHERE id = $id");
 $row = mysql_fetch_assoc($result);
 ?>
-<h3>Редактирование заметки</h3>
+<h3>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</h3>
 <form action="index.php?cat=projects&act=list&id=<?=$id?>" method="post" name="cont" enctype="multipart/form-data">
 <script language="javascript" type="text/javascript">
 function showTooltip()
@@ -183,7 +183,7 @@ myDiv.style.display = 'none';
 return false;
 }
 </script>
-<div class="tooltip"><a href="javascript:void;" onclick="showTooltip()"> мета-теги </a></div>
+<div class="tooltip"><a href="javascript:void;" onclick="showTooltip()"> пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ </a></div>
 <div id=tooltip style='display: none'>
 <table class="table2" cellspacing="5">
   <tr>
@@ -199,32 +199,32 @@ return false;
     <td><textarea name="mdescr" cols="50" rows="2"><?=$row['mdescr']?></textarea></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><input type="submit" name="red" value="Изменить" /></td>
+    <td colspan="2" align="center"><input type="submit" name="red" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" /></td>
   </tr>
 </table>
 </div>
 
 <table class="table2" cellspacing="5">
   <tr>
-    <td width="130">Заголовок заметки:</td>
+    <td width="130">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input size="50" maxlength="120" type="text" name="title" value="<?=$row['title']?>" /></td>
   </tr>
   <tr>
-    <td width="130">Дата:</td>
-    <td><?php date_add($row['date']) ?></td>
+    <td width="130">пїЅпїЅпїЅпїЅ:</td>
+    <td><?php custom_date_add($row['date']) ?></td>
   </tr>
   <tr>
-    <td>Анонс заметки:</td>
+    <td>пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td>
     <textarea name="brieftext" cols="50" rows="3"><?=$row['brieftext']?></textarea></td>
   </tr>
   <tr>
-    <td>Фото закачать:</td>
+    <td>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td>
 <?php
 if (!empty($row['img']) && glob('../i/intro/'.$row['img'])) {
     echo '<img src="../i/intro/'.$row['img'].'" alt="" align="left" hspace="5" vspace="5" />
-    <input type="checkbox" name="delimg" /> - удалить картинку<br clear="all" />';
+    <input type="checkbox" name="delimg" /> - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ<br clear="all" />';
 }
 ?>
     <input type="file" size="40" name="img" />
@@ -232,9 +232,9 @@ if (!empty($row['img']) && glob('../i/intro/'.$row['img'])) {
     </td>
   </tr>
   <tr>
-    <td>Фото выбрать:</td>
+    <td>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input type="text" size="30" name="simg" value="" />
-    <input type="button" value="Выбрать" onclick="window.open('simg.php','mywin','height=500,width=500,scrollbars,resizable=yes')" />
+    <input type="button" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" onclick="window.open('simg.php','mywin','height=500,width=500,scrollbars,resizable=yes')" />
     </td>
   </tr>
 <?php
@@ -245,15 +245,15 @@ if (!empty($row['client_id'])) {
 else $client = '';
 ?>
   <tr>
-    <td>Клиент:</td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td><input type="client" size="30" id="country" name="country" value='<?=$client?>' onkeyup="ajax_showOptions(this,'getCountriesByLetters',event,'articles')" />
     <input type="hidden" id="country_hidden" name="country_ID">
     <input type="hidden" name="client_id" value="<?=$row['client_id']?>">
-    <i>(Если клиента нет в списке, сначала добавьте его в разделе "Клиенты")</i>
+    <i>(пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")</i>
     </td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Полный текст заметки:<br />
+    <td align="center" colspan="2">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:<br />
 <?php
 	editor('content', $row['content']);
 	
@@ -264,26 +264,26 @@ else $client = '';
     </td>
   </tr>
   <tr>
-    <td>На главную:</td>
-    <td><input type="checkbox" name="index"<?=$check?> /> <i>(выводить на главной странице)</i></td>
+    <td>пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="index"<?=$check?> /> <i>(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
   <tr>
-    <td>Приоритет:</td>
-    <td><input type="checkbox" name="top"<?=$top?>  id="top" /> <i>(отображать в отдельном списке перед основным)</i></td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="top"<?=$top?>  id="top" /> <i>(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
   <tr>
-    <td>Скрыть:</td>
-    <td><input type="checkbox" name="rem"<?=$removed?> /> <i>(не отображать в списке проектов)</i></td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅ:</td>
+    <td><input type="checkbox" name="rem"<?=$removed?> /> <i>(пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)</i></td>
   </tr>
   <tr>
-    <td>Удалить:</td>
+    <td>пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</td>
     <td>
-      <input type="radio" name="del" value="no" checked="checked" /> - нет&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="del" value="yes" /> - да
+      <input type="radio" name="del" value="no" checked="checked" /> - пїЅпїЅпїЅ&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="del" value="yes" /> - пїЅпїЅ
     </td>
   </tr>
   <tr>
-    <td align="center" colspan="2"><input class="button" onmouseover="this.style.backgroundColor='#FDE3CE'; this.style.color='#47362A'" onmouseout="this.style.backgroundColor='#FBEADE'; this.style.color='#856B56'" type="submit" name="red" value="Изменить!" />
+    <td align="center" colspan="2"><input class="button" onmouseover="this.style.backgroundColor='#FDE3CE'; this.style.color='#47362A'" onmouseout="this.style.backgroundColor='#FBEADE'; this.style.color='#856B56'" type="submit" name="red" value="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!" />
     </td>
   </tr>
 </table>
@@ -291,10 +291,10 @@ else $client = '';
 <?php
 }
 
-// Список новостей
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if ($_GET['act'] == 'list')
 {
-echo '<center>Показать заголовки за <form style="display:inline" method="post" name="colonpageform">
+echo '<center>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ <form style="display:inline" method="post" name="colonpageform">
   <select name="year" class="yselect" onchange="document.colonpageform.submit();">';
 $yearnow = date("Y");
 if (isset($_POST['year'])) $year = ereg_replace('[^0-9]', '', $_POST['year']);
@@ -303,17 +303,17 @@ for ($i=$yearnow; $i>=2003; $i--) {
     $sel = ($i == @$_POST['year']) ? ' selected="selected"' : '';
     echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
 }
-echo '</select></form> год.</center>
+echo '</select></form> пїЅпїЅпїЅ.</center>
 <table class="list" border="0" cellspacing="2" width="100%">';
 
 $result = mysql_query("SELECT * FROM projects WHERE date LIKE '$year%' ORDER BY date DESC");
 while($row = mysql_fetch_assoc($result))
 {
-    if (empty($row['client_id'])) $client = '<img src="../img/nocl.png" alt="Нет клиента" />';
-    else $client = '<img src="../img/yes.png" alt="Клиент указан" />';
+    if (empty($row['client_id'])) $client = '<img src="../img/nocl.png" alt="пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" />';
+    else $client = '<img src="../img/yes.png" alt="пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ" />';
 
-    $index = (empty($row['onindex'])) ? '' : '<img src="../img/star.png" alt="На главной" />&nbsp;';
-    $removed = (empty($row['remove'])) ? '' : '<img src="../img/rem.png" alt="На главной" />&nbsp;';
+    $index = (empty($row['onindex'])) ? '' : '<img src="../img/star.png" alt="пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" />&nbsp;';
+    $removed = (empty($row['remove'])) ? '' : '<img src="../img/rem.png" alt="пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" />&nbsp;';
     $date = explode('-', $row['date']);
     echo '<tr><td width="70"><i>'.$date[2].'.'.$date[1].'.'.$date[0].'</i></td>
           <td>'.$removed.$index.'<a href="index.php?cat=projects&act=red&id='.$row['id'].'">'
@@ -322,23 +322,23 @@ while($row = mysql_fetch_assoc($result))
 }
 ?>
 </table><br />
-<u><i>Примечания:  </i></u>
+<u><i>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:  </i></u>
 <table cellpadding="0">
   <tr>
     <td><img src="../img/star.png" width="14" height="14" alt="" /></td>
-    <td> - отображается  на главной странице</td>
+    <td> - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</td>
   </tr>
   <tr>
     <td><img src="../img/rem.png" width="14" height="14" alt="" /></td>
-    <td> - скрыто (не отображается в списке)</td>
+    <td> - пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)</td>
   </tr>
   <tr>
     <td><img src="../img/nocl.png" width="14" height="14" alt="" /></td>
-    <td> - не указан клиент</td>
+    <td> - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</td>
   </tr>
   <tr>
     <td><img src="../img/yes.png" width="14" height="14" alt="" /></td>
-    <td> - указан клиент</td>
+    <td> - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</td>
   </tr>
 </table>
 
