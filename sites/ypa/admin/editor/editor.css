@@ -1,0 +1,24 @@
+BODY {
+	font: 13px Arial, Helvetica, sans-serif;
+	color: #333;
+	background-color: #ECECE0;
+}
+A { 
+	text-decoration: none;
+	color: #3366cc;
+ }
+A:hover { color: #666666; }
+
+IMG { border: 0; }
+
+H1 {
+	text-align: center;
+	color: #cc0000;
+	font-size: 18px;
+	margin: 15px
+}
+H4 {
+	font: bold 14px Arial, Helvetica, sans-serif;
+	color: #d32221;
+	margin: 8px 0px 5px 0px;
+}

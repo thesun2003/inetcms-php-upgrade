@@ -1,0 +1,146 @@
+BODY {	
+	background-color: #FCF9EB;
+	margin: 0;
+	padding: 0;
+}
+BODY, TABLE, TD {
+	font: 11px Verdana, Tahoma, sans-serif;
+	color: #333;
+}
+
+TEXTAREA, INPUT, SELECT {
+   font: 11px Verdana, Tahoma, sans-serif;
+	color: #666;
+	border: 1px solid #98A0A2;
+	padding-left: 3px;
+}
+
+A {
+	text-decoration: none;
+	color: #336666;
+}
+A:hover {
+	color: #47362A;
+}
+A.button, INPUT.button {
+   display: block;
+   font: 14px "Times New Roman", Times, serif;
+	color: #856B56;
+	border: 3px double #CDB39E;
+	background-color: #FBEADE;
+	padding: 2px 5px 3px 5px;
+	margin: 5px;
+	cursor: pointer;
+}
+A.button {
+	width: 150px;
+	text-decoration: none;
+}
+A.button:hover {
+   background-color: #FDE3CE;
+	color: #47362A;
+}
+
+IMG { border: 0; }
+
+H2 {
+	background-color: #EBE0D3;
+	color: #978C7F;
+	text-align: center;
+	font-size: 18px;
+}
+H3 {
+	font: bold 18px "Times New Roman", Times, serif;
+	color: #877667;
+	text-align: center;
+	margin: 10px 0 5px 0;
+}
+H6 {
+	color: #990000;
+	font-size: 11px;
+	margin: 8px 0px;
+}
+
+#main {
+	border-left: 3px solid #B7B4A6;
+	border-right: 3px solid #B7B4A6;
+	background-color: #FFF;
+	height: 100%;
+}
+
+.menu {
+	border: 1px solid #CCC;
+	padding: 0 5px;
+	font-size: 12px;
+	text-align: right;
+}
+.menu A {
+	text-decoration: none;
+}
+
+.pagenav2, .pagenav A {
+	background-color: #EDEDED;
+	border: 1px solid #C8C7C7;
+	margin: 1px;
+	padding: 1px 4px;
+	text-decoration: none;
+	height: 15px;
+}
+.pagenav A:hover {
+	background-color: #ffcc99;
+}
+#all { background-color: #FFF; }
+#cur {
+	background-color: #FFF;
+	font-weight: bold;
+}
+
+TABLE.list {
+	border: 3px solid #E5E2D4;
+	margin: 15px 0;
+}
+TABLE.list  TD {
+	font-size: 12px;
+	padding: 2px 8px;
+	background-color:  #F3F2EB;
+}
+
+.table2 {
+   margin: 5px 0;
+	width: 100%
+}
+.table2 td {
+	padding: 2px 5px;
+	border: 1px solid #DDD;
+	background-color: #F9F9F6;
+}
+
+/* Поиск клиента */
+#ajax_listOfOptions{
+		position:absolute;	/* Never change this one */
+		width:200px;	/* Width of box */
+		height:170px;	/* Height of box */
+		overflow:auto;	/* Scrolling features */
+		border:1px solid #DDD;	/* Dark green border */
+		background-color:#FFF;	/* White background color */
+		text-align:left;
+		z-index:100;ы
+}
+#ajax_listOfOptions div{  /* General rule for both .optionDiv and .optionDivSelected */
+  margin:1px;    
+  padding:1px;
+  cursor:pointer;
+  font-size:0.9em;
+}
+#ajax_listOfOptions .optionDiv{  /* Div for each item in list */
+  
+}
+#ajax_listOfOptions .optionDivSelected{ /* Selected item in the list */
+  background-color:#317082;
+  color:#FFF;
+}
+#ajax_listOfOptions_iframe{
+  background-color:#F00;
+  position:absolute;
+  z-index:5;
+}

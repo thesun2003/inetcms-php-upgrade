@@ -1,0 +1,452 @@
+body {
+	margin: 21px auto;
+	padding: 0;
+	background:white;
+}
+
+body, table, td, option {
+	font: 13px Arial, Helvetica, sans-serif;
+	color: #333;
+}
+
+a { 
+	text-decoration: none;
+	color: #3366cc;
+}
+
+a:hover {
+	color: #666666; 
+}
+
+img {
+	border: 0;
+}
+
+h1 {
+	color: #cc0000;
+	font-size: 18px;
+	margin: 15px;
+	clear:both;
+}
+
+h3 {
+	margin: 7px;
+	font-size: 14px;
+}
+
+h4 {
+	font: bold 14px Arial, Helvetica, sans-serif;
+	color: #d32221;
+	margin: 8px 0px 5px 0px;
+}
+
+h4 a {
+	color: #d32221;
+	text-decoration:none;
+}
+
+h4 a:hover {
+	color: #d32221;
+}
+
+div#topslogan {
+	position:absolute; 
+	left:50%; 
+	margin-left:-263px; 
+	margin-top:20px; 
+	z-index:100; 
+/*	color:#bd0504; */
+	color:white;
+	font-weight:bold;
+}
+
+#title {
+	background: url(/img/title2.png) no-repeat top center;
+	width: 898px;
+	height: 222px;
+}
+
+/*****************************************************************************/
+
+table#menu {
+
+}
+
+table#menu td.menu {
+	text-align:center;
+	padding:0 3px;
+}
+
+table#menu td a {
+	display:block;
+	height:33px;
+	line-height:30px;
+	font-weight:bold;
+	color:#d43c31;
+	font-size:14px;
+	width:auto; 
+	margin:auto;
+	white-space:nowrap;
+}
+
+table#menu td a:hover {
+	color:white;
+	background:#de2020;
+}
+
+/*****************************************************************************/
+
+table#main {
+	border:0;
+	border-collapse:collapse;
+}
+
+td.mid {
+	background:white !important;
+	width:29px !important;
+	font-size:1px !important;
+}
+
+td#left {
+	width:571px;
+	padding-bottom:10px;
+	background:#ECECE0 url(/img/bg_l.gif) top left repeat-y;
+}
+
+td#bottom_l {
+        height:10px;
+	background:#ECECE0 url(/img/bg_lbot.gif) bottom left no-repeat;
+}
+
+td#top_l {
+        height:10px;
+	background:#ECECE0 url(/img/bg_ltop.gif) top left no-repeat;
+}
+
+td#right {
+        width:298px;
+        padding:0;
+        vertical-align:top;
+        text-align:left;
+	background:#f2f2f2 url(/img/bg_r.gif) top center repeat-y;
+}
+
+td#bottom_r {
+        height:10px;
+	background:#f2f2f2 url(/img/bg_rbot.gif) bottom center no-repeat;
+}
+
+td#top_r {
+        height:10px;
+	background:#f2f2f2 url(/img/bg_rtop.gif) top center no-repeat;
+}
+
+td#right a {
+	color:#d32221;
+}
+
+td#foot_l {
+	background:white;
+	width:571px;
+	height: 90px;
+}
+
+td#foot_r {
+	background:white;
+	color:gray;
+	height: 90px;
+}
+
+td#foot_r div {
+	margin: 0px 2px 0px 15px;
+	font: 11px Verdana, Tahoma, sans-serif;
+}
+
+td#foot_r div a {
+	color:#de2020;	
+}
+
+td#head_l {
+	background: #de2020 url(/img/head_l.gif) top left no-repeat;
+	height: 50px;
+	text-align:left;
+	padding-left:2em;
+	vertical-align:middle;
+	color:white;
+	font-size: 14px;
+	font-weight: bold;
+
+}
+
+td#head_r {
+	background: #d9d9d9 url(/img/head_r.gif) top left no-repeat;
+	height: 50px;
+	text-align:left;
+	padding-left:2em;
+	vertical-align:middle;
+	color:#859390;
+	font-size: 14px;
+	font-weight: bold;
+
+}
+
+/*****************************************************************************/
+
+#content {
+	margin: 15px;
+}
+
+.yselect { 
+	height: 15px;
+	background-color: #EDEDED;
+	border: 1px solid #C8C7C7;
+}
+
+.pagenav2, .pagenav a {
+	background-color: #EDEDED;
+	border: 1px solid #C8C7C7;
+	margin: 1px;
+	padding: 1px 4px;
+	text-decoration: none;
+	height: 15px;
+}
+
+.pagenav a:hover {
+	background-color: #ffcc99;
+}
+
+/*****************************************************************************/
+
+#all {
+	background-color: #EDEDED;
+}
+
+#cur {
+	background-color: #FFF;
+	font-weight: bold;
+}
+
+.box1 {
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+.td1, .td2 {
+	background: #ECECE0;
+}
+
+div.td1 {
+	margin:0 2em 2em 2em;
+	padding-top:1em;
+}
+
+.td2 {
+
+}
+
+div.td1 ul {
+	list-style-image:url(/img/marker.gif);
+}
+
+div.td1 ul li {
+	vertical-align:top;
+	margin-bottom:3px;
+}
+
+div.td1 ul li a {
+	color: #d32221;
+}
+
+.cell {
+	width: 100%;
+}
+
+.date {
+	font-size: 10px;
+	color: #747373;
+}
+
+.img_intro {
+	width: 126px;
+	height: 126px;
+	background-color: #FFF;
+	border: 1px solid #859390;
+	text-align: center;
+	vertical-align:middle;
+}
+
+.logo {
+	width: 86px;
+	height: 86px;
+	text-align: center;
+	vertical-align:middle;
+}
+
+div.column_item {
+	width:266px; 
+	float:left; 
+	padding:0; 
+	margin-left:1em; 
+	overflow:hidden;
+}
+
+div.top {
+        height:240px;
+	background:#d32221;
+	color:white !important;
+}
+
+div.top a {
+	color:white;
+}
+
+div.top .img_intro {
+	border:1px solid #800000;
+}
+
+div.top td {
+	color:white;
+}
+
+div.content_h_div {
+	clear:both; 
+	width:90%; 
+	margin:auto; 
+	border-bottom:1px solid red;
+	margin:bottom:1em;
+}
+
+/*****************************************************************************/
+
+table.right {
+        margin:0 auto;
+        width:250px;
+	border-bottom:1px solid #de2020;
+	margin-bottom:1em;
+}
+
+td.img_intro img {
+	display:block;
+	margin:auto;
+}
+
+table.right td h4 {
+	color: #d32221;
+}
+
+.intro {
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+div.intro {
+	margin:0 10px;
+}
+
+div.top div.intro {
+	margin-bottom:10px;
+}
+
+.tlist {
+	margin: 5px 10px;
+	font-size: 12px;
+}
+
+.small td, option, select {
+	font: 11px Verdana, Tahoma, sans-serif;
+}
+
+table.list {
+	background-color: #FFF;
+	border: 1px solid #cdcdad;
+	width: 570px;
+}
+
+table.list td {
+	background-color: #f3f3eb;
+	border: 1px solid #cdcdad;
+	padding: 5px;
+}
+
+/*****************************************************************************/
+
+.pressa {
+	background: url(/img/pressabg.jpg) no-repeat top;
+	width: 580px;
+	margin-left: 9px;
+	margin-bottom: 5px;
+	border: 1px solid #cccccc;
+}
+
+.pressa h4 {
+	margin: 12px 15px 8px 15px;
+	text-align: center;
+}
+.pressa div {
+	margin: 8px 15px;
+}
+.mtxt {
+        margin:1em 0;
+	font: 10px Arial, Helvetica, sans-serif;
+	color: #666666;
+}
+
+.mtxt a {
+	color:#DE2020;
+}
+
+.client td {
+	font: 11px Arial, Helvetica, sans-serif;
+	vertical-align: top;
+	padding: 3px 10px
+}
+
+/*****************************************************************************/
+/* Выпадающее меню */
+
+.popmenu {
+	position: absolute;
+	visibility: hidden;
+	z-index: 1;
+	background-color: #DE2020;
+	border: 1px solid white;
+	border-top:0 !important;
+	text-align: left;
+}
+.popmenu a {
+	color: white;
+	text-decoration: none;
+	display: block;
+	margin: 0 8px;
+}
+
+.submenu {
+	width: 100%;
+	padding: 2px 0px 3px 0px;
+	border-top: 1px solid white;
+}
+
+div#menu1 {
+        margin-top:-1px;
+	left: 102px; 
+	width: 124px;
+}
+
+div#menu2 {
+        margin-top:-1px;
+	left: 163px;
+	width: 175px;
+}
+
+div#menu3 {
+        margin-top:-1px;
+	right: 10px;
+	width: 124px;
+}
+
+a.hcard {
+  color: #000;
+  background: url("/img/hcard_icon.png") no-repeat scroll 0 2px transparent;
+  padding-left: 20px;
+  border-bottom: 1px dotted;
+  cursor: pointer;
+  text-decoration: none;
+}
