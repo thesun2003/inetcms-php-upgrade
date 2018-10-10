@@ -83,7 +83,7 @@ if (!function_exists('mysql_connect')) {
     }
 
     function mysql_fetch_array($result, $result_type = MYSQL_BOTH) {
-        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return mysqli_fetch_array($result, MYSQLI_BOTH);
     }
 }
 
