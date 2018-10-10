@@ -1,0 +1,42 @@
+version: '3.2'
+services:
+
+  ypa-web-php70:
+    build:
+      context: ./web-php70
+    container_name: ${SITE}-web-php70
+    environment:
+      - VIRTUAL_HOST
+    volumes:
+      - ${SITE_DIR}:/var/www/html
+    depends_on:
+      - ypa-mysql-php70
+    networks:
+      static-network:
+    restart: always
+
+  ypa-mysql-php70:
+    build:
+      context: ./mysql
+      args:
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        MYSQL_DATABASE: 'aqq999'
+        MYSQL_USER: 'aqq999'
+        MYSQL_PASSWORD: 'password'
+        DATABASE_DIR: ${DATABASE_DIR}
+    environment:
+        - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+        - MYSQL_DATABASE=aqq999
+        - MYSQL_USER=aqq999
+        - MYSQL_PASSWORD=password
+        - DATABASE_DIR
+    container_name: ${SITE}-mysql-php70
+    networks:
+      static-network:
+    restart: always
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.18.0.0/24
