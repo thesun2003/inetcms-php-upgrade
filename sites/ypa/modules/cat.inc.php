@@ -1,0 +1,39 @@
+<?php
+$path = array (
+    'b_clients' => 'ÏÐÎ ÓÐÀ!',
+    'staff' => 'ÑÎÒÐÓÄÍÈÊÈ',
+    'feedback' => 'ÊÎÍÒÀÊÒÛ',
+    'pressa' => 'ÏÐÅÑÑÀ',
+    'spetialization' => 'ÑÏÅÖÈÀËÈÇÀÖÈß',
+    'event' => 'ÑÏÅÖÈÀËÈÇÀÖÈß',
+    'corpration' => 'ÑÏÅÖÈÀËÈÇÀÖÈß',
+    'sobytie' => 'ÑÏÅÖÈÀËÈÇÀÖÈß',
+    'vidy' => 'ÑÏÅÖÈÀËÈÇÀÖÈß',
+    'mice' => 'ÑÏÅÖÈÀËÈÇÀÖÈß',
+    'news' => 'ÍÎÂÎÑÒÈ',
+    'projects' => 'ÏÐÎÅÊÒÛ',
+    'photos' => 'ÔÎÒÎÀËÜÁÎÌ',
+    'clients' => 'ÊËÈÅÍÒÛ',
+    'response' => 'ÎÒÇÛÂÛ',
+    'partners' => 'ÏÀÐÒÍ¨ÐÛ',
+    'vocabulary' => 'ÃËÎÑÑÀÐÈÉ',
+    'slang' => 'ÑËÅÍÃ'
+);
+
+$key = @$_GET['cat'];
+$cat_name = (isset($path["$key"])) ? $path["$key"] : 'Àãåíòñòâî ÓÐÀ';
+
+if ((@$key == 'projects' || @$key == 'news') && isset($_GET['pag']))
+{
+    $id = ereg_replace('[^0-9]', '', $_GET['pag']);
+    $result = mysql_query("SELECT mtitle, mkeyw, mdescr, title FROM $key WHERE id = $id");
+    if ($result) $row = mysql_fetch_assoc($result);
+}
+else
+{
+    $id = ereg_replace('[^0-9a-zA-Z_\-]', '', $key);
+    $result = mysql_query("SELECT mtitle, mkeyw, mdescr, header AS title FROM page WHERE keyname = '$key'");
+    if ($result) $row = mysql_fetch_assoc($result);
+}
+
+?>
