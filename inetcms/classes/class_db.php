@@ -313,7 +313,7 @@ class DB_Error{
      */
     function __construct($message, $link, $sql=''){
         $this->message = $message;
-        $this->userinfo = mysql_error($link);
+        $this->userinfo = ($link instanceof mysqli) ? mysql_error($link) : false;
         $this->sql = $sql;
     }
 }

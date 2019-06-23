@@ -237,17 +237,14 @@ function _browser() {
 function DB_connect() {
     $_DB = new DB();
     $_BB = $_DB->connect(DB_HOST, DB_BASE, DB_USER, DB_PASS);
-    return $_BB;
-}
 
-function DB_open() {
-  global $conn;
-  $conn = @mysql_connect(DB_HOST, DB_USER, DB_PASS);
-  if (!@mysql_select_db(DB_BASE, $conn)) {
-    echo "<b>Server is busy<br></b>";
-    @mysql_close($conn);
-    exit;
-  }
+    if (!$_BB instanceof DB) {
+        // TODO: show a proper HTML page without DB connection and better error catching
+        echo "<b>Server is busy<br></b>";
+        die();
+    }
+
+    return $_BB;
 }
 
 function setNotice($what) {
@@ -379,5 +376,4 @@ if (!function_exists('mysql_connect')) {
 
 }
 
-DB_open();
 $DB = DB_connect();
