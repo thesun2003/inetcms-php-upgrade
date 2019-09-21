@@ -17,8 +17,11 @@ TinyBrowser 1.41 - A TinyMCE file browser (C) 2008  Bryn Jones
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+require_once(INC . '/_php70_functions.php');
+
 // switch off error handling, to use custom handler
-error_reporting(0); 
+error_reporting(0);
 
 // set script time out higher, to help with thumbnail generation
 set_time_limit(240);
